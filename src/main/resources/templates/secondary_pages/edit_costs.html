@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>SSI::Edit Costs</title>
+    <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
+    <link rel="stylesheet" href="/css/main/general.css">
+    <link rel="stylesheet" href="/css/secondary/edit_costs.css">
+</head>
+
+<body>
+
+<!-- User Menu -->
+<form method="post" action="/logout">
+    <div class="user_information">
+
+        <!-- Message Hello -->
+        <span th:text="#{ssi.homepage.user.hello.label}"></span>
+
+        <hr>
+        <!-- Display username -->
+        <div sec:authorize="isAuthenticated()">
+            <span sec:authentication="username"></span>
+        </div>
+
+        <!-- Information about user -->
+        <a class="btn_signup" th:href="@{'/ssi/user/info'}">
+            <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.add.label}"
+                 th:title="#{main.userinfo.label}">
+        </a>
+
+        <!-- Logout -->
+        <a class="">
+            <img class="logout_icon" src="/img/icons/logout.png" th:alt="#{main.logout.label}"
+                 th:title="#{main.logout.label}">
+        </a>
+
+        <hr>
+        <!-- Language select -->
+        <div class="select_languages">
+
+            <div class="btn_ro">
+                <a th:href="@{/ssi/edit_costs?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                                 th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+            </div>
+
+            <div class="btn_en">
+                <a th:href="@{/ssi/edit_costs?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                                 th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<!-- Logo on page -->
+<a class="logosecondpage" th:href="@{'/ssi/homepage'}">
+    <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
+</a>
+
+<!-- Form for editing costs -->
+<form method="post" action="/ssi/costs/save" th:object="${cost}">
+    <div class="costs_edit">
+
+        <!-- Edit costs -->
+        <h1 th:text="#{ssi.costs.form.title.label}"></h1>
+        <hr>
+
+        <!-- Cost Id -->
+        <input type="hidden" name="userId" th:field="*{costId}">
+
+        <!-- Value -->
+        <label for="value" th:text="#{ssi.costs.form.value.label}"></label>
+        <input type="text" name="name" id="value" placeholder="Value" th:field="*{value}">
+        <br>
+
+        <!-- Data -->
+        <!--        <label for="date" th:text="#{ssi.costs.form.date.label}"></label>-->
+        <!--        <input type="text" name="date" id="date" placeholder="Date mm/DD/yyyy" th:field="*{date}">-->
+        <!--        <br>-->
+
+        <!-- Calendar Picker -->
+        <div class="bootstrap-iso">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <form method="post" action="/ssi/costs/save" th:object="${cost}" class="form-horizontal">
+                            <div class="form-group ">
+                                <label class="control-label col-sm-2 requiredField" for="date"
+                                       th:text="#{ssi.costs.table.data.label}">
+                                </label>
+                                <div class="col-sm-10">
+                                    <div class="input-group">
+                                        <div class="input-group-addon">
+                                            <i class="fa fa-calendar">
+                                            </i>
+                                        </div>
+                                        <input class="form-control" id="date" name="date" placeholder="MM/DD/YYYY"
+                                               type="text"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Currency -->
+        <label for="currency" th:utext="#{ssi.costs.form.currency.label}"></label>
+        <select class="select_currency" id="currency" th:field="*{currency}">
+            <option th:text="#{ssi.costs.option.currency.label}" value="Currency"></option>
+            <option th:text="#{ssi.costs.option.currency.euro.label}" value="Euro"></option>
+            <option th:text="#{ssi.costs.option.currency.leu.label}" value="Lei"></option>
+        </select>
+        <br>
+
+        <hr>
+
+        <div class="bt_sub">
+            <button type="reset" th:text="#{ssi.costs.btn.reset.label}"></button>
+            <button type="submit" th:text="#{ssi.costs.btn.submit.label}"></button>
+        </div>
+
+    </div>
+</form>
+
+<!-- Extra JavaScript/CSS added manually in "Settings" tab -->
+<!-- Include jQuery -->
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+
+<!-- Include Date Range Picker -->
+<script type="text/javascript"
+        src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+
+<script>
+    $(document).ready(function () {
+        var date_input = $('input[name="date"]'); //our date input has the name "date"
+        var container = $('.bootstrap-iso form').length > 0 ? $('.bootstrap-iso form').parent() : "body";
+        date_input.datepicker({
+            format: 'dd/mm/yyyy',
+            container: container,
+            todayHighlight: true,
+            autoclose: true,
+        })
+    })
+</script>
+
+<!--&lt;!&ndash;formden.js communicates with FormDen server to validate fields and submit via AJAX &ndash;&gt;-->
+<!--<script type="text/javascript" src="https://formden.com/static/cdn/formden.js"></script>-->
+
+<!--&lt;!&ndash; Special version of Bootstrap that is isolated to content wrapped in .bootstrap-iso &ndash;&gt;-->
+<!--<link rel="stylesheet" href="https://formden.com/static/cdn/bootstrap-iso.css"/>-->
+
+<!--&lt;!&ndash;Font Awesome (added because you use icons in your prepend/append)&ndash;&gt;-->
+<!--<link rel="stylesheet" href="https://formden.com/static/cdn/font-awesome/4.4.0/css/font-awesome.min.css"/>-->
+
+<!-- Inline CSS based on choices in "Settings" tab -->
+<style>.bootstrap-iso .formden_header h2, .bootstrap-iso .formden_header p, .bootstrap-iso form {
+    font-family: Arial, Helvetica, sans-serif;
+    color: black
+}
+
+.bootstrap-iso form button, .bootstrap-iso form button:hover {
+    color: white !important;
+}
+
+.asteriskField {
+    color: red;
+}</style>
+
+</body>
+</html>

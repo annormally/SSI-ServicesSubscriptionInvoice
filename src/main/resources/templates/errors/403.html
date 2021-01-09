@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title>Access Denied</title>
+    <link rel="stylesheet" href="/css/errors/403.css">
+</head>
+<body>
+
+<!-- Logo on page -->
+<a class="logo" th:href="@{'/'}">
+    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
+</a>
+
+<!-- Language select -->
+<div class="select_languages">
+
+    <div class="btn_ro">
+        <a th:href="@{/403?language=ro}"><img class=" lang_ro" src="/img/languages/ro.png" th:alt="#{lang.ro}"></a>
+    </div>
+
+    <div class="btn_en">
+        <a th:href="@{/403?language=en}"><img class=" lang_en" src="/img/languages/en.png" th:alt="#{lang.en}"></a>
+    </div>
+</div>
+
+<!-- Message -->
+<div class="message" th:utext="#{error.message.label}"></div>
+
+<!-- Redirect -->
+<div class="nav_home">
+    <!-- Go To-->
+    <div class="nav_home_goto" th:text="#{error.go.label}"></div>
+
+    <!-- Home -->
+    <a th:href="@{'/'}">
+        <div class="nav_home_home" th:text="#{error.home.label}"></div>
+    </a>
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{ssi.costs.title.label}"></title>
+    <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
+    <link rel="stylesheet" href="/css/main/general.css">
+    <link rel="stylesheet" href="/css/secondary/costs.css">
+</head>
+
+<body>
+
+<!-- User Menu -->
+<form method="post" action="/logout">
+    <div class="user_information">
+
+        <!-- Message Hello -->
+        <span th:text="#{ssi.homepage.user.hello.label}"></span>
+
+        <hr>
+        <!-- Display username -->
+        <div sec:authorize="isAuthenticated()">
+            <span sec:authentication="username"></span>
+        </div>
+
+        <!-- Information about user -->
+        <a class="btn_signup" th:href="@{'/ssi/user/info/edit/' + ${userId}}">
+            <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.add.label}"
+                 th:title="#{main.userinfo.label}">
+        </a>
+
+        <!-- Logout -->
+        <a class="">
+            <img class="logout_icon" src="/img/icons/logout.png" th:alt="#{main.logout.label}"
+                 th:title="#{main.logout.label}">
+        </a>
+
+        <hr>
+        <!-- Language select -->
+        <div class="select_languages">
+
+            <div class="btn_ro">
+                <a th:href="@{/ssi/costs?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                            th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+            </div>
+
+            <div class="btn_en">
+                <a th:href="@{/ssi/costs?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                            th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<!-- Logo on page -->
+<a class="logosecondpage" th:href="@{'/ssi/homepage'}">
+    <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
+</a>
+
+<!-- Navigator -->
+<nav>
+    <a class="btn_signup" th:href="@{'/ssi/homepage'}"><span th:utext="#{ssi.homepage.nav.label}"></span></a>
+    <a class="btn_signup" th:href="@{'/ssi/costs'}"><span th:text="#{ssi.costs.nav.label}"></span></a>
+    <a class="btn_signup " th:href="@{'/ssi/income'}"><span th:text="#{ssi.income.nav.label}"></span></a>
+</nav>
+
+
+<!-- Table with information -->
+<table class="costs_table">
+
+    <!-- Head of table -->
+    <tr>
+        <!-- Table field -->
+        <th th:text="#{ssi.costs.table.value.label}"></th>
+        <th th:text="#{ssi.costs.table.data.label}"></th>
+        <th th:utext="#{ssi.costs.table.currency.label}"></th>
+        <th th:text="#{ssi.costs.table.option.label}"></th>
+    </tr>
+
+    <!-- Body of table -->
+    <tr th:each="cost:${costsList}">
+
+        <!-- Value -->
+        <td th:text="${cost.value}"></td>
+
+        <!-- Date -->
+        <td th:text="${#dates.format(cost.date,'dd/MM/yyyy')}"></td>
+
+        <!-- Currency -->
+        <td th:utext="${cost.currency}"></td>
+        <td>
+
+            <!-- Delete -->
+            <a name="delete" id="delete" th:href="@{'/ssi/costs/delete/' + ${cost.costId}}">
+                <img class="delete_icon" src="/img/icons/trash.png" th:alt="#{main.delete.label}"
+                     th:title="#{main.delete.label}">
+            </a>
+
+            <!-- Edit -->
+            <a name="edit" id="edit" th:href="@{'/ssi/costs/edit/' + ${cost.costId}}">
+                <img class="edit_icon" src="/img/icons/edit.png" th:alt="#{main.edit.label}"
+                     th:title="#{main.edit.label}">
+            </a>
+        </td>
+    </tr>
+
+    <tr>
+        <!-- Add field -->
+        <td>
+            <a class="btn_signup" id="add" th:href="@{'/ssi/costs/add'}">
+                <img class="add_icon" src="/img/icons/add.png" th:alt="#{main.add.label}"
+                     th:title="#{main.add.label}">
+            </a>
+        </td>
+    </tr>
+
+</table>
+
+</body>
+</html>

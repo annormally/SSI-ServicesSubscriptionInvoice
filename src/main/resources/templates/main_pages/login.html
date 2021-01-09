@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{login.title.label}"></title>
+    <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
+    <link rel="stylesheet" href="/css/main/general.css">
+    <link rel="stylesheet" href="/css/main/login.css">
+</head>
+
+<body>
+
+<!-- User Menu -->
+<form method="post" action="/logout">
+    <div class="user_information">
+
+        <!-- Language select -->
+        <div class="select_languages">
+
+            <div class="btn_ro">
+                <a th:href="@{/login?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                        th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+            </div>
+
+            <div class="btn_en">
+                <a th:href="@{/login?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                        th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+<!-- Logo on page -->
+<a class="logo" th:href="@{'/'}">
+    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
+</a>
+
+<!-- Create Login template-->
+<form method="post" action="/login">
+    <div class="login">
+        <h1 th:text="#{nav.a.login.label}"></h1>
+
+        <hr>
+
+        <!-- Create new account -->
+        <div class="new_account">
+            <span th:text="#{create.new.account.label}"></span>
+            <a class="btn_signup" th:href="${'/signup'}" th:text="#{accout.label}"></a>
+        </div>
+
+        <hr>
+
+        <!-- Username -->
+        <label for="username"><b th:text="#{login.username.label}"></b></label>
+        <input type="text" th:placeholder="#{login.username_place_holder.lable}" name="username"
+               id="username"
+               required>
+
+        <!-- Password -->
+        <label for="password"><b th:text="#{login.password.label}"></b></label>
+        <input type="password" th:placeholder="#{login.password_place_holder.lable}" name="password"
+               id="password"
+               required>
+
+        <!-- Remember me -->
+        <div class="remember">
+            <span th:text="#{login.remember.label}"></span><input type="checkbox" checked="checked" name="remember">
+        </div>
+        <hr>
+
+        <div class="bt_sub">
+            <button class="btn_animation" type="reset" th:text="#{login.cancel.label}"></button>
+            <input class="btn_animation" type="submit" th:text="#{login.submit.label}"></input>
+        </div>
+    </div>
+
+</form>
+
+</body>
+</html>

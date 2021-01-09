@@ -1,0 +1,143 @@
+body {
+    font-family: Verdana, Tahoma, Arial, Sans-Serif, Georgia, Courier;
+    background-image: linear-gradient(-225deg, #f89c1c 0%, #e3fdf5 100%);
+    background-image: linear-gradient(to top, #f89c1c 0%, #a8edea 100%);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+}
+
+nav {
+    width: 450px;
+    min-height: 10px;
+    height: auto;
+    border-radius: 50px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 1%;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 150%);
+    text-align: center;
+}
+
+.logo {
+    display: inline-flex;
+    width: 300px;
+    height: 100px;
+    position: relative;
+    top: 3%;
+    left: 42%;
+}
+
+.logosecondpage {
+    display: inline-flex;
+    position: relative;
+    left: 42%
+}
+
+.logo_size {
+    width: 300px;
+    height: 100px;
+}
+
+.logo:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #f89c1c;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.logo:hover:after {
+    width: 80%;
+    left: 0;
+}
+
+.logosecondpage:after {
+    background: none repeat scroll 0 0 transparent;
+    bottom: 0;
+    content: "";
+    display: block;
+    height: 2px;
+    left: 50%;
+    position: absolute;
+    background: #f89c1c;
+    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+    width: 0;
+}
+
+.logosecondpage:hover:after {
+    width: 80%;
+    left: 0;
+}
+
+.select_languages {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.lang_ro {
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.lang_en {
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.btn_signup {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    text-decoration: none;
+    width: 50px;
+    height: 200px;
+    cursor: pointer;
+    color: #0c7578;
+    font-size: 14pt;
+}
+
+.btn_signup:hover {
+    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 50px;
+    height: 200px;
+    cursor: pointer;
+    font-size: 14pt;
+    color: #f89c1c;
+    text-decoration: underline;
+    text-decoration-color: #f89c1c;
+}
+
+.user_information {
+    max-width: 250px;
+    max-height: 100px;
+    border-radius: 30px;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+    margin: 1% 1%;
+}
+
+.user_information {
+    vertical-align: top;
+    float: right;
+}
+
+.userinfo_icon {
+    width: 25px;
+    height: 25px;
+}
+
+.logout_icon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}

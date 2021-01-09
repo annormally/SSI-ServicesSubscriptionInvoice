@@ -1,0 +1,77 @@
+.user_information {
+    display: inline;
+    max-width: 250px;
+    max-height: 100px;
+    border-radius: 30px;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+    margin: 1% 1%;
+    vertical-align: top;
+    float: right;
+}
+
+/* Table */
+
+table.costs_table {
+    font-family: Arial, Courier;
+    font-size: 14pt;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px 2px #f89c1c;
+    border-radius: 5px;
+    color: #0c7578;
+    border: 1px solid #0c7578;
+    padding: 5px 5px;
+}
+
+table.costs_table tbody td {
+    font-size: 13px;
+    color: #0c7578;
+}
+
+table.costs_table tr:nth-child(even) {
+    background: #e3fdf5 100%;
+}
+
+table.costs_table tfoot {
+    font-size: 12px;
+    font-weight: bold;
+    color: #E6E6E6;
+    background: #000000;
+    background: -moz-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+    background: -webkit-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+    background: linear-gradient(to bottom, #404040 0%, #191919 66%, #000000 100%);
+    border-top: 1px solid #4A4A4A;
+}
+
+table.costs_table tfoot td {
+    font-size: 12px;
+}
+
+#delete, #edit {
+    padding-left: 10px;
+}
+
+.delete_icon {
+    width: 18px;
+    height: 20px;
+}
+
+.edit_icon{
+    width: 20px;
+    height: 20px;
+}
+
+.add_icon {
+    width: 20px;
+    height: 20px;
+}
+
+.userinfo_icon {
+    width: 25px;
+    height: 25px;
+}

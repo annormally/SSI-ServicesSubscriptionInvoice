@@ -1,0 +1,102 @@
+h1 {
+    color: gray;
+    text-align: center;
+}
+
+p {
+    color: gray;
+    text-align: center;
+}
+
+label {
+    text-align: center;
+    padding: 0px 10px 0px 40%;
+}
+
+/*input {*/
+/*    width: 240px;*/
+/*    height: 20px;*/
+/*    margin-top: 5%;*/
+/*    padding: 15px;*/
+/*    font-size: 16px;*/
+/*    font-family: 'Abel', sans-serif;*/
+/*    color: #5E6472;*/
+/*    outline: none;*/
+/*    border: none;*/
+/*    border-radius: 0px 5px 5px 0px;*/
+/*    transition: 0.2s linear;*/
+/*}*/
+
+
+input[type = "text"], input[type = "password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 16pt;
+    border: 2px solid #0c7578;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: gray;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+input[type = "text"]:focus, input[type = "password"]:focus {
+    width: 280px;
+    border-color: #f89c1c;
+}
+
+.signUp {
+    max-width: 500px;
+    min-width: 450px;
+    min-height: 500px;
+    height: auto;
+    border-radius: 50px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+}
+
+button {
+    background: #0c7578;
+    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
+    border-radius: 28px;
+    font-family: Courier New;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+button:hover {
+    background: #09ecf0;
+    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.remember {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
+
+.bt_sub {
+    margin: auto;
+    text-align: center
+}
