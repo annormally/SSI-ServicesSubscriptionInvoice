@@ -35,17 +35,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll();
 
         /**
-         * Configuration for logged user
-         */
-
-        http.authorizeRequests()
-                .antMatchers("/ssi/homepage", "/ssi/costs", "/ssi/incomes", "/ssi/user/info")
-                // work for all users
-//                .permitAll();
-        // work just for logged user
-                .hasRole("USER");
-
-        /**
          *  Configuration for any request
          *  Other request need to be authenticate
          */
@@ -69,7 +58,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .usernameParameter("username")
                 .passwordParameter("password")
                 .loginPage("/login")
-                .defaultSuccessUrl("/ssi/homepage")
+                .defaultSuccessUrl("/ssi/home")
                 .failureUrl("/403");
 
         /**

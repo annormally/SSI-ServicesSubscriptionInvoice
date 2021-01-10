@@ -4,7 +4,18 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a05ce14-445e-4496-a418-5f5136989fbc" name="Default Changelist" comment="" />
+    <list default="true" id="9a05ce14-445e-4496-a418-5f5136989fbc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/HomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/configuration/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/configuration/WebSecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/SSIController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/errors/403.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/errors/403.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/ssiHomepage.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ssi/webapplication/controller/main_pages_controllers/SSIControllerTest.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -15,8 +26,8 @@
       <list>
         <option value="HTML File" />
         <option value="CSS File" />
-        <option value="Class" />
         <option value="Interface" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -42,7 +53,7 @@
     <option name="SCOPE" value="All" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/main_pages/ssiHomepage.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/AuthoritiesEntity.java" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" root0="SKIP_INSPECTION" />
@@ -286,6 +297,7 @@
       <workItem from="1610108110188" duration="512000" />
       <workItem from="1610174714171" duration="2203000" />
       <workItem from="1610200631335" duration="807000" />
+      <workItem from="1610201486219" duration="2726000" />
     </task>
     <task id="LOCAL-00001" summary="new version for interface">
       <created>1609773881737</created>
