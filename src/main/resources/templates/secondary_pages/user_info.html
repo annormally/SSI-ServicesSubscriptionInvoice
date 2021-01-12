@@ -15,27 +15,38 @@
 <form method="post" action="/logout">
     <div class="user_information">
 
-        <!-- Message Hello -->
-        <span th:text="#{ssi.homepage.user.hello.label}"></span>
+        <div>
+            <!-- Message Hello -->
+            <span th:text="#{ssi.homepage.user.hello.label}"></span>
 
-        <hr>
-        <!-- Display username -->
-        <div sec:authentication="username">
+            <!-- Display username -->
+            <span sec:authentication="name"></span>
         </div>
 
-        <!-- Information about user -->
-        <a class="btn_signup" th:href="@{'/ssi/user/info'}">
-            <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.add.label}"
-                 th:title="#{main.userinfo.label}">
-        </a>
+        <hr>
 
-        <!-- Logout -->
-        <a class="">
-            <img class="logout_icon" src="/img/icons/logout.png" th:alt="#{main.logout.label}"
-                 th:title="#{main.logout.label}">
-        </a>
+        <!--  Icons for information and logout -->
+        <div style="display: block ruby">
+
+            <!-- Information about user -->
+            <a class="btn_signup" th:href="@{'/ssi/user/info'}">
+                <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.userinfo.label}"
+                     th:title="#{main.userinfo.label}">
+            </a>
+
+            <!-- Logout -->
+            <form method="post" action="/logout">
+                <a class="">
+                    <button class="logout_submit" type="submit">
+                        <img class="logout_icon" src="/img/icons/logout.png" th:alt="#{main.logout.label}"
+                             th:title="#{main.logout.label}">
+                    </button>
+                </a>
+            </form>
+        </div>
 
         <hr>
+
         <!-- Language select -->
         <div class="select_languages">
 
@@ -54,19 +65,19 @@
 </form>
 
 <!-- Logo on page -->
-<a class="logosecondpage" th:href="@{'/ssi/homepage'}">
+<a class="logosecondpage" th:href="@{'/ssi/home'}">
     <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
 </a>
 
 <!-- Navigator -->
 <nav>
-    <a class="btn_signup" th:href="@{'/ssi/homepage'}"><span th:utext="#{ssi.homepage.nav.label}"></span></a>
+    <a class="btn_signup" th:href="@{'/ssi/home'}"><span th:utext="#{ssi.homepage.nav.label}"></span></a>
     <a class="btn_signup" th:href="@{'/ssi/costs'}"><span th:text="#{ssi.costs.nav.label}"></span></a>
     <a class="btn_signup " th:href="@{'/ssi/income'}"><span th:text="#{ssi.income.nav.label}"></span></a>
 </nav>
 
 <!-- Form for editing costs -->
-<form method="post" action="/ssi/user/info/save" th:object="${user_info}">
+<form method="post" action="/ssi/user/info/save" th:object="${user}">
     <div class="user_info">
 
         <!-- User info -->
@@ -110,6 +121,15 @@
     </div>
 
 </form>
+
+<!-- Footer for site -->
+<div class="footer">
+    <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+            <a href="#" th:utext="#{main.author}"></a>.
+        </p>
+    </div>
+</div>
 
 </body>
 </html>

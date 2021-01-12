@@ -31,7 +31,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
          */
 
         http.authorizeRequests()
-                .antMatchers("/", "/signup", "/login", "/login/errors", "/403", "/css/**", "/img/**")
+                .antMatchers("/", "/signup", "/login", "/login/errors", "/403", "404", "/css/**", "/img/**")
                 .permitAll();
 
         /**
@@ -67,8 +67,18 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.logout()
                 .logoutUrl("/logout")
+                .logoutSuccessUrl("/login")
                 .permitAll();
     }
+
+    /**
+     * Configuration for database.
+     *
+     * @param auth
+     * @param passwordEncoder
+     * @param dataSource
+     * @throws Exception
+     */
 
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth, PasswordEncoder passwordEncoder, DataSource dataSource) throws Exception {

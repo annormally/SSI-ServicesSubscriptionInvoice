@@ -12,25 +12,22 @@
 <body>
 
 <!-- User Menu -->
-<form method="post" action="/logout">
-    <div class="user_information">
+<div class="user_information">
 
-        <!-- Language select -->
-        <div class="select_languages">
+    <!-- Language select -->
+    <div class="select_languages">
 
-            <div class="btn_ro">
-                <a th:href="@{/login?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
-                                                        th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
-            </div>
+        <div class="btn_ro">
+            <a th:href="@{/login?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                    th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+        </div>
 
-            <div class="btn_en">
-                <a th:href="@{/login?language=en}"><img class="lang_en" src="/img/languages/en.png"
-                                                        th:title="#{lang.en}" th:alt="#{lang.en}"></a>
-            </div>
+        <div class="btn_en">
+            <a th:href="@{/login?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                    th:title="#{lang.en}" th:alt="#{lang.en}"></a>
         </div>
     </div>
-
-</form>
+</div>
 
 <!-- Logo on page -->
 <a class="logo" th:href="@{'/'}">
@@ -77,6 +74,15 @@
     </div>
 
 </form>
+
+<!-- Footer for site -->
+<div class="footer">
+    <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+            <a href="#" th:utext="#{main.author}"></a>.
+        </p>
+    </div>
+</div>
 
 </body>
 </html>

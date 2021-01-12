@@ -1,70 +1,123 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
     <title th:text="#{ssi.homepage.label}"></title>
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
-    <link rel="stylesheet" href="/css/main/ssiHomepage.css">
+    <link rel="stylesheet" href="/css/main/home.css">
 </head>
 
 <body>
 
 <!-- User Information Form-->
-<form method="post" action="/logout">
-    <div class="user_information">
 
+<div class="user_information">
+
+    <div>
         <!-- Message Hello -->
         <span th:text="#{ssi.homepage.user.hello.label}"></span>
 
-        <hr>
         <!-- Display username -->
-        <div>
-            <span sec:authentication="name"></span>
-        </div>
+        <span sec:authentication="name"></span>
+    </div>
+    <hr>
+
+    <!--  Icons for information and logout -->
+    <div style="display: block ruby">
 
         <!-- Information about user -->
         <a class="btn_signup" th:href="@{'/ssi/user/info'}">
-            <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.add.label}"
+            <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.userinfo.label}"
                  th:title="#{main.userinfo.label}">
         </a>
 
         <!-- Logout -->
-        <a class="">
-            <img class="logout_icon" src="/img/icons/logout.png" th:alt="#{main.logout.label}"
-                 th:title="#{main.logout.label}">
-        </a>
-
-        <hr>
-        <!-- Language select -->
-        <div class="select_languages">
-
-            <div class="btn_ro">
-                <a th:href="@{/ssi/homepage?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
-                                                               th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
-            </div>
-
-            <div class="btn_en">
-                <a th:href="@{/ssi/homepage?language=en}"><img class="lang_en" src="/img/languages/en.png"
-                                                               th:title="#{lang.en}" th:alt="#{lang.en}"></a>
-            </div>
-        </div>
+        <form method="post" action="/logout">
+            <a class="">
+                <button class="logout_submit" type="submit">
+                    <img class="logout_icon" src="/img/icons/logout.png" th:alt="#{main.logout.label}"
+                         th:title="#{main.logout.label}">
+                </button>
+            </a>
+        </form>
     </div>
 
-</form>
+    <hr>
+
+    <!-- Language select -->
+    <div class="select_languages">
+
+        <div class="btn_ro">
+            <a th:href="@{/ssi/home?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                       th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+        </div>
+
+        <div class="btn_en">
+            <a th:href="@{/ssi/home?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                       th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+        </div>
+    </div>
+</div>
+
 
 <!-- Logo on page -->
-<a class="logosecondpage" th:href="@{'/ssi/homepage'}">
+<a class="logosecondpage" th:href="@{'/ssi/home'}">
     <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
 </a>
 
 <!-- Navigator -->
 <nav>
-    <a class="btn_signup" th:href="@{'/ssi/homepage'}"><span th:utext="#{ssi.homepage.nav.label}"></span></a>
+    <a class="btn_signup" th:href="@{'/ssi/home'}"><span th:utext="#{ssi.homepage.nav.label}"></span></a>
     <a class="btn_signup" th:href="@{'/ssi/costs'}"><span th:text="#{ssi.costs.nav.label}"></span></a>
     <a class="btn_signup " th:href="@{'/ssi/income'}"><span th:text="#{ssi.income.nav.label}"></span></a>
 </nav>
+
+
+<!-- Home page contains -->
+
+<div class="contains">
+
+    <!-- Moto -->
+    <div class="home_moto">
+        <div class="home_moto_cont">
+            <span>Moto</span>
+        </div>
+        <!-- Moto text -->
+        <div class="home_moto_text">
+            <span>Motoul este urmatorul.</span>
+        </div>
+
+    </div>
+
+</div>
+
+<div class="contains">
+
+    <!-- News -->
+    <div class="home_news">
+        <div class="home_news_cont">
+            <span>News</span>
+        </div>
+        <!-- Moto text -->
+        <div class="">
+            <span></span>
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Footer for site -->
+<div class="footer">
+    <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+            <a href="#" th:utext="#{main.author}"></a>.
+        </p>
+    </div>
+</div>
 
 </body>
 </html>

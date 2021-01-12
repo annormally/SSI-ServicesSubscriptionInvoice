@@ -8,21 +8,6 @@ label {
     padding: 0px 10px 0px 40%;
 }
 
-/*input {*/
-/*    width: 240px;*/
-/*    height: 20px;*/
-/*    margin-top: 5%;*/
-/*    padding: 15px;*/
-/*    font-size: 16px;*/
-/*    font-family: 'Abel', sans-serif;*/
-/*    color: #5E6472;*/
-/*    outline: none;*/
-/*    border: none;*/
-/*    border-radius: 0px 5px 5px 0px;*/
-/*    transition: 0.2s linear;*/
-/*}*/
-
-
 input[type = "text"], input[type = "password"] {
     border: 0;
     background: none;

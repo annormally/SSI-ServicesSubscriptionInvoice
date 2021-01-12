@@ -124,7 +124,7 @@ input[type = "text"]:focus {
 
 .user_information {
     max-width: 250px;
-    max-height: 100px;
+    max-height: 130px;
     border-radius: 30px;
     box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
     padding: 2%;
@@ -137,5 +137,10 @@ input[type = "text"]:focus {
 .userinfo_icon {
     width: 25px;
     height: 25px;
+}
+
+.logout_submit {
+    background: none;
+    border: none;
 }
 

@@ -3,43 +3,55 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Access Denied</title>
+    <title>SSI::Access Denied</title>
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/errors/403.css">
 </head>
 <body>
+
+<!-- User Menu -->
+<div class="user_information">
+
+    <!-- Language select -->
+    <div class="select_languages">
+
+        <div class="btn_ro">
+            <a th:href="@{/403?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                  th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+        </div>
+
+        <div class="btn_en">
+            <a th:href="@{/403?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                  th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+        </div>
+    </div>
+</div>
 
 <!-- Logo on page -->
 <a class="logo" th:href="@{'/'}">
     <img src="/img/logo/ssi.png" th:alt="#{ssi}">
 </a>
 
-<!-- Language select -->
-<div class="select_languages">
+<!-- Messages for 403 page  -->
 
-    <div class="btn_ro">
-        <a th:href="@{/403?language=ro}"><img class=" lang_ro" src="/img/languages/ro.png" th:alt="#{lang.ro}"></a>
+<div class="error_messages">
+
+    <!-- Message -->
+    <div class="error_not_allow">
+        <div class="message" th:utext="#{error.message.label}"></div>
     </div>
 
-    <div class="btn_en">
-        <a th:href="@{/403?language=en}"><img class=" lang_en" src="/img/languages/en.png" th:alt="#{lang.en}"></a>
+    <!-- Redirect -->
+    <div class="nav_home">
+        <!-- Go To-->
+        <span th:utext="#{error.go.label}"></span>
+
+        <!-- Home -->
+        <a th:href="@{'/'}">
+            <span class="error_home" th:utext="#{error.home.label}"></span>
+        </a>
+
     </div>
 </div>
-
-<!-- Message -->
-<div class="message" th:utext="#{error.message.label}"></div>
-
-<!-- Redirect -->
-<div class="nav_home">
-    <!-- Go To-->
-    <div class="nav_home_goto" th:text="#{error.go.label}"></div>
-
-    <!-- Home -->
-    <a th:href="@{'/'}">
-        <div class="nav_home_home" th:text="#{error.home.label}"></div>
-    </a>
-
-</div>
-
 </body>
 </html>

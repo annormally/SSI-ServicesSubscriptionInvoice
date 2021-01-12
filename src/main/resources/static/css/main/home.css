@@ -1,0 +1,102 @@
+.author {
+    position: fixed;
+    background: #000000;
+    opacity: 45%;
+    width: 100%;
+    height: 200px;
+    margin-top: auto;
+}
+
+.user_information {
+    max-width: 250px;
+    max-height: 130px;
+    border-radius: 30px;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+    margin: 1% 1%;
+}
+
+.user_information {
+    vertical-align: top;
+    float: right;
+}
+
+.userinfo_icon {
+    width: 25px;
+    height: 25px;
+}
+
+.logout_icon {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.logout_submit {
+    background: none;
+    border: none;
+}
+
+.contains {
+    width: 600px;
+    max-height: 800px;
+    height: auto;
+    border-radius: 50px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+}
+
+.home_moto {
+    text-align: center;
+    border: 1px solid #ffffff;
+    max-width: 600px;
+    border-radius: 0px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    color: #0c7578;
+}
+
+.home_moto_cont {
+    text-align: center;
+    border: 1px solid #ffffff;
+    max-width: 600px;
+    border-radius: 50px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+}
+
+.home_moto_text {
+    display: list-item;
+    opacity: 60%;
+}
+
+.home_news {
+    text-align: center;
+    border: 1px solid #ffffff;
+    max-width: 600px;
+    border-radius: 0px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    color: #0c7578;
+}
+
+.home_news_cont {
+    text-align: center;
+    border: 1px solid #ffffff;
+    max-width: 600px;
+    border-radius: 50px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+}
+
+.home_news_text {
+    display: list-item;
+    opacity: 60%;
+}

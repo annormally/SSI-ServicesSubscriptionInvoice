@@ -36,7 +36,7 @@ public class UserInfoController {
     @GetMapping("/ssi/user/info")
     public ModelAndView getUserInfo() {
         ModelAndView modelAndView = new ModelAndView("secondary_pages/user_info");
-        modelAndView.addObject("user_info", new UserModel());
+        modelAndView.addObject("userList", userRepository.findAll());
         return modelAndView;
     }
 
@@ -48,7 +48,7 @@ public class UserInfoController {
 
     @GetMapping("/ssi/user/info/edit/{id}")
     public ModelAndView getEditUserInfo(@PathVariable("id") Integer userId) {
-        ModelAndView modelAndView = new ModelAndView("user_info");
+        ModelAndView modelAndView = new ModelAndView("user");
         UserEntity userEntity = userRepository.findById(userId).get();
         UserInfoModel userInfoModel = new UserInfoModel();
 
@@ -71,7 +71,7 @@ public class UserInfoController {
 
     @PostMapping("/ssi/user/info/save")
     public ModelAndView getSaveUserInfo(@ModelAttribute("user_info") UserInfoModel userInfoModel) {
-        ModelAndView modelAndView = new ModelAndView("redirect:/ssiHomepage");
+        ModelAndView modelAndView = new ModelAndView("redirect:/home");
         UserEntity userEntity;
         if (userInfoModel.getUserId() != null) {
             userEntity = userRepository.findById(userInfoModel.getUserId()).get();

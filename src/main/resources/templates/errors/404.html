@@ -3,22 +3,45 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>SSI::Errors</title>
-    <link rel="shortcut icon" th:href="@{icon/faviconcircle.ico}"/>
-    <link rel="stylesheet" href="/css/error404.css">
+    <title>SSI::Not Found</title>
+    <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
+    <link rel="stylesheet" href="/css/errors/404.css">
 </head>
 <body>
+<!-- User Menu -->
+<div class="user_information">
 
-<!-- logo on page -->
-<a>
-    <img class="logo" src="/img/ssi.png" th:alt="#{ssi}"/>
+    <!-- Language select -->
+    <div class="select_languages">
+
+        <div class="btn_ro">
+            <a th:href="@{/404?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                  th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+        </div>
+
+        <div class="btn_en">
+            <a th:href="@{/404?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                  th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+        </div>
+    </div>
+</div>
+
+<!-- Logo on page -->
+<a class="logo" th:href="@{'/'}">
+    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
 </a>
 
-<h1>There's no page here!</h1>
-<p>
-    We're sorry, the page you are looking for does not exist!
-    Go back to <a href="/">home page</a>.
-</p>
+<!-- Messages for 404 page -->
+
+<div class="message">
+    <div class="error_no_page">
+        <h1 th:utext="#{error.no.page}"></h1>
+    </div>
+    <div class="error_sorry">
+        <span th:utext="#{error.sorry.go.back}"></span>
+        <a href="/"><span th:utext="#{error.home.page}"></span></a>.
+    </div>
+</div>
 
 </body>
 </html>
