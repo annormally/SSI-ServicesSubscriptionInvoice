@@ -66,8 +66,9 @@
         <span th:if="${#fields.hasErrors('password')}" th:each="err:${#fields.errors('password')}"
               th:text="${err}">
                 </span>
-        <label for="psw"><b th:text="#{signUp.password.label}"></b></label>
-        <input type="password" th:field="*{password}" th:placeholder="#{signUp.password.label}" name="psw" id="psw"
+        <label for="password"><b th:text="#{signUp.password.label}"></b></label>
+        <input type="password" th:field="*{password}" th:placeholder="#{signUp.password.label}" name="password"
+               id="password"
                required>
 
         <hr>
@@ -84,7 +85,7 @@
 <div class="footer">
     <div class="col-md-8 col-sm-6 col-xs-12">
         <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
-            <a href="#" th:utext="#{main.author}"></a>.
+            <span th:utext="#{main.author}"></span>.
         </p>
     </div>
 </div>

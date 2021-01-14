@@ -9,7 +9,7 @@ import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConf
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Import;
 
-@SpringBootApplication(exclude = {ErrorMvcAutoConfiguration.class})
+@SpringBootApplication()
 @ComponentScan("ssi.webapplication")
 @Import({DatabaseConfiguration.class, WebConfiguration.class, WebSecurityConfiguration.class})
 public class AppConfiguration {

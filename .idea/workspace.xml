@@ -5,7 +5,28 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a05ce14-445e-4496-a418-5f5136989fbc" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/CustomErrorController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/configuration/AppConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/configuration/AppConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/configuration/WebSecurityConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/configuration/WebSecurityConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/ErrorsController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/errors/403.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/error/403.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/errors/404.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/error/404.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/login.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/login.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/edit_costs.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/edit_costs.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/errors/403.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/error/403.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/errors/404.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/error/404.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,10 +36,11 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="HTML File" />
         <option value="Interface" />
         <option value="Class" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -99,6 +121,19 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.AppConfiguration">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AppTest.shouldAnswerWithTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SSI-ServicesSubscriptionInvoice" />
       <extension name="coverage">
@@ -279,6 +314,9 @@
       <workItem from="1610387775218" duration="82000" />
       <workItem from="1610450703462" duration="18466000" />
       <workItem from="1610471241465" duration="232000" />
+      <workItem from="1610610939258" duration="1975000" />
+      <workItem from="1610614741913" duration="9900000" />
+      <workItem from="1610640176916" duration="1698000" />
     </task>
     <task id="LOCAL-00001" summary="new version for interface">
       <created>1609773881737</created>

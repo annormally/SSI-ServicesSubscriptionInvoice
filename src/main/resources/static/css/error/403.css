@@ -6,6 +6,27 @@ body {
     background-repeat: no-repeat;
 }
 
+.error_messages {
+    max-width: 650px;
+    min-height: 370px;
+    height: auto;
+    border-radius: 50px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+}
+
+.error_not_allow {
+    border: 1px solid #ffffff;
+    max-width: 600px;
+    min-height: 30px;
+    border-radius: 50px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+}
+
 .user_information {
     max-width: 250px;
     max-height: 110px;
@@ -50,7 +71,6 @@ body {
     left: 0;
 }
 
-
 .select_languages {
     position: relative;
     text-align: center;
@@ -78,36 +98,30 @@ body {
 }
 
 .message {
-    max-width: 650px;
-    max-height: 370px;
-    height: auto;
-    border-radius: 50px;
-    margin: 2% auto;
-    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
-    padding: 2%;
-    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+    font-size: 24pt;
+    text-align: center;
+    color: #0c7578;
+    margin: auto;
+    width: 50%;
+    padding: 6%;
 }
 
-.error_no_page {
-    border: 1px solid #ffffff;
+.nav_home {
+    font-size: 24pt;
     text-align: center;
-    max-width: 600px;
-    min-height: 30px;
-    border-radius: 50px;
-    margin: 2% auto;
-    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
-    padding: 2%;
     color: #0c7578;
+    margin: auto;
+    width: 50%;
+    padding: 10px;
 }
 
-.error_sorry {
-    border: 1px solid #ffffff;
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: #000000;
+    opacity: 45%;
+    color: #ffffff;
     text-align: center;
-    max-width: 600px;
-    min-height: 30px;
-    border-radius: 50px;
-    margin: 2% auto;
-    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
-    padding: 2%;
-    color: #0c7578;
 }

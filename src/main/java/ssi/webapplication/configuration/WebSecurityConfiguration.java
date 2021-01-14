@@ -31,7 +31,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
          */
 
         http.authorizeRequests()
-                .antMatchers("/", "/signup", "/login", "/login/errors", "/403", "404", "/css/**", "/img/**")
+                .antMatchers("/", "/signup", "/login", "/login/errors", "/403", "/404", "/css/**", "/img/**")
                 .permitAll();
 
         /**
@@ -41,13 +41,6 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
         http.authorizeRequests()
                 .anyRequest().authenticated();
-
-        /**
-         * Configuration page for access denied
-         */
-
-        http.exceptionHandling()
-                .accessDeniedPage("/403");
 
         /**
          * Configuration for login

@@ -62,7 +62,6 @@
     </div>
 </div>
 
-
 <!-- Logo on page -->
 <a class="logosecondpage" th:href="@{'/ssi/home'}">
     <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
@@ -70,7 +69,10 @@
 
 <!-- Navigator -->
 <nav>
-    <a class="btn_signup" th:href="@{'/ssi/home'}"><span th:utext="#{ssi.homepage.nav.label}"></span></a>
+    <!--    home trebuie editat -->
+    <a class="btn_signup" th:href="@{'/ssi/home'}">
+        <img class="icon_size" src="/img/icons/home.png" th:alt="#{main.userinfo.label}"
+             th:title="#{main.userinfo.label}"><span th:utext="#{ssi.homepage.nav.label}"></span></a>
     <a class="btn_signup" th:href="@{'/ssi/costs'}"><span th:text="#{ssi.costs.nav.label}"></span></a>
     <a class="btn_signup " th:href="@{'/ssi/income'}"><span th:text="#{ssi.income.nav.label}"></span></a>
 </nav>
@@ -87,7 +89,7 @@
         </div>
         <!-- Moto text -->
         <div class="home_moto_text">
-            <span>Motoul este urmatorul.</span>
+            <span>Take care of your money.</span>
         </div>
 
     </div>
@@ -114,7 +116,7 @@
 <div class="footer">
     <div class="col-md-8 col-sm-6 col-xs-12">
         <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
-            <a href="#" th:utext="#{main.author}"></a>.
+            <span th:utext="#{main.author}"></span>.
         </p>
     </div>
 </div>

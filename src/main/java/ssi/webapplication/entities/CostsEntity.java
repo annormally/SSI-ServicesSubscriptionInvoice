@@ -18,7 +18,7 @@ public class CostsEntity {
     @Column(length = 10)
     private String currency;
 
-    @DateTimeFormat(pattern = "dd/MM/yyyy")
+    @DateTimeFormat(pattern = "DD/MM/YYYY")
     private Date date;
 
     public Integer getCostId() {

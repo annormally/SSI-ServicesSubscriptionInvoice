@@ -37,7 +37,7 @@ input#username {
     background: white url('../../img/login/username.png') 4px center no-repeat;
 }
 
-input#psw {
+input#password {
     background: white url("../../img/login/password.png") 4px center no-repeat;
 }
 
