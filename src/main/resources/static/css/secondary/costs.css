@@ -76,7 +76,7 @@ table.costs_table tfoot td {
     height: 25px;
 }
 
-.logout_submit {
+.button_none_btn {
     background: none;
     border: none;
 }

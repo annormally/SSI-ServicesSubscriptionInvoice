@@ -28,19 +28,20 @@
         <div style="display: block ruby">
 
             <!-- Information about user -->
-            <a class="btn_signup" th:href="@{'/ssi/user/info'}">
-                <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.userinfo.label}"
-                     th:title="#{main.userinfo.label}">
-            </a>
+            <button class="button_none_btn" type="submit">
+                <a th:href="@{'/ssi/user/info'}">
+                    <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.userinfo.label}"
+                         th:title="#{main.userinfo.label}">
+                </a>
+            </button>
 
             <!-- Logout -->
             <form method="post" action="/logout">
-                <a class="">
-                    <button class="logout_submit" type="submit">
+                <button class="button_none_btn" type="submit">
+                    <a>
                         <img class="logout_icon" src="/img/icons/logout.png" th:alt="#{main.logout.label}"
-                             th:title="#{main.logout.label}">
-                    </button>
-                </a>
+                             th:title="#{main.logout.label}"> </a>
+                </button>
             </form>
         </div>
 

@@ -5,14 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="9a05ce14-445e-4496-a418-5f5136989fbc" name="Default Changelist" comment="navigator pictures">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/icons/costs.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/static/img/icons/income.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/SSI-ServicesSubscriptionInvoice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SSI-ServicesSubscriptionInvoice.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/general.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/general.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/edit_costs.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/edit_costs.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/income.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/income.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/user_info.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/user_info.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,12 +57,12 @@
     <option name="SCOPE" value="All" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" root0="SKIP_INSPECTION" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/AuthoritiesEntity.java" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="ProjectId" id="1kQS8Eyv9KBW3ONBiEeJ1u4yLjR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -85,10 +90,10 @@
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="project.structure.last.edited" value="Artifacts" />
+    <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="org.jetbrains.plugins.github.ui.GithubSettingsConfigurable" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
@@ -295,6 +300,10 @@
       <workItem from="1610781601120" duration="73000" />
       <workItem from="1610784683774" duration="926000" />
       <workItem from="1610954359312" duration="2584000" />
+      <workItem from="1610969937949" duration="1127000" />
+      <workItem from="1610973013327" duration="262000" />
+      <workItem from="1610975009621" duration="11000" />
+      <workItem from="1610975825240" duration="2116000" />
     </task>
     <task id="LOCAL-00001" summary="new version for interface">
       <created>1609773881737</created>
@@ -468,11 +477,11 @@
     </watches-manager>
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/SSI_ServicesSubscriptionInvoice$UserInfoControllerTest.ic" NAME="UserInfoControllerTest Coverage Results" MODIFIED="1610092782236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
-      <FILTER>ssi.webapplication.controller.main_pages_controllers.*</FILTER>
-    </SUITE>
     <SUITE FILE_PATH="coverage/SSI_ServicesSubscriptionInvoice$AppConfigurationTest.ic" NAME="AppConfigurationTest Coverage Results" MODIFIED="1610092179459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
       <FILTER>ssi.webapplication.configuration.*</FILTER>
+    </SUITE>
+    <SUITE FILE_PATH="coverage/SSI_ServicesSubscriptionInvoice$UserInfoControllerTest.ic" NAME="UserInfoControllerTest Coverage Results" MODIFIED="1610092782236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>ssi.webapplication.controller.main_pages_controllers.*</FILTER>
     </SUITE>
   </component>
 </project>
