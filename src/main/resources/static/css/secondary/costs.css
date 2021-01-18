@@ -80,3 +80,10 @@ table.costs_table tfoot td {
     background: none;
     border: none;
 }
+
+.icon_size {
+    width: 20px;
+    height: 20px;
+    margin: -3px 3px;
+    cursor: pointer;
+}
