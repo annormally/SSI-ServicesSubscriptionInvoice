@@ -1,10 +1,51 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>SSI::Internal Server Error</title>
+    <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
+    <link rel="stylesheet" href="/css/error/500.css">
 </head>
 <body>
-<h1>merge</h1>
+<!-- User Menu -->
+<div class="user_information">
+
+    <!-- Language select -->
+    <div class="select_languages">
+
+        <div class="btn_ro">
+            <a th:href="@{/500?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                  th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+        </div>
+
+        <div class="btn_en">
+            <a th:href="@{/500?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                  th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+        </div>
+    </div>
+</div>
+
+<!-- Logo on page -->
+<a class="logo" th:href="@{'/'}">
+    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
+</a>
+
+<!-- Messages for 500 page -->
+
+<div class="message">
+    <span th:text="#{error.sorry.it.me}"></span>
+    <a href="/"><span th:utext="#{error.try.again}"></span></a>.
+</div>
+
+<!-- Footer for site -->
+<div class="footer">
+    <div class="col-md-8 col-sm-6 col-xs-12">
+        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+            <span th:utext="#{main.author}"></span>.
+        </p>
+    </div>
+</div>
+
 </body>
 </html>
