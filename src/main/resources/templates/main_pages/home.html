@@ -21,7 +21,9 @@
         <span th:text="#{ssi.homepage.user.hello.label}"></span>
 
         <!-- Display username -->
-        <span sec:authentication="name"></span>
+        <a th:href="@{'/ssi/user/information'}">
+            <span sec:authentication="name"></span>
+        </a>
     </div>
     <hr>
 
@@ -95,11 +97,11 @@
     <!-- Moto -->
     <div class="home_moto">
         <div class="home_moto_cont">
-            <span>Moto</span>
+            <span th:text="#{ssi.homepage.moto}"></span>
         </div>
         <!-- Moto text -->
         <div class="home_moto_text">
-            <span>Take care of your money.</span>
+            <span th:text="#{ssi.homepage.moto.text}"></span>
         </div>
 
     </div>
@@ -111,7 +113,7 @@
     <!-- News -->
     <div class="home_news">
         <div class="home_news_cont">
-            <span>News</span>
+            <span th:text="#{ssi.homepage.news}">News</span>
         </div>
         <!-- Moto text -->
         <div class="">

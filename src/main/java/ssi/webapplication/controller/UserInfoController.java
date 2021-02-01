@@ -28,14 +28,27 @@ public class UserInfoController {
     private UserInfoRepository userInfoRepository;
 
     /**
+     * User Information for editing mapping
+     *
+     * @return
+     */
+
+    @GetMapping("/ssi/user/info/edit")
+    public ModelAndView getUserInfoEdit() {
+        ModelAndView modelAndView = new ModelAndView("secondary_pages/user_info");
+        modelAndView.addObject("userList", userRepository.findAll());
+        return modelAndView;
+    }
+
+    /**
      * User Information mapping
      *
      * @return
      */
 
-    @GetMapping("/ssi/user/info")
-    public ModelAndView getUserInfo() {
-        ModelAndView modelAndView = new ModelAndView("secondary_pages/user_info");
+    @GetMapping("/ssi/user/information")
+    public ModelAndView getUserInformation() {
+        ModelAndView modelAndView = new ModelAndView("secondary_pages/user_information");
         modelAndView.addObject("userList", userRepository.findAll());
         return modelAndView;
     }

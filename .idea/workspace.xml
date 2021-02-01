@@ -4,20 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a05ce14-445e-4496-a418-5f5136989fbc" name="Default Changelist" comment="navigator pictures">
-      <change beforePath="$PROJECT_DIR$/.idea/SSI-ServicesSubscriptionInvoice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SSI-ServicesSubscriptionInvoice.iml" afterDir="false" />
+    <list default="true" id="9a05ce14-445e-4496-a418-5f5136989fbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/general.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/general.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/edit_costs.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/edit_costs.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/income.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/income.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/user_info.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/user_info.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/UserInfoController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/language_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/language_ro.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/language_ro.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -30,8 +22,8 @@
         <option value="Interface" />
         <option value="Class" />
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="CSS File" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
@@ -112,6 +104,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.AppConfiguration">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AppTest.shouldAnswerWithTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SSI-ServicesSubscriptionInvoice" />
       <extension name="coverage">
@@ -304,6 +307,11 @@
       <workItem from="1610973013327" duration="262000" />
       <workItem from="1610975009621" duration="11000" />
       <workItem from="1610975825240" duration="2116000" />
+      <workItem from="1611494128432" duration="68000" />
+      <workItem from="1611494219804" duration="3000" />
+      <workItem from="1611580826432" duration="617000" />
+      <workItem from="1612176646539" duration="594000" />
+      <workItem from="1612177822981" duration="1814000" />
     </task>
     <task id="LOCAL-00001" summary="new version for interface">
       <created>1609773881737</created>
