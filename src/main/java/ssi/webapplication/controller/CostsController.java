@@ -11,8 +11,6 @@ import ssi.webapplication.Model.CostsModel;
 import ssi.webapplication.entities.CostsEntity;
 import ssi.webapplication.repositories.CostsRepository;
 
-import java.util.logging.Logger;
-
 @Controller
 public class CostsController {
 
@@ -81,7 +79,7 @@ public class CostsController {
     @PostMapping("/ssi/costs/save")
     public ModelAndView saveCosts(@ModelAttribute("cost") CostsModel costsModel) {
         ModelAndView modelAndView = new ModelAndView("redirect:/ssi/costs");
-        CostsEntity costsEntity = null;
+        CostsEntity costsEntity;
         if (costsModel.getCostId() != null) {
             costsEntity = costsRepository.findById(costsModel.getCostId()).get();
         } else {

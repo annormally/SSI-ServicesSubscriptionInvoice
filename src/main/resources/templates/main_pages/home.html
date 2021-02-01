@@ -21,7 +21,7 @@
         <span th:text="#{ssi.homepage.user.hello.label}"></span>
 
         <!-- Display username -->
-        <a th:href="@{'/ssi/user/information'}">
+        <a class="user_display" th:href="@{'/ssi/user/information'}">
             <span sec:authentication="name"></span>
         </a>
     </div>
@@ -32,7 +32,7 @@
 
         <!-- Information about user -->
         <button class="button_none_btn" type="submit">
-            <a th:href="@{'/ssi/user/info'}">
+            <a th:href="@{'/ssi/user/info/edit/'}">
                 <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.userinfo.label}"
                      th:title="#{main.userinfo.label}">
             </a>
@@ -66,8 +66,8 @@
 </div>
 
 <!-- Logo on page -->
-<a class="logosecondpage" th:href="@{'/ssi/home'}">
-    <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
+<a class="logo" th:href="@{'/ssi/home'}">
+    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
 </a>
 
 <!-- Navigator -->
@@ -88,7 +88,6 @@
         <span th:text="#{ssi.income.nav.label}" th:title="#{ssi.income.nav.label}"></span>
     </a>
 </nav>
-
 
 <!-- Home page contains -->
 
@@ -126,11 +125,9 @@
 
 <!-- Footer for site -->
 <div class="footer">
-    <div class="col-md-8 col-sm-6 col-xs-12">
-        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
-            <span th:utext="#{main.author}"></span>.
-        </p>
-    </div>
+    <p>Copyright &copy; 2021 All Rights Reserved by
+        <span th:utext="#{main.author}"></span>.
+    </p>
 </div>
 
 </body>

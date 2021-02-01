@@ -3,7 +3,7 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>SSI::Edit Costs</title>
+    <title>SSI::Add Costs</title>
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
     <link rel="stylesheet" href="/css/secondary/edit_costs.css">
@@ -53,13 +53,13 @@
     <div class="select_languages">
 
         <div class="btn_ro">
-            <a th:href="@{/ssi/costs/edit?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
-                                                             th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+            <a th:href="@{/ssi/costs/add?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                            th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
         </div>
 
         <div class="btn_en">
-            <a th:href="@{/ssi/costs/edit?language=en}"><img class="lang_en" src="/img/languages/en.png"
-                                                             th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+            <a th:href="@{/ssi/costs/add?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                            th:title="#{lang.en}" th:alt="#{lang.en}"></a>
         </div>
     </div>
 </div>
@@ -73,7 +73,7 @@
 <form method="post" action="/ssi/costs/save" th:object="${cost}">
     <div class="costs_edit">
 
-        <!-- Edit costs -->
+        <!-- Add costs -->
         <h1 th:text="#{ssi.costs.form.title.label}"></h1>
         <hr>
 

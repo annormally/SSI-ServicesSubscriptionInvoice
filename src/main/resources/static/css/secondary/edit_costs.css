@@ -3,11 +3,6 @@ h1 {
     text-align: center;
 }
 
-label {
-    text-align: center;
-    padding: 0px 10px 0px 43%;
-}
-
 input[type = "text"], .calendar_date {
     background: none;
     display: block;
@@ -28,7 +23,7 @@ input[type = "text"]:focus .calendar_date:focus {
     border-color: #f89c1c;
 }
 
-button {
+.btn_ed_cost {
     background: #0c7578;
     background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
     background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
@@ -46,7 +41,7 @@ button {
     text-align: center;
 }
 
-button:hover {
+.btn_ed_cost:hover {
     background: #09ecf0;
     background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
     background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
@@ -88,95 +83,9 @@ button:hover {
     background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
 }
 
-
 .bt_sub {
     margin: auto;
     text-align: center
-}
-
-.btn_edit {
-    background: #0c7578;
-    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
-    -webkit-border-radius: 28px;
-    -moz-border-radius: 28px;
-    border-radius: 28px;
-    font-family: Courier New;
-    color: #ffffff;
-    font-size: 20px;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-    text-align: center;
-}
-
-.btn_edit:hover {
-    background: #09ecf0;
-    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.btn_logout {
-    background: #0c7578;
-    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
-    -webkit-border-radius: 28px;
-    -moz-border-radius: 28px;
-    border-radius: 28px;
-    font-family: Courier New;
-    color: #ffffff;
-    font-size: 20px;
-    padding: 10px 20px 10px 20px;
-    text-decoration: none;
-    text-align: center;
-}
-
-.btn_logout:hover {
-    background: #09ecf0;
-    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
-    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
-    text-decoration: none;
-    cursor: pointer;
-}
-
-.user_info {
-    width: 450px;
-    min-height: 370px;
-    height: auto;
-    border-radius: 50px;
-    margin: 2% auto;
-    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
-    padding: 2%;
-    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
-}
-
-.user_information {
-    max-width: 250px;
-    max-height: 130px;
-    border-radius: 30px;
-    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
-    padding: 2%;
-    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
-    margin: 1% 1%;
-    vertical-align: top;
-    float: right;
-}
-
-#add {
-    text-align: center;
 }
 
 .userinfo_icon {

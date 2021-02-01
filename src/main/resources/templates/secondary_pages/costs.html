@@ -7,6 +7,7 @@
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
     <link rel="stylesheet" href="/css/secondary/costs.css">
+    <link rel="stylesheet" href="/css/secondary/table.css">
 </head>
 
 <body>
@@ -20,7 +21,9 @@
             <span th:text="#{ssi.homepage.user.hello.label}"></span>
 
             <!-- Display username -->
-            <span sec:authentication="name"></span>
+            <a class="user_display" th:href="@{'/ssi/user/information'}">
+                <span sec:authentication="name"></span>
+            </a>
         </div>
         <hr>
 
@@ -29,7 +32,7 @@
 
             <!-- Information about user -->
             <button class="button_none_btn" type="submit">
-                <a th:href="@{'/ssi/user/info'}">
+                <a th:href="@{'/ssi/user/info/edit/'}">
                     <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.userinfo.label}"
                          th:title="#{main.userinfo.label}">
                 </a>
@@ -65,8 +68,8 @@
 </form>
 
 <!-- Logo on page -->
-<a class="logosecondpage" th:href="@{'/ssi/home'}">
-    <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
+<a class="logo" th:href="@{'/ssi/home'}">
+    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
 </a>
 
 <!-- Navigator -->
@@ -90,63 +93,93 @@
 
 
 <!-- Table with information -->
-<table class="costs_table">
+<table class="custom_table">
 
     <!-- Head of table -->
     <tr>
         <!-- Table field -->
-        <th th:text="#{ssi.costs.table.value.label}"></th>
-        <th th:text="#{ssi.costs.table.data.label}"></th>
-        <th th:utext="#{ssi.costs.table.currency.label}"></th>
-        <th th:text="#{ssi.costs.table.option.label}"></th>
+        <th th:text="#{ssi.table.nr.crt}"></th>
+        <th th:text="#{ssi.table.date}"></th>
+        <th th:text="#{ssi.table.explication}"></th>
+        <th th:text="#{ssi.table.document.justification}"></th>
+        <th th:utext="#{ssi.table.currency}"></th>
+        <th th:text="#{ssi.table.unitary.price}"></th>
+        <th th:text="#{ssi.table.value}"></th>
+        <th th:text="#{ssi.table.tva}"></th>
+        <th th:text="#{ssi.table.tva.value}"></th>
+        <th th:text="#{ssi.table.total.value.tva}"></th>
+        <th th:text="#{ssi.table.option}"></th>
     </tr>
 
     <!-- Body of table -->
     <tr th:each="cost:${costsList}">
 
-        <!-- Value -->
-        <td th:text="${cost.value}"></td>
+        <!-- Number current -->
+        <th th:text="${cost.costId}"></th>
 
         <!-- Date -->
-        <td th:text="${#dates.format(cost.date,'dd/MM/yyyy')}"></td>
+        <td th:text="${cost.date != null} ? ${#dates.format(cost.date,'dd/MM/yyyy')}: 'n/a' "></td>
+
+        <!-- Explication -->
+        <td th:text="${cost.date != null} ?${cost.explication}: 'n/a'"></td>
+
+        <!-- Justification Document -->
+        <td th:text="${cost.justificationDocument != null} ?${cost.justificationDocument}: 'n/a'"></td>
 
         <!-- Currency -->
-        <td th:utext="${cost.currency}"></td>
+        <td th:utext="${cost.currency != null} ?${cost.currency}: 'n/a'"></td>
+
+        <!-- Unitary price -->
+        <td th:text="${cost.unitaryPrice != null} ?${cost.unitaryPrice}: 'n/a'"></td>
+
+        <!-- Value -->
+        <td th:text="${cost.value != null} ?${cost.value}: 'n/a'"></td>
+
+        <!-- TVA -->
+        <td th:text="${cost.tva != null} ?${cost.tva}: 'n/a'"></td>
+
+        <!-- Value TVA -->
+        <td th:text="${cost.tvaValeu != null} ?${cost.tvaValeu}: 'n/a'"></td>
+
+        <!-- Total Value + TVA -->
+        <td th:text="${cost.totalValeuPlusTva != null} ?${cost.totalValeuPlusTva}: 'n/a'"></td>
+
+        <!-- Option -->
         <td>
 
             <!-- Delete -->
-            <a name="delete" id="delete" th:href="@{'/ssi/costs/delete/' + ${cost.costId}}">
-                <img class="delete_icon" src="/img/icons/trash.png" th:alt="#{main.delete.label}"
-                     th:title="#{main.delete.label}">
-            </a>
+            <button class="button_none_btn">
+                <a name="delete" id="delete" th:href="@{'/ssi/costs/delete/' + ${cost.costId}}">
+                    <img class="delete_icon" src="/img/icons/trash.png" th:alt="#{main.delete.label}"
+                         th:title="#{main.delete.label}">
+                </a>
+            </button>
 
             <!-- Edit -->
-            <a name="edit" id="edit" th:href="@{'/ssi/costs/edit/' + ${cost.costId}}">
-                <img class="edit_icon" src="/img/icons/edit.png" th:alt="#{main.edit.label}"
-                     th:title="#{main.edit.label}">
-            </a>
+            <button class="button_none_btn">
+                <a name="edit" id="edit" th:href="@{'/ssi/costs/edit/' + ${cost.costId}}">
+                    <img class="edit_icon" src="/img/icons/edit.png" th:alt="#{main.edit.label}"
+                         th:title="#{main.edit.label}">
+                </a>
+            </button>
         </td>
     </tr>
 
-    <tr>
-        <!-- Add field -->
-        <td>
-            <a class="btn_signup" id="add" th:href="@{'/ssi/costs/add'}">
-                <img class="add_icon" src="/img/icons/add.png" th:alt="#{main.add.label}"
-                     th:title="#{main.add.label}">
-            </a>
-        </td>
-    </tr>
+    <!-- Add field -->
+    <td>
+        <a class="btn_signup" id="add" th:href="@{'/ssi/costs/add'}">
+            <img class="add_icon" src="/img/icons/add.png" th:alt="#{main.add.label}"
+                 th:title="#{main.add.label}">
+        </a>
+    </td>
 
 </table>
 
 <!-- Footer for site -->
 <div class="footer">
-    <div class="col-md-8 col-sm-6 col-xs-12">
-        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
-            <span th:utext="#{main.author}"></span>.
-        </p>
-    </div>
+    <p>Copyright &copy; 2021 All Rights Reserved by
+        <span th:utext="#{main.author}"></span>.
+    </p>
 </div>
 
 </body>
