@@ -1,0 +1,104 @@
+/* General table */
+
+table.custom_table {
+    font-family: Arial, Courier;
+    font-size: 14pt;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+    width: 90%;
+    margin: 3% auto;
+    text-align: center;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px 2px #f89c1c;
+    border-radius: 5px;
+    color: #0c7578;
+    padding: 5px 5px;
+}
+
+table.custom_table td, table.custom_table th {
+    border: 1px solid #0c7578;
+    padding: 3px 2px;
+}
+
+table.custom_table tbody td {
+    font-size: 13px;
+    color: #0c7578;
+}
+
+table.custom_table tr:nth-child(even) {
+    background: #e3fdf5 100%;
+}
+
+table.custom tfoot {
+    font-size: 12px;
+    font-weight: bold;
+    color: #E6E6E6;
+    background: #000000;
+    background: -moz-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+    background: -webkit-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+    background: linear-gradient(to bottom, #404040 0%, #191919 66%, #000000 100%);
+    border-top: 1px solid #4A4A4A;
+}
+
+table.custom_table tfoot td {
+    font-size: 12px;
+}
+
+.table_position {
+    text-align: center;
+}
+
+/* User information table */
+
+table.table_information_user {
+    font-family: Arial, Courier;
+    font-size: 24pt;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+    width: 90%;
+    margin: 3% auto;
+    text-align: center;
+    border-collapse: collapse;
+    border-radius: 5px;
+    color: #0c7578;
+    padding: 5px 5px;
+}
+
+table.table_information_user td, table.table_information_user th {
+    border: 1px solid #0c7578;
+    padding: 3px 2px;
+}
+
+table.table_information_user tbody td {
+    font-size: 24px;
+    color: #0c7578;
+}
+
+table.table_information_user tr:nth-child(even) {
+    background: #e3fdf5 100%;
+}
+
+table.table_information_user tfoot {
+    font-size: 24px;
+    font-weight: bold;
+    color: #E6E6E6;
+    background: #000000;
+    background: -moz-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+    background: -webkit-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+    background: linear-gradient(to bottom, #404040 0%, #191919 66%, #000000 100%);
+    border-top: 1px solid #4A4A4A;
+}
+
+table.table_information_user tfoot td {
+    font-size: 24px;
+}
+
+td.colhead {
+    font-weight: bold;
+    color: #ffffff;
+    background: #09ecf0;
+    padding: 5px;
+}
+
+.table_position {
+    text-align: center;
+}
+

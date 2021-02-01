@@ -23,6 +23,9 @@ public class UserInfoEntity {
     private String lastName;
 
     @Column(length = 50)
+    private String email;
+
+    @Column(length = 50)
     private String phoneNumber;
 
     @Column(length = 50)
@@ -70,6 +73,14 @@ public class UserInfoEntity {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getPhoneNumber() {

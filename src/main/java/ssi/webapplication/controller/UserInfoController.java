@@ -37,6 +37,7 @@ public class UserInfoController {
     public ModelAndView getUserInfoEdit() {
         ModelAndView modelAndView = new ModelAndView("secondary_pages/user_info");
         modelAndView.addObject("userList", userRepository.findAll());
+        modelAndView.addObject("user_info", new UserInfoModel());
         return modelAndView;
     }
 
@@ -70,13 +71,13 @@ public class UserInfoController {
         userInfoModel.setEmail(userEntity.getEmail());
         userInfoModel.setUsername(userInfoModel.getUsername());
         userInfoModel.setPassword(userInfoModel.getPassword());
-        if (userEntity.getUserInfoEntity() != null) {
+        if (userEntity.getUserDetails() != null) {
 
             // Set information fields
-            userInfoModel.setName(userEntity.getUserInfoEntity().getName());
-            userInfoModel.setLastName(userEntity.getUserInfoEntity().getLastName());
-            userInfoModel.setPhoneNumber(userEntity.getUserInfoEntity().getPhoneNumber());
-            userInfoModel.setCountry(userEntity.getUserInfoEntity().getCountry());
+            userInfoModel.setName(userEntity.getUserDetails().getName());
+            userInfoModel.setLastName(userEntity.getUserDetails().getLastName());
+            userInfoModel.setPhoneNumber(userEntity.getUserDetails().getPhoneNumber());
+            userInfoModel.setCountry(userEntity.getUserDetails().getCountry());
         }
         modelAndView.addObject("user", userInfoModel);
         return modelAndView;
@@ -85,6 +86,7 @@ public class UserInfoController {
     @PostMapping("/ssi/user/info/save")
     public ModelAndView getSaveUserInfo(@ModelAttribute("user_info") UserInfoModel userInfoModel) {
         ModelAndView modelAndView = new ModelAndView("redirect:/home");
+
         UserEntity userEntity;
         if (userInfoModel.getUserId() != null) {
             userEntity = userRepository.findById(userInfoModel.getUserId()).get();
@@ -109,6 +111,9 @@ public class UserInfoController {
         userInfoEntity.setLastName(userInfoModel.getLastName());
         userInfoEntity.setPhoneNumber(userInfoModel.getPhoneNumber());
         userInfoEntity.setCountry(userInfoModel.getCountry());
+
+        // Save
+        userRepository.save(userEntity);
         return modelAndView;
     }
 }

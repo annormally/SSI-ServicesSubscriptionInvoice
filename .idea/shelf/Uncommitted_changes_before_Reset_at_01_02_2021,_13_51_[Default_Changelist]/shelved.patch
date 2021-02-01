@@ -1,0 +1,1636 @@
+Index: src/main/java/ssi/webapplication/controller/IncomeController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ssi.webapplication.controller;\n\nimport org.springframework.stereotype.Controller;\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.servlet.ModelAndView;\n\n@Controller\npublic class IncomeController {\n\n    public IncomeController() {\n        System.out.println(getClass().getName() + \" created.\");\n    }\n\n    /**\n     * Income mapping\n     *\n     * @return\n     */\n\n    @GetMapping(\"/ssi/income\")\n    public ModelAndView getIncome() {\n        ModelAndView modelAndView = new ModelAndView(\"secondary_pages/income\");\n        return modelAndView;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ssi/webapplication/controller/IncomeController.java b/src/main/java/ssi/webapplication/controller/IncomeController.java
+--- a/src/main/java/ssi/webapplication/controller/IncomeController.java	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/java/ssi/webapplication/controller/IncomeController.java	(date 1611655199689)
+@@ -1,8 +1,16 @@
+ package ssi.webapplication.controller;
+ 
++import org.springframework.beans.factory.annotation.Autowired;
+ import org.springframework.stereotype.Controller;
+ import org.springframework.web.bind.annotation.GetMapping;
++import org.springframework.web.bind.annotation.ModelAttribute;
++import org.springframework.web.bind.annotation.PathVariable;
+ import org.springframework.web.servlet.ModelAndView;
++import ssi.webapplication.Model.IncomeModel;
++import ssi.webapplication.entities.IncomeEntity;
++import ssi.webapplication.repositories.IncomeRepository;
++
++// TODO: 25/01/2021 implement all method add, edit, delete and save
+ 
+ @Controller
+ public class IncomeController {
+@@ -11,10 +19,11 @@
+         System.out.println(getClass().getName() + " created.");
+     }
+ 
++    @Autowired
++    private IncomeRepository incomeRepository;
++
+     /**
+-     * Income mapping
+-     *
+-     * @return
++     * Income page mapping
+      */
+ 
+     @GetMapping("/ssi/income")
+@@ -22,4 +31,54 @@
+         ModelAndView modelAndView = new ModelAndView("secondary_pages/income");
+         return modelAndView;
+     }
++
++    /**
++     * Add income mapping
++     */
++
++    @GetMapping("/ssi/income/add")
++    public ModelAndView getNewIncome() {
++        ModelAndView modelAndView = new ModelAndView();
++        modelAndView.addObject("income", new IncomeModel());
++        return modelAndView;
++    }
++
++    /**
++     * Edit income mapping
++     */
++
++    @GetMapping("/ssi/income/edit/{id}")
++    public ModelAndView editIncome(@PathVariable Integer id) {
++        ModelAndView modelAndView = new ModelAndView(""); // complete edit page for income
++        IncomeEntity incomeEntity = incomeRepository.findById(id).get();
++        IncomeModel incomeModel = new IncomeModel();
++
++        // set all fields
++
++        return modelAndView;
++    }
++
++    /**
++     * Delete income mapping
++     */
++
++    @GetMapping("/ssi/income/delete")
++    public ModelAndView deleteIncome(@PathVariable Integer id) {
++        ModelAndView modelAndView = new ModelAndView("redirect:/");
++        incomeRepository.deleteById(id);
++        return modelAndView;
++    }
++
++    /**
++     * Save income mapping
++     */
++
++    @GetMapping("/ssi/income/save")
++    public ModelAndView saveIncome(@ModelAttribute IncomeModel income) {
++        ModelAndView modelAndView = new ModelAndView();
++        IncomeEntity incomeEntity;
++
++        // method if
++        return modelAndView;
++    }
+ }
+Index: src/main/java/ssi/webapplication/configuration/AppConfiguration.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ssi.webapplication.configuration;\n\n\nimport org.slf4j.Logger;\nimport org.slf4j.LoggerFactory;\nimport org.springframework.boot.SpringApplication;\nimport org.springframework.boot.autoconfigure.SpringBootApplication;\nimport org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;\nimport org.springframework.context.annotation.ComponentScan;\nimport org.springframework.context.annotation.Import;\n\n@SpringBootApplication()\n@ComponentScan(\"ssi.webapplication\")\n@Import({DatabaseConfiguration.class, WebConfiguration.class, WebSecurityConfiguration.class})\npublic class AppConfiguration {\n\n    private static Logger logger = LoggerFactory.getLogger(AppConfiguration.class);\n\n    public static void main(String[] args) {\n        logger.info(\"Container started .... \");\n        SpringApplication.run(AppConfiguration.class, args);\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ssi/webapplication/configuration/AppConfiguration.java b/src/main/java/ssi/webapplication/configuration/AppConfiguration.java
+--- a/src/main/java/ssi/webapplication/configuration/AppConfiguration.java	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/java/ssi/webapplication/configuration/AppConfiguration.java	(date 1611337387292)
+@@ -5,7 +5,6 @@
+ import org.slf4j.LoggerFactory;
+ import org.springframework.boot.SpringApplication;
+ import org.springframework.boot.autoconfigure.SpringBootApplication;
+-import org.springframework.boot.autoconfigure.web.servlet.error.ErrorMvcAutoConfiguration;
+ import org.springframework.context.annotation.ComponentScan;
+ import org.springframework.context.annotation.Import;
+ 
+Index: src/main/resources/templates/main_pages/signup.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\" xmlns:th=\"http://www.thymeleaf.org\"\n      xmlns:sec=\"http://www.thymeleaf.org/thymeleaf-extras-springsecurity5\" xmlns:form=\"http://www.w3.org/1999/html\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title th:text=\"#{signup.titlepage.label}\"></title>\n    <link rel=\"shortcut icon\" th:href=\"@{/img/icons/faviconcircle.ico}\"/>\n    <link rel=\"stylesheet\" href=\"/css/main/general.css\">\n    <link rel=\"stylesheet\" href=\"/css/main/singup.css\">\n</head>\n<body>\n\n<!-- User Information Form-->\n<form method=\"post\" action=\"/logout\">\n    <div class=\"user_information\">\n\n        <!-- Language select -->\n        <div class=\"select_languages\">\n\n            <div class=\"btn_ro\">\n                <a th:href=\"@{/signup?language=ro}\"><img class=\"lang_ro\" src=\"/img/languages/ro.png\"\n                                                         th:title=\"#{lang.ro}\" th:alt=\"#{lang.ro}\"></a>\n            </div>\n\n            <div class=\"btn_en\">\n                <a th:href=\"@{/signup?language=en}\"><img class=\"lang_en\" src=\"/img/languages/en.png\"\n                                                         th:title=\"#{lang.en}\" th:alt=\"#{lang.en}\"></a>\n            </div>\n        </div>\n    </div>\n\n</form>\n\n<!-- Logo on page -->\n<a class=\"logo\" th:href=\"@{'/'}\">\n    <img src=\"/img/logo/ssi.png\" th:alt=\"#{ssi}\">\n</a>\n\n<!-- Create Sign Up template-->\n<form method=\"post\" action=\"/signup\" th:object=\"${user}\">\n    <div class=\"signUp\">\n\n        <h1 th:text=\"#{signUp.title.label}\"></h1>\n        <p th:utext=\"#{signUp.paragraph.label}\"></p>\n        <hr>\n\n        <!-- Id-->\n        <input type=\"hidden\" name=\"userId\" th:field=\"*{userId}\">\n\n        <!-- Email-->\n        <span th:if=\"${#fields.hasErrors('email')}\" th:each=\"err:${#fields.errors('email')}\"\n              th:text=\"${err}\">\n                </span>\n        <label for=\"email\"><b th:text=\"#{signUp.email.label}\"></b></label>\n        <input type=\"text\" th:field=\"*{email}\" th:placeholder=\"#{signUp.email.label}\" name=\"email\" id=\"email\" required>\n\n        <!-- Username-->\n        <span th:if=\"${#fields.hasErrors('username')}\" th:each=\"err:${#fields.errors('username')}\"\n              th:text=\"${err}\">\n                </span>\n        <label for=\"username\"><b th:text=\"#{signUp.username.label}\"></b></label>\n        <input type=\"text\" th:field=\"*{username}\" th:placeholder=\"#{signUp.username.label}\" name=\"username\"\n               id=\"username\" required>\n\n        <!-- Password -->\n        <span th:if=\"${#fields.hasErrors('password')}\" th:each=\"err:${#fields.errors('password')}\"\n              th:text=\"${err}\">\n                </span>\n        <label for=\"password\"><b th:text=\"#{signUp.password.label}\"></b></label>\n        <input type=\"password\" th:field=\"*{password}\" th:placeholder=\"#{signUp.password.label}\" name=\"password\"\n               id=\"password\"\n               required>\n\n        <hr>\n\n        <div class=\"bt_sub\">\n            <button type=\"reset\" th:text=\"#{signUp.cancel.label}\"></button>\n            <button type=\"submit\" th:text=\"#{signUp.submit.label}\"></button>\n        </div>\n\n    </div>\n</form>\n\n<!-- Footer for site -->\n<div class=\"footer\">\n    <div class=\"col-md-8 col-sm-6 col-xs-12\">\n        <p class=\"copyright-text\">Copyright &copy; 2021 All Rights Reserved by\n            <span th:utext=\"#{main.author}\"></span>.\n        </p>\n    </div>\n</div>\n\n</body>\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/templates/main_pages/signup.html b/src/main/resources/templates/main_pages/signup.html
+--- a/src/main/resources/templates/main_pages/signup.html	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/templates/main_pages/signup.html	(date 1611562342499)
+@@ -83,11 +83,9 @@
+ 
+ <!-- Footer for site -->
+ <div class="footer">
+-    <div class="col-md-8 col-sm-6 col-xs-12">
+-        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+-            <span th:utext="#{main.author}"></span>.
+-        </p>
+-    </div>
++    <p>Copyright &copy; 2021 All Rights Reserved by
++        <span th:utext="#{main.author}"></span>.
++    </p>
+ </div>
+ 
+ </body>
+Index: src/main/resources/templates/secondary_pages/costs.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\" xmlns:th=\"http://www.thymeleaf.org\"\n      xmlns:sec=\"http://www.thymeleaf.org/thymeleaf-extras-springsecurity5\" xmlns:form=\"http://www.w3.org/1999/html\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title th:text=\"#{ssi.costs.title.label}\"></title>\n    <link rel=\"shortcut icon\" th:href=\"@{/img/icons/faviconcircle.ico}\"/>\n    <link rel=\"stylesheet\" href=\"/css/main/general.css\">\n    <link rel=\"stylesheet\" href=\"/css/secondary/costs.css\">\n</head>\n\n<body>\n\n<!-- User Menu -->\n<form method=\"post\" action=\"/logout\">\n    <div class=\"user_information\">\n\n        <div>\n            <!-- Message Hello -->\n            <span th:text=\"#{ssi.homepage.user.hello.label}\"></span>\n\n            <!-- Display username -->\n            <span sec:authentication=\"name\"></span>\n        </div>\n        <hr>\n\n        <!--  Icons for information and logout -->\n        <div style=\"display: block ruby\">\n\n            <!-- Information about user -->\n            <button class=\"button_none_btn\" type=\"submit\">\n                <a th:href=\"@{'/ssi/user/info'}\">\n                    <img class=\"userinfo_icon\" src=\"/img/icons/userinfo.png\" th:alt=\"#{main.userinfo.label}\"\n                         th:title=\"#{main.userinfo.label}\">\n                </a>\n            </button>\n\n            <!-- Logout -->\n            <form method=\"post\" action=\"/logout\">\n                <button class=\"button_none_btn\" type=\"submit\">\n                    <a>\n                        <img class=\"logout_icon\" src=\"/img/icons/logout.png\" th:alt=\"#{main.logout.label}\"\n                             th:title=\"#{main.logout.label}\"> </a>\n                </button>\n            </form>\n        </div>\n\n        <hr>\n\n        <!-- Language select -->\n        <div class=\"select_languages\">\n\n            <div class=\"btn_ro\">\n                <a th:href=\"@{/ssi/costs?language=ro}\"><img class=\"lang_ro\" src=\"/img/languages/ro.png\"\n                                                            th:title=\"#{lang.ro}\" th:alt=\"#{lang.ro}\"></a>\n            </div>\n\n            <div class=\"btn_en\">\n                <a th:href=\"@{/ssi/costs?language=en}\"><img class=\"lang_en\" src=\"/img/languages/en.png\"\n                                                            th:title=\"#{lang.en}\" th:alt=\"#{lang.en}\"></a>\n            </div>\n        </div>\n    </div>\n\n</form>\n\n<!-- Logo on page -->\n<a class=\"logosecondpage\" th:href=\"@{'/ssi/home'}\">\n    <img class=\"logo_size\" src=\"/img/logo/ssi.png\" th:alt=\"#{ssi}\">\n</a>\n\n<!-- Navigator -->\n<nav>\n    <a class=\"btn_signup\" th:href=\"@{'/ssi/home'}\">\n        <img class=\"icon_size\" src=\"/img/icons/home.png\" th:alt=\"#{main.userinfo.label}\"\n             th:title=\"#{main.userinfo.label}\">\n        <span th:utext=\"#{ssi.homepage.nav.label}\" th:title=\"#{main.userinfo.label}\"></span>\n    </a>\n    <a class=\"btn_signup\" th:href=\"@{'/ssi/costs'}\">\n        <img class=\"icon_size\" src=\"/img/icons/costs.png\" th:alt=\"#{ssi.costs.nav.label}\"\n             th:title=\"#{ssi.costs.nav.label}\">\n        <span th:text=\"#{ssi.costs.nav.label}\" th:title=\"#{ssi.costs.nav.label}\"></span>\n    </a>\n    <a class=\"btn_signup \" th:href=\"@{'/ssi/income'}\">\n        <img class=\"icon_size\" src=\"/img/icons/income.png\" th:alt=\"#{ssi.income.nav.label}\"\n             th:title=\"#{ssi.income.nav.label}\">\n        <span th:text=\"#{ssi.income.nav.label}\" th:title=\"#{ssi.income.nav.label}\"></span>\n    </a>\n</nav>\n\n\n<!-- Table with information -->\n<table class=\"costs_table\">\n\n    <!-- Head of table -->\n    <tr>\n        <!-- Table field -->\n        <th th:text=\"#{ssi.costs.table.value.label}\"></th>\n        <th th:text=\"#{ssi.costs.table.data.label}\"></th>\n        <th th:utext=\"#{ssi.costs.table.currency.label}\"></th>\n        <th th:text=\"#{ssi.costs.table.option.label}\"></th>\n    </tr>\n\n    <!-- Body of table -->\n    <tr th:each=\"cost:${costsList}\">\n\n        <!-- Value -->\n        <td th:text=\"${cost.value}\"></td>\n\n        <!-- Date -->\n        <td th:text=\"${#dates.format(cost.date,'dd/MM/yyyy')}\"></td>\n\n        <!-- Currency -->\n        <td th:utext=\"${cost.currency}\"></td>\n        <td>\n\n            <!-- Delete -->\n            <a name=\"delete\" id=\"delete\" th:href=\"@{'/ssi/costs/delete/' + ${cost.costId}}\">\n                <img class=\"delete_icon\" src=\"/img/icons/trash.png\" th:alt=\"#{main.delete.label}\"\n                     th:title=\"#{main.delete.label}\">\n            </a>\n\n            <!-- Edit -->\n            <a name=\"edit\" id=\"edit\" th:href=\"@{'/ssi/costs/edit/' + ${cost.costId}}\">\n                <img class=\"edit_icon\" src=\"/img/icons/edit.png\" th:alt=\"#{main.edit.label}\"\n                     th:title=\"#{main.edit.label}\">\n            </a>\n        </td>\n    </tr>\n\n    <tr>\n        <!-- Add field -->\n        <td>\n            <a class=\"btn_signup\" id=\"add\" th:href=\"@{'/ssi/costs/add'}\">\n                <img class=\"add_icon\" src=\"/img/icons/add.png\" th:alt=\"#{main.add.label}\"\n                     th:title=\"#{main.add.label}\">\n            </a>\n        </td>\n    </tr>\n\n</table>\n\n<!-- Footer for site -->\n<div class=\"footer\">\n    <div class=\"col-md-8 col-sm-6 col-xs-12\">\n        <p class=\"copyright-text\">Copyright &copy; 2021 All Rights Reserved by\n            <span th:utext=\"#{main.author}\"></span>.\n        </p>\n    </div>\n</div>\n\n</body>\n</html>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/templates/secondary_pages/costs.html b/src/main/resources/templates/secondary_pages/costs.html
+--- a/src/main/resources/templates/secondary_pages/costs.html	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/templates/secondary_pages/costs.html	(date 1611649532079)
+@@ -7,6 +7,7 @@
+     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
+     <link rel="stylesheet" href="/css/main/general.css">
+     <link rel="stylesheet" href="/css/secondary/costs.css">
++    <link rel="stylesheet" href="/css/secondary/table.css">
+ </head>
+ 
+ <body>
+@@ -65,8 +66,8 @@
+ </form>
+ 
+ <!-- Logo on page -->
+-<a class="logosecondpage" th:href="@{'/ssi/home'}">
+-    <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
++<a class="logo" th:href="@{'/ssi/home'}">
++    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
+ </a>
+ 
+ <!-- Navigator -->
+@@ -90,63 +91,93 @@
+ 
+ 
+ <!-- Table with information -->
+-<table class="costs_table">
++<table class="custom_table">
+ 
+     <!-- Head of table -->
+     <tr>
+         <!-- Table field -->
+-        <th th:text="#{ssi.costs.table.value.label}"></th>
+-        <th th:text="#{ssi.costs.table.data.label}"></th>
+-        <th th:utext="#{ssi.costs.table.currency.label}"></th>
+-        <th th:text="#{ssi.costs.table.option.label}"></th>
++        <th th:text="#{ssi.table.nr.crt}"></th>
++        <th th:text="#{ssi.table.date}"></th>
++        <th th:text="#{ssi.table.explication}"></th>
++        <th th:text="#{ssi.table.document.justification}"></th>
++        <th th:utext="#{ssi.table.currency}"></th>
++        <th th:text="#{ssi.table.unitary.price}"></th>
++        <th th:text="#{ssi.table.value}"></th>
++        <th th:text="#{ssi.table.tva}"></th>
++        <th th:text="#{ssi.table.tva.value}"></th>
++        <th th:text="#{ssi.table.total.value.tva}"></th>
++        <th th:text="#{ssi.table.option}"></th>
+     </tr>
+ 
+     <!-- Body of table -->
+     <tr th:each="cost:${costsList}">
+ 
+-        <!-- Value -->
+-        <td th:text="${cost.value}"></td>
++        <!-- Number current -->
++        <th th:text="${cost.costId}"></th>
+ 
+         <!-- Date -->
+-        <td th:text="${#dates.format(cost.date,'dd/MM/yyyy')}"></td>
++        <td th:text="${cost.date != null} ? ${#dates.format(cost.date,'dd/MM/yyyy')}: 'n/a' "></td>
++
++        <!-- Explication -->
++        <td th:text="${cost.date != null} ?${cost.explication}: 'n/a'"></td>
++
++        <!-- Justification Document -->
++        <td th:text="${cost.justificationDocument != null} ?${cost.justificationDocument}: 'n/a'"></td>
+ 
+         <!-- Currency -->
+-        <td th:utext="${cost.currency}"></td>
++        <td th:utext="${cost.currency != null} ?${cost.currency}: 'n/a'"></td>
++
++        <!-- Unitary price -->
++        <td th:text="${cost.unitaryPrice != null} ?${cost.unitaryPrice}: 'n/a'"></td>
++
++        <!-- Value -->
++        <td th:text="${cost.value != null} ?${cost.value}: 'n/a'"></td>
++
++        <!-- TVA -->
++        <td th:text="${cost.tva != null} ?${cost.tva}: 'n/a'"></td>
++
++        <!-- Value TVA -->
++        <td th:text="${cost.tvaValeu != null} ?${cost.tvaValeu}: 'n/a'"></td>
++
++        <!-- Total Value + TVA -->
++        <td th:text="${cost.totalValeuPlusTva != null} ?${cost.totalValeuPlusTva}: 'n/a'"></td>
++
++        <!-- Option -->
+         <td>
+ 
+             <!-- Delete -->
+-            <a name="delete" id="delete" th:href="@{'/ssi/costs/delete/' + ${cost.costId}}">
+-                <img class="delete_icon" src="/img/icons/trash.png" th:alt="#{main.delete.label}"
+-                     th:title="#{main.delete.label}">
+-            </a>
++            <button class="button_none_btn">
++                <a name="delete" id="delete" th:href="@{'/ssi/costs/delete/' + ${cost.costId}}">
++                    <img class="delete_icon" src="/img/icons/trash.png" th:alt="#{main.delete.label}"
++                         th:title="#{main.delete.label}">
++                </a>
++            </button>
+ 
+             <!-- Edit -->
+-            <a name="edit" id="edit" th:href="@{'/ssi/costs/edit/' + ${cost.costId}}">
+-                <img class="edit_icon" src="/img/icons/edit.png" th:alt="#{main.edit.label}"
+-                     th:title="#{main.edit.label}">
+-            </a>
++            <button class="button_none_btn">
++                <a name="edit" id="edit" th:href="@{'/ssi/costs/edit/' + ${cost.costId}}">
++                    <img class="edit_icon" src="/img/icons/edit.png" th:alt="#{main.edit.label}"
++                         th:title="#{main.edit.label}">
++                </a>
++            </button>
+         </td>
+     </tr>
+ 
+-    <tr>
+-        <!-- Add field -->
+-        <td>
+-            <a class="btn_signup" id="add" th:href="@{'/ssi/costs/add'}">
+-                <img class="add_icon" src="/img/icons/add.png" th:alt="#{main.add.label}"
+-                     th:title="#{main.add.label}">
+-            </a>
+-        </td>
+-    </tr>
++    <!-- Add field -->
++    <td>
++        <a class="btn_signup" id="add" th:href="@{'/ssi/costs/add'}">
++            <img class="add_icon" src="/img/icons/add.png" th:alt="#{main.add.label}"
++                 th:title="#{main.add.label}">
++        </a>
++    </td>
+ 
+ </table>
+ 
+ <!-- Footer for site -->
+ <div class="footer">
+-    <div class="col-md-8 col-sm-6 col-xs-12">
+-        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+-            <span th:utext="#{main.author}"></span>.
+-        </p>
+-    </div>
++    <p>Copyright &copy; 2021 All Rights Reserved by
++        <span th:utext="#{main.author}"></span>.
++    </p>
+ </div>
+ 
+ </body>
+Index: src/main/resources/templates/main_pages/home.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\" xmlns:th=\"http://www.thymeleaf.org\"\n      xmlns:sec=\"http://www.thymeleaf.org/thymeleaf-extras-springsecurity5\" xmlns:form=\"http://www.w3.org/1999/html\"\n      xmlns=\"http://www.w3.org/1999/html\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title th:text=\"#{ssi.homepage.label}\"></title>\n    <link rel=\"shortcut icon\" th:href=\"@{/img/icons/faviconcircle.ico}\"/>\n    <link rel=\"stylesheet\" href=\"/css/main/general.css\">\n    <link rel=\"stylesheet\" href=\"/css/main/home.css\">\n</head>\n\n<body>\n\n<!-- User Information Form-->\n\n<div class=\"user_information\">\n\n    <div>\n        <!-- Message Hello -->\n        <span th:text=\"#{ssi.homepage.user.hello.label}\"></span>\n\n        <!-- Display username -->\n        <span sec:authentication=\"name\"></span>\n    </div>\n    <hr>\n\n    <!--  Icons for information and logout -->\n    <div style=\"display: block ruby\">\n\n        <!-- Information about user -->\n        <button class=\"button_none_btn\" type=\"submit\">\n            <a th:href=\"@{'/ssi/user/info'}\">\n                <img class=\"userinfo_icon\" src=\"/img/icons/userinfo.png\" th:alt=\"#{main.userinfo.label}\"\n                     th:title=\"#{main.userinfo.label}\">\n            </a>\n        </button>\n\n        <!-- Logout -->\n        <form method=\"post\" action=\"/logout\">\n            <button class=\"button_none_btn\" type=\"submit\">\n                <a>\n                    <img class=\"logout_icon\" src=\"/img/icons/logout.png\" th:alt=\"#{main.logout.label}\"\n                         th:title=\"#{main.logout.label}\"> </a>\n            </button>\n        </form>\n    </div>\n\n    <hr>\n\n    <!-- Language select -->\n    <div class=\"select_languages\">\n\n        <div class=\"btn_ro\">\n            <a th:href=\"@{/ssi/home?language=ro}\"><img class=\"lang_ro\" src=\"/img/languages/ro.png\"\n                                                       th:title=\"#{lang.ro}\" th:alt=\"#{lang.ro}\"></a>\n        </div>\n\n        <div class=\"btn_en\">\n            <a th:href=\"@{/ssi/home?language=en}\"><img class=\"lang_en\" src=\"/img/languages/en.png\"\n                                                       th:title=\"#{lang.en}\" th:alt=\"#{lang.en}\"></a>\n        </div>\n    </div>\n</div>\n\n<!-- Logo on page -->\n<a class=\"logosecondpage\" th:href=\"@{'/ssi/home'}\">\n    <img class=\"logo_size\" src=\"/img/logo/ssi.png\" th:alt=\"#{ssi}\">\n</a>\n\n<!-- Navigator -->\n<nav>\n    <a class=\"btn_signup\" th:href=\"@{'/ssi/home'}\">\n        <img class=\"icon_size\" src=\"/img/icons/home.png\" th:alt=\"#{main.userinfo.label}\"\n             th:title=\"#{main.userinfo.label}\">\n        <span th:utext=\"#{ssi.homepage.nav.label}\" th:title=\"#{main.userinfo.label}\"></span>\n    </a>\n    <a class=\"btn_signup\" th:href=\"@{'/ssi/costs'}\">\n        <img class=\"icon_size\" src=\"/img/icons/costs.png\" th:alt=\"#{ssi.costs.nav.label}\"\n             th:title=\"#{ssi.costs.nav.label}\">\n        <span th:text=\"#{ssi.costs.nav.label}\" th:title=\"#{ssi.costs.nav.label}\"></span>\n    </a>\n    <a class=\"btn_signup \" th:href=\"@{'/ssi/income'}\">\n        <img class=\"icon_size\" src=\"/img/icons/income.png\" th:alt=\"#{ssi.income.nav.label}\"\n             th:title=\"#{ssi.income.nav.label}\">\n        <span th:text=\"#{ssi.income.nav.label}\" th:title=\"#{ssi.income.nav.label}\"></span>\n    </a>\n</nav>\n\n\n<!-- Home page contains -->\n\n<div class=\"contains\">\n\n    <!-- Moto -->\n    <div class=\"home_moto\">\n        <div class=\"home_moto_cont\">\n            <span>Moto</span>\n        </div>\n        <!-- Moto text -->\n        <div class=\"home_moto_text\">\n            <span>Take care of your money.</span>\n        </div>\n\n    </div>\n\n</div>\n\n<div class=\"contains\">\n\n    <!-- News -->\n    <div class=\"home_news\">\n        <div class=\"home_news_cont\">\n            <span>News</span>\n        </div>\n        <!-- Moto text -->\n        <div class=\"\">\n            <span></span>\n        </div>\n\n    </div>\n\n</div>\n\n<!-- Footer for site -->\n<div class=\"footer\">\n    <div class=\"col-md-8 col-sm-6 col-xs-12\">\n        <p class=\"copyright-text\">Copyright &copy; 2021 All Rights Reserved by\n            <span th:utext=\"#{main.author}\"></span>.\n        </p>\n    </div>\n</div>\n\n</body>\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/templates/main_pages/home.html b/src/main/resources/templates/main_pages/home.html
+--- a/src/main/resources/templates/main_pages/home.html	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/templates/main_pages/home.html	(date 1611562342506)
+@@ -64,8 +64,8 @@
+ </div>
+ 
+ <!-- Logo on page -->
+-<a class="logosecondpage" th:href="@{'/ssi/home'}">
+-    <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
++<a class="logo" th:href="@{'/ssi/home'}">
++    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
+ </a>
+ 
+ <!-- Navigator -->
+@@ -87,7 +87,6 @@
+     </a>
+ </nav>
+ 
+-
+ <!-- Home page contains -->
+ 
+ <div class="contains">
+@@ -124,11 +123,9 @@
+ 
+ <!-- Footer for site -->
+ <div class="footer">
+-    <div class="col-md-8 col-sm-6 col-xs-12">
+-        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+-            <span th:utext="#{main.author}"></span>.
+-        </p>
+-    </div>
++    <p>Copyright &copy; 2021 All Rights Reserved by
++        <span th:utext="#{main.author}"></span>.
++    </p>
+ </div>
+ 
+ </body>
+Index: src/main/resources/templates/main_pages/login.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\" xmlns:th=\"http://www.thymeleaf.org\"\n      xmlns:sec=\"http://www.thymeleaf.org/thymeleaf-extras-springsecurity5\" xmlns:form=\"http://www.w3.org/1999/html\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title th:text=\"#{login.title.label}\"></title>\n    <link rel=\"shortcut icon\" th:href=\"@{/img/icons/faviconcircle.ico}\"/>\n    <link rel=\"stylesheet\" href=\"/css/main/general.css\">\n    <link rel=\"stylesheet\" href=\"/css/main/login.css\">\n</head>\n\n<body>\n\n<!-- User Menu -->\n<div class=\"user_information\">\n\n    <!-- Language select -->\n    <div class=\"select_languages\">\n\n        <div class=\"btn_ro\">\n            <a th:href=\"@{/login?language=ro}\"><img class=\"lang_ro\" src=\"/img/languages/ro.png\"\n                                                    th:title=\"#{lang.ro}\" th:alt=\"#{lang.ro}\"></a>\n        </div>\n\n        <div class=\"btn_en\">\n            <a th:href=\"@{/login?language=en}\"><img class=\"lang_en\" src=\"/img/languages/en.png\"\n                                                    th:title=\"#{lang.en}\" th:alt=\"#{lang.en}\"></a>\n        </div>\n    </div>\n</div>\n\n<!-- Logo on page -->\n<a class=\"logo\" th:href=\"@{'/'}\">\n    <img src=\"/img/logo/ssi.png\" th:alt=\"#{ssi}\">\n</a>\n\n<!-- Create Login template-->\n<form method=\"post\" action=\"/login\">\n    <div class=\"login\">\n        <h1 th:text=\"#{nav.a.login.label}\"></h1>\n\n        <hr>\n\n        <!-- Create new account -->\n        <div class=\"new_account\">\n            <span th:text=\"#{create.new.account.label}\"></span>\n            <a class=\"btn_signup\" th:href=\"${'/signup'}\" th:text=\"#{accout.label}\"></a>\n        </div>\n\n        <hr>\n\n        <!-- Username -->\n        <label for=\"username\"><b th:text=\"#{login.username.label}\"></b></label>\n        <input type=\"text\" th:placeholder=\"#{login.username_place_holder.lable}\" name=\"username\"\n               id=\"username\"\n               required>\n\n        <!-- Password -->\n        <label for=\"password\"><b th:text=\"#{login.password.label}\"></b></label>\n        <input type=\"password\" th:placeholder=\"#{login.password_place_holder.lable}\" name=\"password\"\n               id=\"password\"\n               required>\n\n        <!-- Remember me -->\n        <div class=\"remember\">\n            <span th:text=\"#{login.remember.label}\"></span><input type=\"checkbox\" checked=\"checked\" name=\"remember\">\n        </div>\n        <hr>\n\n        <div class=\"bt_sub\">\n            <button class=\"btn_animation\" type=\"reset\" th:text=\"#{login.cancel.label}\"></button>\n            <button class=\"btn_animation\" type=\"submit\" th:text=\"#{login.submit.label}\"></button>\n        </div>\n    </div>\n\n</form>\n\n<!-- Footer for site -->\n<div class=\"footer\">\n    <div class=\"col-md-8 col-sm-6 col-xs-12\">\n        <p class=\"copyright-text\">Copyright &copy; 2021 All Rights Reserved by\n            <span th:utext=\"#{main.author}\"></span>.\n        </p>\n    </div>\n</div>\n\n</body>\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/templates/main_pages/login.html b/src/main/resources/templates/main_pages/login.html
+--- a/src/main/resources/templates/main_pages/login.html	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/templates/main_pages/login.html	(date 1611562342514)
+@@ -77,11 +77,9 @@
+ 
+ <!-- Footer for site -->
+ <div class="footer">
+-    <div class="col-md-8 col-sm-6 col-xs-12">
+-        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+-            <span th:utext="#{main.author}"></span>.
+-        </p>
+-    </div>
++    <p>Copyright &copy; 2021 All Rights Reserved by
++        <span th:utext="#{main.author}"></span>.
++    </p>
+ </div>
+ 
+ </body>
+Index: src/main/resources/templates/secondary_pages/user_info.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\" xmlns:th=\"http://www.thymeleaf.org\"\n      xmlns:sec=\"http://www.thymeleaf.org/thymeleaf-extras-springsecurity5\" xmlns:form=\"http://www.w3.org/1999/html\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title th:text=\"#{user_info.title.label}\"></title>\n    <link rel=\"shortcut icon\" th:href=\"@{/img/icons/faviconcircle.ico}\"/>\n    <link rel=\"stylesheet\" href=\"/css/main/general.css\">\n    <link rel=\"stylesheet\" href=\"/css/secondary/user_info.css\">\n</head>\n\n<body>\n\n<!-- User Menu -->\n<form method=\"post\" action=\"/logout\">\n    <div class=\"user_information\">\n\n        <div>\n            <!-- Message Hello -->\n            <span th:text=\"#{ssi.homepage.user.hello.label}\"></span>\n\n            <!-- Display username -->\n            <span sec:authentication=\"name\"></span>\n        </div>\n\n        <hr>\n\n        <!--  Icons for information and logout -->\n        <div style=\"display: block ruby\">\n\n            <!-- Information about user -->\n            <button class=\"button_none_btn\" type=\"submit\">\n                <a th:href=\"@{'/ssi/user/info'}\">\n                    <img class=\"userinfo_icon\" src=\"/img/icons/userinfo.png\" th:alt=\"#{main.userinfo.label}\"\n                         th:title=\"#{main.userinfo.label}\">\n                </a>\n            </button>\n\n            <!-- Logout -->\n            <form method=\"post\" action=\"/logout\">\n                <button class=\"button_none_btn\" type=\"submit\">\n                    <a>\n                        <img class=\"logout_icon\" src=\"/img/icons/logout.png\" th:alt=\"#{main.logout.label}\"\n                             th:title=\"#{main.logout.label}\"> </a>\n                </button>\n            </form>\n        </div>\n\n        <hr>\n\n        <!-- Language select -->\n        <div class=\"select_languages\">\n\n            <div class=\"btn_ro\">\n                <a th:href=\"@{/ssi/user_info?language=ro}\"><img class=\"lang_ro\" src=\"/img/languages/ro.png\"\n                                                                th:title=\"#{lang.ro}\" th:alt=\"#{lang.ro}\"></a>\n            </div>\n\n            <div class=\"btn_en\">\n                <a th:href=\"@{/ssi/user_info?language=en}\"><img class=\"lang_en\" src=\"/img/languages/en.png\"\n                                                                th:title=\"#{lang.en}\" th:alt=\"#{lang.en}\"></a>\n            </div>\n        </div>\n    </div>\n\n</form>\n\n<!-- Logo on page -->\n<a class=\"logosecondpage\" th:href=\"@{'/ssi/home'}\">\n    <img class=\"logo_size\" src=\"/img/logo/ssi.png\" th:alt=\"#{ssi}\">\n</a>\n\n<!-- Navigator -->\n<nav>\n    <a class=\"btn_signup\" th:href=\"@{'/ssi/home'}\"><span th:utext=\"#{ssi.homepage.nav.label}\"></span></a>\n    <a class=\"btn_signup\" th:href=\"@{'/ssi/costs'}\"><span th:text=\"#{ssi.costs.nav.label}\"></span></a>\n    <a class=\"btn_signup \" th:href=\"@{'/ssi/income'}\"><span th:text=\"#{ssi.income.nav.label}\"></span></a>\n</nav>\n\n<!-- Form for editing costs -->\n<form method=\"post\" action=\"/ssi/user/info/save\" th:object=\"${user}\">\n    <div class=\"user_info\">\n\n        <!-- User info -->\n        <h1 th:text=\"#{user_info.form.title.label}\"></h1>\n        <input type=\"hidden\" name=\"\" th:filed=\"*{userId}\">\n        <hr>\n\n        <!-- Name -->\n        <label for=\"name\" th:text=\"#{user_info.name.label}\"></label>\n        <input type=\"text\" name=\"name\" id=\"name\" placeholder=\"Name\" th:field=\"*{name}\">\n        <br>\n\n        <!-- Last Name  -->\n        <label for=\"last_name\" th:text=\"#{user_info.last_name.label}\"></label>\n        <input type=\"text\" name=\"last_name\" id=\"last_name\" placeholder=\"Last Name\" th:field=\"*{lastName}\">\n        <br>\n\n        <!-- Email -->\n        <label for=\"email\" th:text=\"#{user_info.email.label}\"></label>\n        <input type=\"text\" name=\"email\" id=\"email\" placeholder=\"Email\" th:field=\"*{email}\">\n        <br>\n\n        <!-- Phone Number  -->\n        <label for=\"phone_number\" th:utext=\"#{user_info.phone_number.label}\"></label>\n        <input type=\"text\" name=\"phone_number\" id=\"phone_number\" placeholder=\"Phone Number\" th:field=\"*{phoneNumber}\">\n        <br>\n\n        <!-- Country -->\n        <label for=\"country\" th:utext=\"#{user_info.country.label}\"></label>\n        <select class=\"select_country\" id=\"country\" th:field=\"*{country}\">\n            <option th:utext=\"#{user_info.country.romania.label}\" value=\"romania\"></option>\n            <option th:utext=\"#{user_info.country.international.label}\" value=\"international\"></option>\n        </select>\n\n        <hr>\n\n        <div class=\"bt_sub\">\n            <button class=\"btn_edit\" type=\"submit\" th:text=\"#{user_info.edit.bt.label}\"></button>\n        </div>\n\n    </div>\n\n</form>\n\n<!-- Footer for site -->\n<div class=\"footer\">\n    <div class=\"col-md-8 col-sm-6 col-xs-12\">\n        <p class=\"copyright-text\">Copyright &copy; 2021 All Rights Reserved by\n            <span th:utext=\"#{main.author}\"></span>.\n        </p>\n    </div>\n</div>\n\n</body>\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/templates/secondary_pages/user_info.html b/src/main/resources/templates/secondary_pages/user_info.html
+--- a/src/main/resources/templates/secondary_pages/user_info.html	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/templates/secondary_pages/user_info.html	(date 1611562342492)
+@@ -66,8 +66,8 @@
+ </form>
+ 
+ <!-- Logo on page -->
+-<a class="logosecondpage" th:href="@{'/ssi/home'}">
+-    <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
++<a class="logo" th:href="@{'/ssi/home'}">
++    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
+ </a>
+ 
+ <!-- Navigator -->
+@@ -125,11 +125,9 @@
+ 
+ <!-- Footer for site -->
+ <div class="footer">
+-    <div class="col-md-8 col-sm-6 col-xs-12">
+-        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+-            <span th:utext="#{main.author}"></span>.
+-        </p>
+-    </div>
++    <p>Copyright &copy; 2021 All Rights Reserved by
++        <span th:utext="#{main.author}"></span>.
++    </p>
+ </div>
+ 
+ </body>
+Index: src/main/resources/static/css/secondary/costs.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>.user_information {\n    display: inline;\n    max-width: 250px;\n    max-height: 130px;\n    border-radius: 30px;\n    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);\n    padding: 2%;\n    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);\n    margin: 1% 1%;\n    vertical-align: top;\n    float: right;\n}\n\n/* Table */\n\ntable.costs_table {\n    font-family: Arial, Courier;\n    font-size: 14pt;\n    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);\n    width: 80%;\n    margin: 3% auto;\n    text-align: center;\n    border-collapse: collapse;\n    box-shadow: 0 0 10px 2px #f89c1c;\n    border-radius: 5px;\n    color: #0c7578;\n    border: 1px solid #0c7578;\n    padding: 5px 5px;\n}\n\ntable.costs_table tbody td {\n    font-size: 13px;\n    color: #0c7578;\n}\n\ntable.costs_table tr:nth-child(even) {\n    background: #e3fdf5 100%;\n}\n\ntable.costs_table tfoot {\n    font-size: 12px;\n    font-weight: bold;\n    color: #E6E6E6;\n    background: #000000;\n    background: -moz-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);\n    background: -webkit-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);\n    background: linear-gradient(to bottom, #404040 0%, #191919 66%, #000000 100%);\n    border-top: 1px solid #4A4A4A;\n}\n\ntable.costs_table tfoot td {\n    font-size: 12px;\n}\n\n#delete, #edit {\n    padding-left: 10px;\n}\n\n.delete_icon {\n    width: 18px;\n    height: 20px;\n}\n\n.edit_icon {\n    width: 20px;\n    height: 20px;\n}\n\n.add_icon {\n    width: 20px;\n    height: 20px;\n}\n\n.userinfo_icon {\n    width: 25px;\n    height: 25px;\n}\n\n.button_none_btn {\n    background: none;\n    border: none;\n}\n\n.icon_size {\n    width: 20px;\n    height: 20px;\n    margin: -3px 3px;\n    cursor: pointer;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/static/css/secondary/costs.css b/src/main/resources/static/css/secondary/costs.css
+--- a/src/main/resources/static/css/secondary/costs.css	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/static/css/secondary/costs.css	(date 1611563522637)
+@@ -11,47 +11,6 @@
+     float: right;
+ }
+ 
+-/* Table */
+-
+-table.costs_table {
+-    font-family: Arial, Courier;
+-    font-size: 14pt;
+-    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+-    width: 80%;
+-    margin: 3% auto;
+-    text-align: center;
+-    border-collapse: collapse;
+-    box-shadow: 0 0 10px 2px #f89c1c;
+-    border-radius: 5px;
+-    color: #0c7578;
+-    border: 1px solid #0c7578;
+-    padding: 5px 5px;
+-}
+-
+-table.costs_table tbody td {
+-    font-size: 13px;
+-    color: #0c7578;
+-}
+-
+-table.costs_table tr:nth-child(even) {
+-    background: #e3fdf5 100%;
+-}
+-
+-table.costs_table tfoot {
+-    font-size: 12px;
+-    font-weight: bold;
+-    color: #E6E6E6;
+-    background: #000000;
+-    background: -moz-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+-    background: -webkit-linear-gradient(top, #404040 0%, #191919 66%, #000000 100%);
+-    background: linear-gradient(to bottom, #404040 0%, #191919 66%, #000000 100%);
+-    border-top: 1px solid #4A4A4A;
+-}
+-
+-table.costs_table tfoot td {
+-    font-size: 12px;
+-}
+-
+ #delete, #edit {
+     padding-left: 10px;
+ }
+Index: src/main/resources/application.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>##Connection with the Database\n#\nspring.datasource.url=jdbc:mysql://localhost:3306/ssi?serverTimezone=UTC\nspring.datasource.username=catalin\nspring.datasource.password=291997\nspring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver\nspring.datasource.platform=org.hibernate.dialect.MySQL5Dialect\nspring.jpa.properties.hibernate.dialect=org.hibernate.dialect.MySQL5InnoDBDialect\nspring.jpa.hibernate.ddl-auto=update\n##Disabling the Whitelabel Error Page\n#\nserver.error.whitelabel.enabled=false\n##DEBUG\n#\nlogging.level.root=DEBUG\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/application.properties b/src/main/resources/application.properties
+--- a/src/main/resources/application.properties	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/application.properties	(date 1611134250600)
+@@ -12,4 +12,4 @@
+ server.error.whitelabel.enabled=false
+ ##DEBUG
+ #
+-logging.level.root=DEBUG
++#logging.level.root=DEBUG
+Index: .idea/workspace.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"AutoImportSettings\">\n    <option name=\"autoReloadType\" value=\"SELECTIVE\" />\n  </component>\n  <component name=\"ChangeListManager\">\n    <list default=\"true\" id=\"9a05ce14-445e-4496-a418-5f5136989fbc\" name=\"Default Changelist\" comment=\"navigator pictures\">\n      <change beforePath=\"$PROJECT_DIR$/.idea/SSI-ServicesSubscriptionInvoice.iml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/SSI-ServicesSubscriptionInvoice.iml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/.idea/workspace.xml\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/.idea/workspace.xml\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/static/css/main/general.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/static/css/main/general.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/static/css/main/home.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/static/css/main/home.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/static/css/secondary/edit_costs.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/static/css/secondary/edit_costs.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/static/css/secondary/income.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/static/css/secondary/income.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/static/css/secondary/user_info.css\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/static/css/secondary/user_info.css\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html\" afterDir=\"false\" />\n      <change beforePath=\"$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html\" beforeDir=\"false\" afterPath=\"$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html\" afterDir=\"false\" />\n    </list>\n    <option name=\"SHOW_DIALOG\" value=\"false\" />\n    <option name=\"HIGHLIGHT_CONFLICTS\" value=\"true\" />\n    <option name=\"HIGHLIGHT_NON_ACTIVE_CHANGELIST\" value=\"false\" />\n    <option name=\"LAST_RESOLUTION\" value=\"IGNORE\" />\n  </component>\n  <component name=\"FileTemplateManagerImpl\">\n    <option name=\"RECENT_TEMPLATES\">\n      <list>\n        <option value=\"Interface\" />\n        <option value=\"Class\" />\n        <option value=\"JavaScript File\" />\n        <option value=\"HTML File\" />\n        <option value=\"CSS File\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"Git.Settings\">\n    <option name=\"RECENT_GIT_ROOT_PATH\" value=\"$PROJECT_DIR$\" />\n  </component>\n  <component name=\"GitSEFilterConfiguration\">\n    <file-type-list>\n      <filtered-out-file-type name=\"LOCAL_BRANCH\" />\n      <filtered-out-file-type name=\"REMOTE_BRANCH\" />\n      <filtered-out-file-type name=\"TAG\" />\n      <filtered-out-file-type name=\"COMMIT_BY_MESSAGE\" />\n    </file-type-list>\n  </component>\n  <component name=\"GithubPullRequestsUISettings\">\n    <option name=\"hiddenUrls\">\n      <set>\n        <option value=\"https://github.com/annormally/SSI-ServicesSubscriptionInvoice\" />\n      </set>\n    </option>\n  </component>\n  <component name=\"HierarchyBrowserManager\">\n    <option name=\"SCOPE\" value=\"All\" />\n  </component>\n  <component name=\"HighlightingSettingsPerFile\">\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java\" root0=\"SKIP_INSPECTION\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java\" root0=\"SKIP_INSPECTION\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/AuthoritiesEntity.java\" root0=\"FORCE_HIGHLIGHTING\" />\n    <setting file=\"file://$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css\" root0=\"FORCE_HIGHLIGHTING\" />\n  </component>\n  <component name=\"ProjectId\" id=\"1kQS8Eyv9KBW3ONBiEeJ1u4yLjR\" />\n  <component name=\"ProjectLevelVcsManager\" settingsEditedManually=\"true\" />\n  <component name=\"ProjectViewState\">\n    <option name=\"showLibraryContents\" value=\"true\" />\n  </component>\n  <component name=\"PropertiesComponent\">\n    <property name=\"DatabaseDriversLRU\" value=\"mysql\" />\n    <property name=\"DefaultHtmlFileTemplate\" value=\"HTML File\" />\n    <property name=\"RequestMappingsPanelOrder0\" value=\"0\" />\n    <property name=\"RequestMappingsPanelOrder1\" value=\"1\" />\n    <property name=\"RequestMappingsPanelWidth0\" value=\"75\" />\n    <property name=\"RequestMappingsPanelWidth1\" value=\"75\" />\n    <property name=\"RunOnceActivity.OpenProjectViewOnStart\" value=\"true\" />\n    <property name=\"RunOnceActivity.ShowReadmeOnStart\" value=\"true\" />\n    <property name=\"SHARE_PROJECT_CONFIGURATION_FILES\" value=\"true\" />\n    <property name=\"WebServerToolWindowFactoryState\" value=\"false\" />\n    <property name=\"aspect.path.notification.shown\" value=\"true\" />\n    <property name=\"last_opened_file_path\" value=\"$PROJECT_DIR$\" />\n    <property name=\"list.type.of.created.stylesheet\" value=\"CSS\" />\n    <property name=\"node.js.detected.package.eslint\" value=\"true\" />\n    <property name=\"node.js.detected.package.tslint\" value=\"true\" />\n    <property name=\"node.js.path.for.package.eslint\" value=\"project\" />\n    <property name=\"node.js.path.for.package.tslint\" value=\"project\" />\n    <property name=\"node.js.selected.package.eslint\" value=\"(autodetect)\" />\n    <property name=\"node.js.selected.package.tslint\" value=\"(autodetect)\" />\n    <property name=\"nodejs_package_manager_path\" value=\"npm\" />\n    <property name=\"project.structure.last.edited\" value=\"Project\" />\n    <property name=\"project.structure.proportion\" value=\"0.0\" />\n    <property name=\"project.structure.side.proportion\" value=\"0.2\" />\n    <property name=\"settings.editor.selected.configurable\" value=\"preferences.pluginManager\" />\n  </component>\n  <component name=\"RecentsManager\">\n    <key name=\"CopyFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/resources/templates/secondary_pages\" />\n      <recent name=\"C:\\Users\\catalin\\Google Drive\\FinalProject\\SSI-V0.1\\SSI-ServicesSubscriptionInvoice\\src\\main\\resources\\languages\" />\n    </key>\n    <key name=\"MoveFile.RECENT_KEYS\">\n      <recent name=\"$PROJECT_DIR$/src/main/resources/static/img/icons\" />\n      <recent name=\"$PROJECT_DIR$/src/main/resources/static/img/trash_edit\" />\n      <recent name=\"C:\\Users\\catalin\\Google Drive\\FinalProject\\SSI-V0.1\\SSI-ServicesSubscriptionInvoice\\src\\main\\resources\\static\\css\\main\" />\n      <recent name=\"C:\\Users\\catalin\\Google Drive\\FinalProject\\SSI-V0.1\\SSI-ServicesSubscriptionInvoice\\src\\main\\resources\\static\\img\\logo\" />\n      <recent name=\"C:\\Users\\catalin\\Google Drive\\FinalProject\\SSI-V0.1\\SSI-ServicesSubscriptionInvoice\\src\\main\\resources\\static\\img\\login\" />\n    </key>\n    <key name=\"MoveClassesOrPackagesDialog.RECENTS_KEY\">\n      <recent name=\"ssi.webapplication.controller\" />\n    </key>\n  </component>\n  <component name=\"RunManager\" selected=\"Spring Boot.AppConfiguration\">\n    <configuration name=\"AppTest.shouldAnswerWithTrue\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"SSI-ServicesSubscriptionInvoice\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"ssi.webapplication.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <option name=\"PACKAGE_NAME\" value=\"ssi.webapplication\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"ssi.webapplication.AppTest\" />\n      <option name=\"METHOD_NAME\" value=\"shouldAnswerWithTrue\" />\n      <option name=\"TEST_OBJECT\" value=\"method\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"SSIControllerTest.getSSIGeneralPage\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"SSI-ServicesSubscriptionInvoice\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"ssi.webapplication.controller.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <option name=\"PACKAGE_NAME\" value=\"ssi.webapplication.controller.main_pages_controllers\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"ssi.webapplication.controller.main_pages_controllers.SSIControllerTest\" />\n      <option name=\"METHOD_NAME\" value=\"getSSIGeneralPage\" />\n      <option name=\"TEST_OBJECT\" value=\"method\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"UserInfoControllerTest\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"SSI-ServicesSubscriptionInvoice\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"ssi.webapplication.controller.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <option name=\"PACKAGE_NAME\" value=\"ssi.webapplication.controller.main_pages_controllers\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"ssi.webapplication.controller.main_pages_controllers.UserInfoControllerTest\" />\n      <option name=\"TEST_OBJECT\" value=\"class\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"UserInfoControllerTest.getUserInfo\" type=\"JUnit\" factoryName=\"JUnit\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"SSI-ServicesSubscriptionInvoice\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"ssi.webapplication.controller.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <option name=\"PACKAGE_NAME\" value=\"ssi.webapplication.controller.main_pages_controllers\" />\n      <option name=\"MAIN_CLASS_NAME\" value=\"ssi.webapplication.controller.main_pages_controllers.UserInfoControllerTest\" />\n      <option name=\"METHOD_NAME\" value=\"getUserInfo\" />\n      <option name=\"TEST_OBJECT\" value=\"method\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <configuration name=\"AppConfiguration\" type=\"SpringBootApplicationConfigurationType\" factoryName=\"Spring Boot\" temporary=\"true\" nameIsGenerated=\"true\">\n      <module name=\"SSI-ServicesSubscriptionInvoice\" />\n      <extension name=\"coverage\">\n        <pattern>\n          <option name=\"PATTERN\" value=\"ssi.webapplication.configuration.*\" />\n          <option name=\"ENABLED\" value=\"true\" />\n        </pattern>\n      </extension>\n      <option name=\"SPRING_BOOT_MAIN_CLASS\" value=\"ssi.webapplication.configuration.AppConfiguration\" />\n      <method v=\"2\">\n        <option name=\"Make\" enabled=\"true\" />\n      </method>\n    </configuration>\n    <list>\n      <item itemvalue=\"JUnit.SSIControllerTest.getSSIGeneralPage\" />\n      <item itemvalue=\"JUnit.UserInfoControllerTest.getUserInfo\" />\n      <item itemvalue=\"JUnit.UserInfoControllerTest\" />\n      <item itemvalue=\"JUnit.AppTest.shouldAnswerWithTrue\" />\n      <item itemvalue=\"Spring Boot.AppConfiguration\" />\n    </list>\n    <recent_temporary>\n      <list>\n        <item itemvalue=\"Spring Boot.AppConfiguration\" />\n        <item itemvalue=\"JUnit.AppTest.shouldAnswerWithTrue\" />\n        <item itemvalue=\"JUnit.UserInfoControllerTest\" />\n        <item itemvalue=\"JUnit.UserInfoControllerTest.getUserInfo\" />\n        <item itemvalue=\"JUnit.SSIControllerTest.getSSIGeneralPage\" />\n      </list>\n    </recent_temporary>\n  </component>\n  <component name=\"SpellCheckerSettings\" RuntimeDictionaries=\"0\" Folders=\"0\" CustomDictionaries=\"0\" DefaultDictionary=\"application-level\" UseSingleDictionary=\"true\" transferred=\"true\" />\n  <component name=\"TaskManager\">\n    <task active=\"true\" id=\"Default\" summary=\"Default task\">\n      <changelist id=\"9a05ce14-445e-4496-a418-5f5136989fbc\" name=\"Default Changelist\" comment=\"\" />\n      <created>1605631162411</created>\n      <option name=\"number\" value=\"Default\" />\n      <option name=\"presentableId\" value=\"Default\" />\n      <updated>1605631162411</updated>\n      <workItem from=\"1605631165446\" duration=\"1255000\" />\n      <workItem from=\"1605691096178\" duration=\"108000\" />\n      <workItem from=\"1607330723745\" duration=\"8437000\" />\n      <workItem from=\"1607432756680\" duration=\"17995000\" />\n      <workItem from=\"1607502885300\" duration=\"12333000\" />\n      <workItem from=\"1607515435726\" duration=\"11012000\" />\n      <workItem from=\"1607538692710\" duration=\"3823000\" />\n      <workItem from=\"1607609651782\" duration=\"211000\" />\n      <workItem from=\"1607610371733\" duration=\"172000\" />\n      <workItem from=\"1607611017947\" duration=\"10629000\" />\n      <workItem from=\"1607670591111\" duration=\"9063000\" />\n      <workItem from=\"1607755351504\" duration=\"10827000\" />\n      <workItem from=\"1607842409518\" duration=\"17454000\" />\n      <workItem from=\"1607883097820\" duration=\"3049000\" />\n      <workItem from=\"1607928463966\" duration=\"3795000\" />\n      <workItem from=\"1607932306217\" duration=\"797000\" />\n      <workItem from=\"1607933120200\" duration=\"5218000\" />\n      <workItem from=\"1607938715208\" duration=\"979000\" />\n      <workItem from=\"1607940132265\" duration=\"116000\" />\n      <workItem from=\"1607940272542\" duration=\"3106000\" />\n      <workItem from=\"1607943414586\" duration=\"20745000\" />\n      <workItem from=\"1607974642834\" duration=\"6293000\" />\n      <workItem from=\"1608040656945\" duration=\"3637000\" />\n      <workItem from=\"1608123998887\" duration=\"2000\" />\n      <workItem from=\"1608124062554\" duration=\"176000\" />\n      <workItem from=\"1608124246073\" duration=\"2000\" />\n      <workItem from=\"1608124276071\" duration=\"2000\" />\n      <workItem from=\"1608124316747\" duration=\"36000\" />\n      <workItem from=\"1608126741643\" duration=\"389000\" />\n      <workItem from=\"1608132191415\" duration=\"457000\" />\n      <workItem from=\"1608137751823\" duration=\"1846000\" />\n      <workItem from=\"1608140751591\" duration=\"1100000\" />\n      <workItem from=\"1608184742172\" duration=\"888000\" />\n      <workItem from=\"1608204086275\" duration=\"232000\" />\n      <workItem from=\"1608289688041\" duration=\"468000\" />\n      <workItem from=\"1608290854111\" duration=\"1161000\" />\n      <workItem from=\"1608360515439\" duration=\"6668000\" />\n      <workItem from=\"1608411800881\" duration=\"235000\" />\n      <workItem from=\"1608413636811\" duration=\"567000\" />\n      <workItem from=\"1608446908842\" duration=\"1487000\" />\n      <workItem from=\"1608531504849\" duration=\"5009000\" />\n      <workItem from=\"1608536755976\" duration=\"14249000\" />\n      <workItem from=\"1608551949312\" duration=\"15874000\" />\n      <workItem from=\"1608624317542\" duration=\"73000\" />\n      <workItem from=\"1608624681797\" duration=\"3331000\" />\n      <workItem from=\"1608718231858\" duration=\"626000\" />\n      <workItem from=\"1608886740577\" duration=\"312000\" />\n      <workItem from=\"1609140284059\" duration=\"100000\" />\n      <workItem from=\"1609140409638\" duration=\"6083000\" />\n      <workItem from=\"1609146635382\" duration=\"1013000\" />\n      <workItem from=\"1609147694377\" duration=\"1673000\" />\n      <workItem from=\"1609142258344\" duration=\"1271000\" />\n      <workItem from=\"1609143578680\" duration=\"4095000\" />\n      <workItem from=\"1609230871562\" duration=\"3269000\" />\n      <workItem from=\"1609234249341\" duration=\"2127000\" />\n      <workItem from=\"1609236532904\" duration=\"215000\" />\n      <workItem from=\"1609236756782\" duration=\"9237000\" />\n      <workItem from=\"1609256034212\" duration=\"8176000\" />\n      <workItem from=\"1609317744224\" duration=\"1673000\" />\n      <workItem from=\"1609320293185\" duration=\"15591000\" />\n      <workItem from=\"1609356422546\" duration=\"644000\" />\n      <workItem from=\"1609357170407\" duration=\"429000\" />\n      <workItem from=\"1609575827893\" duration=\"452000\" />\n      <workItem from=\"1609576316569\" duration=\"481000\" />\n      <workItem from=\"1609744937045\" duration=\"13964000\" />\n      <workItem from=\"1609773213063\" duration=\"2595000\" />\n      <workItem from=\"1609785174568\" duration=\"37000\" />\n      <workItem from=\"1609844905516\" duration=\"41000\" />\n      <workItem from=\"1609845017666\" duration=\"752000\" />\n      <workItem from=\"1609920211577\" duration=\"14946000\" />\n      <workItem from=\"1610091355742\" duration=\"7194000\" />\n      <workItem from=\"1610108110188\" duration=\"512000\" />\n      <workItem from=\"1610174714171\" duration=\"2203000\" />\n      <workItem from=\"1610200631335\" duration=\"807000\" />\n      <workItem from=\"1610201486219\" duration=\"2726000\" />\n      <workItem from=\"1610358748467\" duration=\"13200000\" />\n      <workItem from=\"1610387775218\" duration=\"82000\" />\n      <workItem from=\"1610450703462\" duration=\"18466000\" />\n      <workItem from=\"1610471241465\" duration=\"232000\" />\n      <workItem from=\"1610610939258\" duration=\"1975000\" />\n      <workItem from=\"1610614741913\" duration=\"9900000\" />\n      <workItem from=\"1610640176916\" duration=\"3121000\" />\n      <workItem from=\"1610646075866\" duration=\"1977000\" />\n      <workItem from=\"1610650915036\" duration=\"563000\" />\n      <workItem from=\"1610781601120\" duration=\"73000\" />\n      <workItem from=\"1610784683774\" duration=\"926000\" />\n      <workItem from=\"1610954359312\" duration=\"2584000\" />\n      <workItem from=\"1610969937949\" duration=\"1127000\" />\n      <workItem from=\"1610973013327\" duration=\"262000\" />\n      <workItem from=\"1610975009621\" duration=\"11000\" />\n      <workItem from=\"1610975825240\" duration=\"2116000\" />\n    </task>\n    <task id=\"LOCAL-00001\" summary=\"new version for interface\">\n      <created>1609773881737</created>\n      <option name=\"number\" value=\"00001\" />\n      <option name=\"presentableId\" value=\"LOCAL-00001\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1609773881737</updated>\n    </task>\n    <task id=\"LOCAL-00002\" summary=\"user information editing\">\n      <created>1610091579196</created>\n      <option name=\"number\" value=\"00002\" />\n      <option name=\"presentableId\" value=\"LOCAL-00002\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1610091579196</updated>\n    </task>\n    <task id=\"LOCAL-00003\" summary=\"error 403, 404 and logout plus corrections\">\n      <created>1610470812613</created>\n      <option name=\"number\" value=\"00003\" />\n      <option name=\"presentableId\" value=\"LOCAL-00003\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1610470812613</updated>\n    </task>\n    <task id=\"LOCAL-00004\" summary=\"error 403, 404 and logout plus corrections\">\n      <created>1610642118523</created>\n      <option name=\"number\" value=\"00004\" />\n      <option name=\"presentableId\" value=\"LOCAL-00004\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1610642118523</updated>\n    </task>\n    <task id=\"LOCAL-00005\" summary=\"error 403, 404 and logout plus corrections\">\n      <created>1610642372435</created>\n      <option name=\"number\" value=\"00005\" />\n      <option name=\"presentableId\" value=\"LOCAL-00005\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1610642372435</updated>\n    </task>\n    <task id=\"LOCAL-00006\" summary=\"errors corection + 500 internal server error\">\n      <created>1610955045803</created>\n      <option name=\"number\" value=\"00006\" />\n      <option name=\"presentableId\" value=\"LOCAL-00006\" />\n      <option name=\"project\" value=\"LOCAL\" />\n      <updated>1610955045803</updated>\n    </task>\n    <option name=\"localTasksCounter\" value=\"7\" />\n    <servers />\n  </component>\n  <component name=\"TypeScriptGeneratedFilesManager\">\n    <option name=\"version\" value=\"3\" />\n  </component>\n  <component name=\"Vcs.Log.Tabs.Properties\">\n    <option name=\"TAB_STATES\">\n      <map>\n        <entry key=\"MAIN\">\n          <value>\n            <State>\n              <option name=\"CUSTOM_BOOLEAN_PROPERTIES\">\n                <map>\n                  <entry key=\"Show.Git.Branches\" value=\"true\" />\n                </map>\n              </option>\n              <option name=\"FILTERS\">\n                <map>\n                  <entry key=\"branch\">\n                    <value>\n                      <list>\n                        <option value=\"origin/master\" />\n                      </list>\n                    </value>\n                  </entry>\n                </map>\n              </option>\n            </State>\n          </value>\n        </entry>\n      </map>\n    </option>\n    <option name=\"oldMeFiltersMigrated\" value=\"true\" />\n  </component>\n  <component name=\"VcsManagerConfiguration\">\n    <MESSAGE value=\"new version for interface\" />\n    <MESSAGE value=\"user information editing\" />\n    <MESSAGE value=\"error 403, 404 and logout plus corrections\" />\n    <MESSAGE value=\"errors corection + 500 internal server error\" />\n    <MESSAGE value=\"navigator pictures\" />\n    <option name=\"LAST_COMMIT_MESSAGE\" value=\"navigator pictures\" />\n  </component>\n  <component name=\"XDebuggerManager\">\n    <breakpoint-manager>\n      <breakpoints>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/spring-jdbc/5.1.8.RELEASE/spring-jdbc-5.1.8.RELEASE-sources.jar!/org/springframework/jdbc/core/JdbcTemplate.java</url>\n          <line>1441</line>\n          <option name=\"timeStamp\" value=\"3\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/core/userdetails/jdbc/JdbcDaoImpl.class</url>\n          <line>61</line>\n          <option name=\"timeStamp\" value=\"4\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/core/userdetails/jdbc/JdbcDaoImpl.class</url>\n          <line>93</line>\n          <option name=\"timeStamp\" value=\"5\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/core/userdetails/jdbc/JdbcDaoImpl.class</url>\n          <line>88</line>\n          <option name=\"timeStamp\" value=\"6\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/core/userdetails/jdbc/JdbcDaoImpl.class</url>\n          <line>62</line>\n          <option name=\"timeStamp\" value=\"7\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/core/userdetails/jdbc/JdbcDaoImpl.class</url>\n          <line>77</line>\n          <option name=\"timeStamp\" value=\"8\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/core/userdetails/jdbc/JdbcDaoImpl.class</url>\n          <line>80</line>\n          <option name=\"timeStamp\" value=\"9\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/core/userdetails/jdbc/JdbcDaoImpl.class</url>\n          <line>81</line>\n          <option name=\"timeStamp\" value=\"10\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/core/userdetails/jdbc/JdbcDaoImpl.class</url>\n          <line>82</line>\n          <option name=\"timeStamp\" value=\"11\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE.jar!/org/springframework/security/core/userdetails/jdbc/JdbcDaoImpl.class</url>\n          <line>122</line>\n          <option name=\"timeStamp\" value=\"12\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-core/5.1.5.RELEASE/spring-security-core-5.1.5.RELEASE-sources.jar!/org/springframework/security/access/intercept/AbstractSecurityInterceptor.java</url>\n          <line>259</line>\n          <option name=\"timeStamp\" value=\"13\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.5.RELEASE/spring-security-web-5.1.5.RELEASE-sources.jar!/org/springframework/security/web/access/AccessDeniedHandlerImpl.java</url>\n          <line>61</line>\n          <option name=\"timeStamp\" value=\"14\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.5.RELEASE/spring-security-web-5.1.5.RELEASE-sources.jar!/org/springframework/security/web/access/AccessDeniedHandlerImpl.java</url>\n          <line>68</line>\n          <option name=\"timeStamp\" value=\"15\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.5.RELEASE/spring-security-web-5.1.5.RELEASE-sources.jar!/org/springframework/security/web/authentication/AbstractAuthenticationProcessingFilter.java</url>\n          <line>343</line>\n          <option name=\"timeStamp\" value=\"16\" />\n        </line-breakpoint>\n        <line-breakpoint type=\"java-line\">\n          <url>jar://$MAVEN_REPOSITORY$/org/springframework/security/spring-security-web/5.1.5.RELEASE/spring-security-web-5.1.5.RELEASE-sources.jar!/org/springframework/security/web/authentication/AbstractAuthenticationProcessingFilter.java</url>\n          <line>229</line>\n          <option name=\"timeStamp\" value=\"17\" />\n        </line-breakpoint>\n      </breakpoints>\n    </breakpoint-manager>\n    <watches-manager>\n      <configuration name=\"Application\">\n        <watch expression=\"((HttpServlet3RequestFactory.Servlet3SecurityContextHolderAwareRequestWrapper) request).getRequestURL()\" language=\"JAVA\" custom=\"org.springframework.security.web.servletapi.HttpServlet3RequestFactory\" />\n      </configuration>\n    </watches-manager>\n  </component>\n  <component name=\"com.intellij.coverage.CoverageDataManagerImpl\">\n    <SUITE FILE_PATH=\"coverage/SSI_ServicesSubscriptionInvoice$AppConfigurationTest.ic\" NAME=\"AppConfigurationTest Coverage Results\" MODIFIED=\"1610092179459\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\n      <FILTER>ssi.webapplication.configuration.*</FILTER>\n    </SUITE>\n    <SUITE FILE_PATH=\"coverage/SSI_ServicesSubscriptionInvoice$UserInfoControllerTest.ic\" NAME=\"UserInfoControllerTest Coverage Results\" MODIFIED=\"1610092782236\" SOURCE_PROVIDER=\"com.intellij.coverage.DefaultCoverageFileProvider\" RUNNER=\"idea\" COVERAGE_BY_TEST_ENABLED=\"false\" COVERAGE_TRACING_ENABLED=\"false\">\n      <FILTER>ssi.webapplication.controller.main_pages_controllers.*</FILTER>\n    </SUITE>\n  </component>\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/workspace.xml b/.idea/workspace.xml
+--- a/.idea/workspace.xml	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/.idea/workspace.xml	(date 1611655200126)
+@@ -5,15 +5,23 @@
+   </component>
+   <component name="ChangeListManager">
+     <list default="true" id="9a05ce14-445e-4496-a418-5f5136989fbc" name="Default Changelist" comment="navigator pictures">
+-      <change beforePath="$PROJECT_DIR$/.idea/SSI-ServicesSubscriptionInvoice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SSI-ServicesSubscriptionInvoice.iml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/configuration/AppConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/configuration/AppConfiguration.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/CostsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/CostsController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/IncomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/IncomeController.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/language_en.properties" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/language_ro.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/language_ro.properties" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/general.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/general.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/edit_costs.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/edit_costs.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/income.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/income.css" afterDir="false" />
+-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/user_info.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/secondary/user_info.css" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/login.html" afterDir="false" />
++      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" afterDir="false" />
+       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" afterDir="false" />
+@@ -28,10 +36,10 @@
+     <option name="RECENT_TEMPLATES">
+       <list>
+         <option value="Interface" />
+-        <option value="Class" />
+         <option value="JavaScript File" />
+         <option value="HTML File" />
+         <option value="CSS File" />
++        <option value="Class" />
+       </list>
+     </option>
+   </component>
+@@ -57,12 +65,12 @@
+     <option name="SCOPE" value="All" />
+   </component>
+   <component name="HighlightingSettingsPerFile">
+-    <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" root0="SKIP_INSPECTION" />
++    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" root0="FORCE_HIGHLIGHTING" />
+     <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" root0="SKIP_INSPECTION" />
+-    <setting file="file://$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" root0="FORCE_HIGHLIGHTING" />
+-    <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/AuthoritiesEntity.java" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" root0="SKIP_INSPECTION" />
+     <setting file="file://$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" root0="FORCE_HIGHLIGHTING" />
++    <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/AuthoritiesEntity.java" root0="FORCE_HIGHLIGHTING" />
+   </component>
+   <component name="ProjectId" id="1kQS8Eyv9KBW3ONBiEeJ1u4yLjR" />
+   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+@@ -81,7 +89,7 @@
+     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
+     <property name="WebServerToolWindowFactoryState" value="false" />
+     <property name="aspect.path.notification.shown" value="true" />
+-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
++    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/templates/secondary_pages" />
+     <property name="list.type.of.created.stylesheet" value="CSS" />
+     <property name="node.js.detected.package.eslint" value="true" />
+     <property name="node.js.detected.package.tslint" value="true" />
+@@ -93,9 +101,12 @@
+     <property name="project.structure.last.edited" value="Project" />
+     <property name="project.structure.proportion" value="0.0" />
+     <property name="project.structure.side.proportion" value="0.2" />
+-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
++    <property name="settings.editor.selected.configurable" value="file.status.colors" />
+   </component>
+   <component name="RecentsManager">
++    <key name="CreateClassDialog.RecentsKey">
++      <recent name="ssi.webapplication.Model" />
++    </key>
+     <key name="CopyFile.RECENT_KEYS">
+       <recent name="$PROJECT_DIR$/src/main/resources/templates/secondary_pages" />
+       <recent name="C:\Users\catalin\Google Drive\FinalProject\SSI-V0.1\SSI-ServicesSubscriptionInvoice\src\main\resources\languages" />
+@@ -304,6 +315,17 @@
+       <workItem from="1610973013327" duration="262000" />
+       <workItem from="1610975009621" duration="11000" />
+       <workItem from="1610975825240" duration="2116000" />
++      <workItem from="1610990682668" duration="785000" />
++      <workItem from="1611057426646" duration="3184000" />
++      <workItem from="1611131258659" duration="3488000" />
++      <workItem from="1611171878471" duration="497000" />
++      <workItem from="1611222317620" duration="15000" />
++      <workItem from="1611306790775" duration="2444000" />
++      <workItem from="1611560247173" duration="8565000" />
++      <workItem from="1611569337341" duration="4214000" />
++      <workItem from="1611581318890" duration="1219000" />
++      <workItem from="1611648169062" duration="3054000" />
++      <workItem from="1611651938918" duration="2320000" />
+     </task>
+     <task id="LOCAL-00001" summary="new version for interface">
+       <created>1609773881737</created>
+@@ -477,11 +499,11 @@
+     </watches-manager>
+   </component>
+   <component name="com.intellij.coverage.CoverageDataManagerImpl">
++    <SUITE FILE_PATH="coverage/SSI_ServicesSubscriptionInvoice$UserInfoControllerTest.ic" NAME="UserInfoControllerTest Coverage Results" MODIFIED="1610092782236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
++      <FILTER>ssi.webapplication.controller.main_pages_controllers.*</FILTER>
++    </SUITE>
+     <SUITE FILE_PATH="coverage/SSI_ServicesSubscriptionInvoice$AppConfigurationTest.ic" NAME="AppConfigurationTest Coverage Results" MODIFIED="1610092179459" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+       <FILTER>ssi.webapplication.configuration.*</FILTER>
+-    </SUITE>
+-    <SUITE FILE_PATH="coverage/SSI_ServicesSubscriptionInvoice$UserInfoControllerTest.ic" NAME="UserInfoControllerTest Coverage Results" MODIFIED="1610092782236" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+-      <FILTER>ssi.webapplication.controller.main_pages_controllers.*</FILTER>
+     </SUITE>
+   </component>
+ </project>
+\ No newline at end of file
+Index: src/main/resources/templates/secondary_pages/income.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\" xmlns:th=\"http://www.thymeleaf.org\"\n      xmlns:sec=\"http://www.thymeleaf.org/thymeleaf-extras-springsecurity5\" xmlns:form=\"http://www.w3.org/1999/html\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title th:text=\"#{ssi.income.title.label}\"></title>\n    <link rel=\"shortcut icon\" th:href=\"@{/img/icons/faviconcircle.ico}\"/>\n    <link rel=\"stylesheet\" href=\"/css/main/general.css\">\n    <link rel=\"stylesheet\" href=\"/css/secondary/income.css\">\n</head>\n\n<body>\n\n<!-- User Menu -->\n<form method=\"post\" action=\"/logout\">\n    <div class=\"user_information\">\n\n        <div>\n            <!-- Message Hello -->\n            <span th:text=\"#{ssi.homepage.user.hello.label}\"></span>\n\n            <!-- Display username -->\n            <span sec:authentication=\"name\"></span>\n        </div>\n\n        <hr>\n\n        <!--  Icons for information and logout -->\n        <div style=\"display: block ruby\">\n\n            <!-- Information about user -->\n            <button class=\"button_none_btn\" type=\"submit\">\n                <a th:href=\"@{'/ssi/user/info'}\">\n                    <img class=\"userinfo_icon\" src=\"/img/icons/userinfo.png\" th:alt=\"#{main.userinfo.label}\"\n                         th:title=\"#{main.userinfo.label}\">\n                </a>\n            </button>\n\n            <!-- Logout -->\n            <form method=\"post\" action=\"/logout\">\n                <button class=\"button_none_btn\" type=\"submit\">\n                    <a>\n                        <img class=\"logout_icon\" src=\"/img/icons/logout.png\" th:alt=\"#{main.logout.label}\"\n                             th:title=\"#{main.logout.label}\"> </a>\n                </button>\n            </form>\n        </div>\n\n        <hr>\n\n        <!-- Language select -->\n        <div class=\"select_languages\">\n\n            <div class=\"btn_ro\">\n                <a th:href=\"@{/ssi/income?language=ro}\"><img class=\"lang_ro\" src=\"/img/languages/ro.png\"\n                                                             th:title=\"#{lang.ro}\" th:alt=\"#{lang.ro}\"></a>\n            </div>\n\n            <div class=\"btn_en\">\n                <a th:href=\"@{/ssi/income?language=en}\"><img class=\"lang_en\" src=\"/img/languages/en.png\"\n                                                             th:title=\"#{lang.en}\" th:alt=\"#{lang.en}\"></a>\n            </div>\n        </div>\n    </div>\n\n</form>\n\n<!-- Logo on page -->\n<a class=\"logosecondpage\" th:href=\"@{'/ssi/home'}\">\n    <img class=\"logo_size\" src=\"/img/logo/ssi.png\" th:alt=\"#{ssi}\">\n</a>\n\n<!-- Navigator -->\n<nav>\n    <a class=\"btn_signup\" th:href=\"@{'/ssi/home'}\">\n        <img class=\"icon_size\" src=\"/img/icons/home.png\" th:alt=\"#{main.userinfo.label}\"\n             th:title=\"#{main.userinfo.label}\">\n        <span th:utext=\"#{ssi.homepage.nav.label}\" th:title=\"#{main.userinfo.label}\"></span>\n    </a>\n    <a class=\"btn_signup\" th:href=\"@{'/ssi/costs'}\">\n        <img class=\"icon_size\" src=\"/img/icons/costs.png\" th:alt=\"#{ssi.costs.nav.label}\"\n             th:title=\"#{ssi.costs.nav.label}\">\n        <span th:text=\"#{ssi.costs.nav.label}\" th:title=\"#{ssi.costs.nav.label}\"></span>\n    </a>\n    <a class=\"btn_signup \" th:href=\"@{'/ssi/income'}\">\n        <img class=\"icon_size\" src=\"/img/icons/income.png\" th:alt=\"#{ssi.income.nav.label}\"\n             th:title=\"#{ssi.income.nav.label}\">\n        <span th:text=\"#{ssi.income.nav.label}\" th:title=\"#{ssi.income.nav.label}\"></span>\n    </a>\n</nav>\n\n<!-- Table with information -->\n<table class=\"income_table\">\n\n    <!-- Head of table -->\n    <tr>\n        <th></th>\n    </tr>\n\n    <!-- Body of table -->\n    <tr>\n        <td></td>\n    </tr>\n</table>\n\n<!-- Footer for site -->\n<div class=\"footer\">\n    <div class=\"col-md-8 col-sm-6 col-xs-12\">\n        <p class=\"copyright-text\">Copyright &copy; 2021 All Rights Reserved by\n            <span th:utext=\"#{main.author}\"></span>.\n        </p>\n    </div>\n</div>\n\n</body>\n</html>\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/templates/secondary_pages/income.html b/src/main/resources/templates/secondary_pages/income.html
+--- a/src/main/resources/templates/secondary_pages/income.html	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/templates/secondary_pages/income.html	(date 1611568386690)
+@@ -7,6 +7,7 @@
+     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
+     <link rel="stylesheet" href="/css/main/general.css">
+     <link rel="stylesheet" href="/css/secondary/income.css">
++    <link rel="stylesheet" href="/css/secondary/table.css">
+ </head>
+ 
+ <body>
+@@ -66,8 +67,8 @@
+ </form>
+ 
+ <!-- Logo on page -->
+-<a class="logosecondpage" th:href="@{'/ssi/home'}">
+-    <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
++<a class="logo" th:href="@{'/ssi/home'}">
++    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
+ </a>
+ 
+ <!-- Navigator -->
+@@ -90,26 +91,99 @@
+ </nav>
+ 
+ <!-- Table with information -->
+-<table class="income_table">
++<table class="custom_table">
+ 
+     <!-- Head of table -->
+     <tr>
+-        <th></th>
++        <!-- Table field -->
++        <th th:text="#{ssi.table.nr.crt}"></th>
++        <th th:text="#{ssi.table.date}"></th>
++        <th th:text="#{ssi.table.explication}"></th>
++        <th th:text="#{ssi.table.document.justification}"></th>
++        <th th:utext="#{ssi.table.currency}"></th>
++        <th th:text="#{ssi.table.unitary.price}"></th>
++        <th th:text="#{ssi.table.value}"></th>
++        <th th:text="#{ssi.table.tva}"></th>
++        <th th:text="#{ssi.table.tva.value}"></th>
++        <th th:text="#{ssi.table.total.value}"></th>
++        <th th:text="#{ssi.table.total.value.tva}"></th>
++        <th th:text="#{ssi.table.option}"></th>
+     </tr>
+ 
+     <!-- Body of table -->
+-    <tr>
++    <tr th:each="income:${incomeList}">
++
++        <!-- Number current -->
++
++        <!-- Date -->
++        <td th:text="${#dates.format(income.date,'dd/MM/yyyy')}"></td>
++
++        <!-- Explication -->
++        <td></td>
++
++        <!-- Justification Document -->
++        <td></td>
++
++        <!-- Currency -->
++        <td th:utext="${cost.currency}"></td>
++
++        <!-- Unitary price -->
++        <td></td>
++
++        <!-- Value -->
++        <td th:text="${cost.value}"></td>
++
++        <!-- TVA -->
++        <td></td>
++
++        <!-- TVA -->
++        <td></td>
++
++        <!-- Value TVA -->
++        <td></td>
++
++        <!-- Total TVA -->
++        <td></td>
++
++        <!-- Total Value + TVA -->
+         <td></td>
++
++        <!-- Option -->
++        <td>
++
++            <!-- Delete -->
++            <button class="button_none_btn">
++                <a name="delete" id="delete" th:href="@{'/ssi/costs/delete/' + ${cost.costId}}">
++                    <img class="delete_icon" src="/img/icons/trash.png" th:alt="#{main.delete.label}"
++                         th:title="#{main.delete.label}">
++                </a>
++            </button>
++
++            <!-- Edit -->
++            <button class="button_none_btn">
++                <a name="edit" id="edit" th:href="@{'/ssi/costs/edit/' + ${cost.costId}}">
++                    <img class="edit_icon" src="/img/icons/edit.png" th:alt="#{main.edit.label}"
++                         th:title="#{main.edit.label}">
++                </a>
++            </button>
++        </td>
+     </tr>
++
++    <!-- Add field -->
++    <td>
++        <a class="btn_signup" id="add" th:href="@{'/ssi/costs/add'}">
++            <img class="add_icon" src="/img/icons/add.png" th:alt="#{main.add.label}"
++                 th:title="#{main.add.label}">
++        </a>
++    </td>
++
+ </table>
+ 
+ <!-- Footer for site -->
+ <div class="footer">
+-    <div class="col-md-8 col-sm-6 col-xs-12">
+-        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+-            <span th:utext="#{main.author}"></span>.
+-        </p>
+-    </div>
++    <p>Copyright &copy; 2021 All Rights Reserved by
++        <span th:utext="#{main.author}"></span>.
++    </p>
+ </div>
+ 
+ </body>
+Index: src/main/resources/static/css/main/general.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>html, body {\n    font-family: Verdana, Tahoma, Arial, Sans-Serif, Georgia, Courier;\n    background-image: linear-gradient(-225deg, #f89c1c 0%, #e3fdf5 100%);\n    background-image: linear-gradient(to top, #f89c1c 0%, #a8edea 100%);\n    background-attachment: fixed;\n    background-repeat: no-repeat;\n    margin: 0;\n    width: 100%;\n}\n\nnav {\n    width: 450px;\n    min-height: 10px;\n    height: auto;\n    border-radius: 50px;\n    margin: 2% auto;\n    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);\n    padding: 1%;\n    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 150%);\n    text-align: center;\n}\n\n.logo {\n    display: inline-flex;\n    width: 300px;\n    height: 100px;\n    position: relative;\n    top: 3%;\n    left: 42%;\n}\n\n.logosecondpage {\n    display: inline-flex;\n    position: relative;\n    left: 42%\n}\n\n.logo_size {\n    width: 300px;\n    height: 100px;\n}\n\n.logo:after {\n    background: none repeat scroll 0 0 transparent;\n    bottom: 0;\n    content: \"\";\n    display: block;\n    height: 2px;\n    left: 50%;\n    position: absolute;\n    background: #f89c1c;\n    transition: width 0.3s ease 0s, left 0.3s ease 0s;\n    width: 0;\n}\n\n.logo:hover:after {\n    width: 80%;\n    left: 0;\n}\n\n.logosecondpage:after {\n    background: none repeat scroll 0 0 transparent;\n    bottom: 0;\n    content: \"\";\n    display: block;\n    height: 2px;\n    left: 50%;\n    position: absolute;\n    background: #f89c1c;\n    transition: width 0.3s ease 0s, left 0.3s ease 0s;\n    width: 0;\n}\n\n.logosecondpage:hover:after {\n    width: 80%;\n    left: 0;\n}\n\n.select_languages {\n    position: relative;\n    text-align: center;\n    cursor: pointer;\n}\n\n.lang_ro {\n    width: 40px;\n    height: 20px;\n    border-radius: 10px;\n}\n\n.lang_en {\n    width: 40px;\n    height: 20px;\n    border-radius: 10px;\n}\n\n.btn_signup {\n    background-repeat: no-repeat;\n    background-color: transparent;\n    text-decoration: none;\n    width: 50px;\n    height: 200px;\n    cursor: pointer;\n    color: #0c7578;\n    font-size: 14pt;\n    padding: 10px;\n}\n\n.btn_signup:hover {\n    background-repeat: repeat;\n    background-repeat: no-repeat;\n    background-color: transparent;\n    width: 50px;\n    height: 200px;\n    cursor: pointer;\n    font-size: 14pt;\n    color: #f89c1c;\n    text-decoration: underline;\n    text-decoration-color: #f89c1c;\n}\n\n.user_information {\n    max-width: 250px;\n    max-height: 110px;\n    border-radius: 30px;\n    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);\n    padding: 2%;\n    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);\n    margin: 1% 1%;\n}\n\n.user_information {\n    vertical-align: top;\n    float: right;\n}\n\n.userinfo_icon {\n    width: 25px;\n    height: 25px;\n}\n\n.logout_icon {\n    width: 25px;\n    height: 25px;\n    cursor: pointer;\n}\n\n.footer {\n    position: fixed;\n    left: 0;\n    bottom: 0;\n    width: 100%;\n    background-color: #000000;\n    opacity: 45%;\n    color: #ffffff;\n    text-align: center;\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/static/css/main/general.css b/src/main/resources/static/css/main/general.css
+--- a/src/main/resources/static/css/main/general.css	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/static/css/main/general.css	(date 1611648523423)
+@@ -26,18 +26,7 @@
+     height: 100px;
+     position: relative;
+     top: 3%;
+-    left: 42%;
+-}
+-
+-.logosecondpage {
+-    display: inline-flex;
+-    position: relative;
+-    left: 42%
+-}
+-
+-.logo_size {
+-    width: 300px;
+-    height: 100px;
++    left: 43%;
+ }
+ 
+ .logo:after {
+@@ -58,24 +47,6 @@
+     left: 0;
+ }
+ 
+-.logosecondpage:after {
+-    background: none repeat scroll 0 0 transparent;
+-    bottom: 0;
+-    content: "";
+-    display: block;
+-    height: 2px;
+-    left: 50%;
+-    position: absolute;
+-    background: #f89c1c;
+-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
+-    width: 0;
+-}
+-
+-.logosecondpage:hover:after {
+-    width: 80%;
+-    left: 0;
+-}
+-
+ .select_languages {
+     position: relative;
+     text-align: center;
+@@ -119,6 +90,11 @@
+     text-decoration-color: #f89c1c;
+ }
+ 
++.button_none_btn {
++    background: none;
++    border: none;
++}
++
+ .user_information {
+     max-width: 250px;
+     max-height: 110px;
+Index: .idea/misc.xml
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><?xml version=\"1.0\" encoding=\"UTF-8\"?>\n<project version=\"4\">\n  <component name=\"MavenProjectsManager\">\n    <option name=\"originalFiles\">\n      <list>\n        <option value=\"$PROJECT_DIR$/pom.xml\" />\n      </list>\n    </option>\n  </component>\n  <component name=\"ProjectRootManager\" version=\"2\" languageLevel=\"JDK_14\" project-jdk-name=\"14\" project-jdk-type=\"JavaSDK\" />\n</project>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/.idea/misc.xml b/.idea/misc.xml
+--- a/.idea/misc.xml	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/.idea/misc.xml	(date 1611577862079)
+@@ -7,5 +7,5 @@
+       </list>
+     </option>
+   </component>
+-  <component name="ProjectRootManager" version="2" languageLevel="JDK_14" project-jdk-name="14" project-jdk-type="JavaSDK" />
++  <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+ </project>
+\ No newline at end of file
+Index: src/main/resources/templates/secondary_pages/edit_costs.html
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+><!DOCTYPE html>\n<html lang=\"en\" xmlns:th=\"http://www.thymeleaf.org\"\n      xmlns:sec=\"http://www.thymeleaf.org/thymeleaf-extras-springsecurity5\" xmlns:form=\"http://www.w3.org/1999/html\">\n<head>\n    <meta charset=\"UTF-8\">\n    <title>SSI::Edit Costs</title>\n    <link rel=\"shortcut icon\" th:href=\"@{/img/icons/faviconcircle.ico}\"/>\n    <link rel=\"stylesheet\" href=\"/css/main/general.css\">\n    <link rel=\"stylesheet\" href=\"/css/secondary/edit_costs.css\">\n</head>\n\n<body>\n\n<!-- User Menu -->\n<form method=\"post\" action=\"/logout\">\n    <div class=\"user_information\">\n\n        <div>\n            <!-- Message Hello -->\n            <span th:text=\"#{ssi.homepage.user.hello.label}\"></span>\n\n            <!-- Display username -->\n            <span sec:authentication=\"name\"></span>\n        </div>\n\n        <hr>\n\n        <!--  Icons for information and logout -->\n        <div style=\"display: block ruby\">\n\n            <!-- Information about user -->\n            <button class=\"button_none_btn\" type=\"submit\">\n                <a th:href=\"@{'/ssi/user/info'}\">\n                    <img class=\"userinfo_icon\" src=\"/img/icons/userinfo.png\" th:alt=\"#{main.userinfo.label}\"\n                         th:title=\"#{main.userinfo.label}\">\n                </a>\n            </button>\n\n            <!-- Logout -->\n            <form method=\"post\" action=\"/logout\">\n                <button class=\"button_none_btn\" type=\"submit\">\n                    <a>\n                        <img class=\"logout_icon\" src=\"/img/icons/logout.png\" th:alt=\"#{main.logout.label}\"\n                             th:title=\"#{main.logout.label}\"> </a>\n                </button>\n            </form>\n        </div>\n\n        <hr>\n\n        <!-- Language select -->\n        <div class=\"select_languages\">\n\n            <div class=\"btn_ro\">\n                <a th:href=\"@{/ssi/edit_costs?language=ro}\"><img class=\"lang_ro\" src=\"/img/languages/ro.png\"\n                                                                 th:title=\"#{lang.ro}\" th:alt=\"#{lang.ro}\"></a>\n            </div>\n\n            <div class=\"btn_en\">\n                <a th:href=\"@{/ssi/edit_costs?language=en}\"><img class=\"lang_en\" src=\"/img/languages/en.png\"\n                                                                 th:title=\"#{lang.en}\" th:alt=\"#{lang.en}\"></a>\n            </div>\n        </div>\n    </div>\n\n</form>\n\n<!-- Logo on page -->\n<a class=\"logosecondpage\" th:href=\"@{'/ssi/home'}\">\n    <img class=\"logo_size\" src=\"/img/logo/ssi.png\" th:alt=\"#{ssi}\">\n</a>\n\n<!-- Form for editing costs -->\n<form method=\"post\" action=\"/ssi/costs/save\" th:object=\"${cost}\">\n    <div class=\"costs_edit\">\n\n        <!-- Edit costs -->\n        <h1 th:text=\"#{ssi.costs.form.title.label}\"></h1>\n        <hr>\n\n        <!-- Cost Id -->\n        <input type=\"hidden\" name=\"userId\" th:field=\"*{costId}\">\n\n        <!-- Value -->\n        <label for=\"value\" th:text=\"#{ssi.costs.form.value.label}\"></label>\n        <input type=\"text\" name=\"name\" id=\"value\" placeholder=\"Value\" th:field=\"*{value}\">\n        <br>\n\n        <!-- Data -->\n        <label for=\"date\" th:text=\"#{ssi.costs.form.date.label}\"></label>\n        <input class=\"calendar_date\" type=\"text\" name=\"date\" id=\"date\" placeholder=\"DD/MM/YYYY\" th:field=\"*{date}\">\n        <br>\n\n\n        <!-- Currency -->\n        <label for=\"currency\" th:utext=\"#{ssi.costs.form.currency.label}\"></label>\n        <select class=\"select_currency\" id=\"currency\" th:field=\"*{currency}\">\n            <option th:text=\"#{ssi.costs.option.currency.euro.label}\" value=\"Euro\"></option>\n            <option th:text=\"#{ssi.costs.option.currency.leu.label}\" value=\"Lei\"></option>\n        </select>\n        <br>\n\n        <hr>\n\n        <div class=\"bt_sub\">\n            <button type=\"reset\" th:text=\"#{ssi.costs.btn.reset.label}\"></button>\n            <button type=\"submit\" th:text=\"#{ssi.costs.btn.submit.label}\"></button>\n        </div>\n\n    </div>\n</form>\n\n<!-- Footer for site -->\n<div class=\"footer\">\n    <div class=\"col-md-8 col-sm-6 col-xs-12\">\n        <p class=\"copyright-text\">Copyright &copy; 2021 All Rights Reserved by\n            <span th:utext=\"#{main.author}\"></span>.\n        </p>\n    </div>\n</div>\n\n</body>\n</html>
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/templates/secondary_pages/edit_costs.html b/src/main/resources/templates/secondary_pages/edit_costs.html
+--- a/src/main/resources/templates/secondary_pages/edit_costs.html	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/templates/secondary_pages/edit_costs.html	(date 1611650227449)
+@@ -7,67 +7,64 @@
+     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
+     <link rel="stylesheet" href="/css/main/general.css">
+     <link rel="stylesheet" href="/css/secondary/edit_costs.css">
++    <link rel="stylesheet" href="/css/secondary/table.css">
+ </head>
+ 
+ <body>
+ 
+-<!-- User Menu -->
+-<form method="post" action="/logout">
+-    <div class="user_information">
++<!-- User Information Form -->
++<div class="user_information">
+ 
+-        <div>
+-            <!-- Message Hello -->
+-            <span th:text="#{ssi.homepage.user.hello.label}"></span>
++    <div>
++        <!-- Message Hello -->
++        <span th:text="#{ssi.homepage.user.hello.label}"></span>
+ 
+-            <!-- Display username -->
+-            <span sec:authentication="name"></span>
+-        </div>
+-
+-        <hr>
++        <!-- Display username -->
++        <span sec:authentication="name"></span>
++    </div>
++    <hr>
+ 
+-        <!--  Icons for information and logout -->
+-        <div style="display: block ruby">
++    <!--  Icons for information and logout -->
++    <div style="display: block ruby">
+ 
+-            <!-- Information about user -->
+-            <button class="button_none_btn" type="submit">
+-                <a th:href="@{'/ssi/user/info'}">
+-                    <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.userinfo.label}"
+-                         th:title="#{main.userinfo.label}">
+-                </a>
+-            </button>
++        <!-- Information about user -->
++        <button class="button_none_btn" type="submit">
++            <a th:href="@{'/ssi/user/info'}">
++                <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.userinfo.label}"
++                     th:title="#{main.userinfo.label}">
++            </a>
++        </button>
+ 
+-            <!-- Logout -->
+-            <form method="post" action="/logout">
+-                <button class="button_none_btn" type="submit">
+-                    <a>
+-                        <img class="logout_icon" src="/img/icons/logout.png" th:alt="#{main.logout.label}"
+-                             th:title="#{main.logout.label}"> </a>
+-                </button>
+-            </form>
+-        </div>
++        <!-- Logout -->
++        <form method="post" action="/logout">
++            <button class="button_none_btn" type="submit">
++                <a>
++                    <img class="logout_icon" src="/img/icons/logout.png" th:alt="#{main.logout.label}"
++                         th:title="#{main.logout.label}"> </a>
++            </button>
++        </form>
++    </div>
+ 
+-        <hr>
++    <hr>
+ 
+-        <!-- Language select -->
+-        <div class="select_languages">
++    <!-- Language select -->
++    <div class="select_languages">
+ 
+-            <div class="btn_ro">
+-                <a th:href="@{/ssi/edit_costs?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+-                                                                 th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+-            </div>
++        <div class="btn_ro">
++            <a th:href="@{/ssi/costs/edit?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
++                                                             th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
++        </div>
+ 
+-            <div class="btn_en">
+-                <a th:href="@{/ssi/edit_costs?language=en}"><img class="lang_en" src="/img/languages/en.png"
+-                                                                 th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+-            </div>
+-        </div>
+-    </div>
++        <div class="btn_en">
++            <a th:href="@{/ssi/costs/edit?language=en}"><img class="lang_en" src="/img/languages/en.png"
++                                                             th:title="#{lang.en}" th:alt="#{lang.en}"></a>
++        </div>
++    </div>
++</div>
+ 
+-</form>
+-
+ <!-- Logo on page -->
+-<a class="logosecondpage" th:href="@{'/ssi/home'}">
+-    <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
++<a class="logo" th:href="@{'/ssi/home'}">
++    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
+ </a>
+ 
+ <!-- Form for editing costs -->
+@@ -78,33 +75,62 @@
+         <h1 th:text="#{ssi.costs.form.title.label}"></h1>
+         <hr>
+ 
+-        <!-- Cost Id -->
+-        <input type="hidden" name="userId" th:field="*{costId}">
++        <div class="table_position">
++
++            <!-- Cost Id -->
++            <input type="hidden" name="userId" th:field="*{costId}">
+ 
+-        <!-- Value -->
+-        <label for="value" th:text="#{ssi.costs.form.value.label}"></label>
+-        <input type="text" name="name" id="value" placeholder="Value" th:field="*{value}">
+-        <br>
+-
+-        <!-- Data -->
+-        <label for="date" th:text="#{ssi.costs.form.date.label}"></label>
+-        <input class="calendar_date" type="text" name="date" id="date" placeholder="DD/MM/YYYY" th:field="*{date}">
+-        <br>
++            <!-- Data -->
++            <label for="date" th:text="#{ssi.costs.form.date.label}"></label>
++            <input class="calendar_date" type="text" name="date" id="date" placeholder="DD/MM/YYYY" th:field="*{date}">
+ 
++            <!-- Explication -->
++            <label for="explication" th:text="#{ssi.table.explication}"></label>
++            <input type="text" name="explication" id="explication" placeholder="Explication" th:field="*{value}">
++
++            <!-- Justification Document -->
++            <label for="justification" th:text="#{ssi.table.document.justification}"></label>
++            <input type="text" name="justrification" id="justification" placeholder="Justification document"
++                   th:field="*{value}">
+ 
+-        <!-- Currency -->
+-        <label for="currency" th:utext="#{ssi.costs.form.currency.label}"></label>
+-        <select class="select_currency" id="currency" th:field="*{currency}">
+-            <option th:text="#{ssi.costs.option.currency.euro.label}" value="Euro"></option>
+-            <option th:text="#{ssi.costs.option.currency.leu.label}" value="Lei"></option>
+-        </select>
+-        <br>
+-
+-        <hr>
++            <!-- Currency -->
++            <label for="currency" th:utext="#{ssi.costs.form.currency.label}"></label>
++            <select class="select_currency" id="currency" th:field="*{currency}">
++                <option th:text="#{ssi.costs.option.currency.euro.label}" value="Euro"></option>
++                <option th:text="#{ssi.costs.option.currency.leu.label}" value="Lei"></option>
++            </select>
++
++            <!-- Unitary price -->
++            <label for="unitary" th:text="#{ssi.table.unitary.price}"></label>
++            <input type="text" name="unitary" id="unitary" placeholder="Unitary price" th:field="*{value}">
++
++            <!-- Value -->
++            <label for="value" th:text="#{ssi.costs.form.value.label}"></label>
++            <input type="text" name="name" id="value" placeholder="Value" th:field="*{value}">
++
++            <!-- TVA -->
++            <label for="tva" th:text="#{ssi.table.tva}"></label>
++            <input type="text" name="tva" id="tva" placeholder="TVA" th:field="*{value}">
++
++            <!-- Value TVA -->
++            <label for="value_tva" th:text="#{ssi.table.tva.value}"></label>
++            <input type="text" name="value_tva" id="value_tva" placeholder="Value TVA" th:field="*{value}">
++
++            <!-- Total TVA -->
++            <label for="total_tva" th:text="#{ssi.table.total.value}"></label>
++            <input type="text" name="total_tva" id="total_tva" placeholder="Total TVA" th:field="*{value}">
++
++            <!-- Total Value + TVA -->
++            <label for="total_plus_tva" th:text="#{ssi.table.total.value.tva}"></label>
++            <input type="text" name="total_plus_tva" id="total_plus_tva" placeholder="Total plus TVA"
++                   th:field="*{value}">
++            <br>
++            <hr>
++        </div>
+ 
+         <div class="bt_sub">
+-            <button type="reset" th:text="#{ssi.costs.btn.reset.label}"></button>
+-            <button type="submit" th:text="#{ssi.costs.btn.submit.label}"></button>
++            <button class="btn_ed_cost" type="reset" th:text="#{ssi.costs.btn.reset.label}"></button>
++            <button class="btn_ed_cost" type="submit" th:text="#{ssi.costs.btn.submit.label}"></button>
+         </div>
+ 
+     </div>
+@@ -112,11 +138,9 @@
+ 
+ <!-- Footer for site -->
+ <div class="footer">
+-    <div class="col-md-8 col-sm-6 col-xs-12">
+-        <p class="copyright-text">Copyright &copy; 2021 All Rights Reserved by
+-            <span th:utext="#{main.author}"></span>.
+-        </p>
+-    </div>
++    <p>Copyright &copy; 2021 All Rights Reserved by
++        <span th:utext="#{main.author}"></span>.
++    </p>
+ </div>
+ 
+ </body>
+Index: src/main/resources/static/css/secondary/edit_costs.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>h1 {\n    color: gray;\n    text-align: center;\n}\n\nlabel {\n    text-align: center;\n    padding: 0px 10px 0px 43%;\n}\n\ninput[type = \"text\"], .calendar_date {\n    background: none;\n    display: block;\n    margin: 20px auto;\n    text-align: center;\n    font-size: 16pt;\n    border: 2px solid #0c7578;\n    padding: 14px 10px;\n    width: 200px;\n    outline: none;\n    color: gray;\n    border-radius: 24px;\n    transition: 0.25s;\n}\n\ninput[type = \"text\"]:focus .calendar_date:focus {\n    width: 280px;\n    border-color: #f89c1c;\n}\n\nbutton {\n    background: #0c7578;\n    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);\n    -webkit-border-radius: 28px;\n    -moz-border-radius: 28px;\n    border-radius: 28px;\n    font-family: Courier New;\n    color: #ffffff;\n    font-size: 20px;\n    padding: 10px 20px 10px 20px;\n    text-decoration: none;\n    text-align: center;\n}\n\nbutton:hover {\n    background: #09ecf0;\n    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);\n    text-decoration: none;\n    cursor: pointer;\n}\n\n.select_currency {\n    background: none;\n    display: block;\n    margin: 20px auto;\n    text-align: center;\n    font-size: 16pt;\n    border: 2px solid #0c7578;\n    padding: 14px 10px;\n    width: 200px;\n    outline: none;\n    color: gray;\n    border-radius: 24px;\n    transition: 0.25s;\n}\n\n.select_currency:focus {\n    width: 280px;\n    border-color: #f89c1c;\n}\n\n.costs_edit {\n    width: 450px;\n    min-height: 370px;\n    height: auto;\n    border-radius: 50px;\n    margin: 2% auto;\n    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);\n    padding: 2%;\n    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);\n}\n\n\n.bt_sub {\n    margin: auto;\n    text-align: center\n}\n\n.btn_edit {\n    background: #0c7578;\n    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);\n    -webkit-border-radius: 28px;\n    -moz-border-radius: 28px;\n    border-radius: 28px;\n    font-family: Courier New;\n    color: #ffffff;\n    font-size: 20px;\n    padding: 10px 20px 10px 20px;\n    text-decoration: none;\n    text-align: center;\n}\n\n.btn_edit:hover {\n    background: #09ecf0;\n    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);\n    text-decoration: none;\n    cursor: pointer;\n}\n\n.btn_logout {\n    background: #0c7578;\n    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);\n    -webkit-border-radius: 28px;\n    -moz-border-radius: 28px;\n    border-radius: 28px;\n    font-family: Courier New;\n    color: #ffffff;\n    font-size: 20px;\n    padding: 10px 20px 10px 20px;\n    text-decoration: none;\n    text-align: center;\n}\n\n.btn_logout:hover {\n    background: #09ecf0;\n    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);\n    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);\n    text-decoration: none;\n    cursor: pointer;\n}\n\n.user_info {\n    width: 450px;\n    min-height: 370px;\n    height: auto;\n    border-radius: 50px;\n    margin: 2% auto;\n    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);\n    padding: 2%;\n    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);\n}\n\n.user_information {\n    max-width: 250px;\n    max-height: 130px;\n    border-radius: 30px;\n    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);\n    padding: 2%;\n    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);\n    margin: 1% 1%;\n    vertical-align: top;\n    float: right;\n}\n\n#add {\n    text-align: center;\n}\n\n.userinfo_icon {\n    width: 25px;\n    height: 25px;\n}\n\n.button_none_btn {\n    background: none;\n    border: none;\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/static/css/secondary/edit_costs.css b/src/main/resources/static/css/secondary/edit_costs.css
+--- a/src/main/resources/static/css/secondary/edit_costs.css	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/static/css/secondary/edit_costs.css	(date 1611580624979)
+@@ -3,11 +3,6 @@
+     text-align: center;
+ }
+ 
+-label {
+-    text-align: center;
+-    padding: 0px 10px 0px 43%;
+-}
+-
+ input[type = "text"], .calendar_date {
+     background: none;
+     display: block;
+@@ -28,7 +23,7 @@
+     border-color: #f89c1c;
+ }
+ 
+-button {
++.btn_ed_cost {
+     background: #0c7578;
+     background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+     background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+@@ -46,7 +41,7 @@
+     text-align: center;
+ }
+ 
+-button:hover {
++.btn_ed_cost:hover {
+     background: #09ecf0;
+     background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+     background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+@@ -88,97 +83,11 @@
+     background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+ }
+ 
+-
+ .bt_sub {
+     margin: auto;
+     text-align: center
+ }
+ 
+-.btn_edit {
+-    background: #0c7578;
+-    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
+-    -webkit-border-radius: 28px;
+-    -moz-border-radius: 28px;
+-    border-radius: 28px;
+-    font-family: Courier New;
+-    color: #ffffff;
+-    font-size: 20px;
+-    padding: 10px 20px 10px 20px;
+-    text-decoration: none;
+-    text-align: center;
+-}
+-
+-.btn_edit:hover {
+-    background: #09ecf0;
+-    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
+-    text-decoration: none;
+-    cursor: pointer;
+-}
+-
+-.btn_logout {
+-    background: #0c7578;
+-    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
+-    -webkit-border-radius: 28px;
+-    -moz-border-radius: 28px;
+-    border-radius: 28px;
+-    font-family: Courier New;
+-    color: #ffffff;
+-    font-size: 20px;
+-    padding: 10px 20px 10px 20px;
+-    text-decoration: none;
+-    text-align: center;
+-}
+-
+-.btn_logout:hover {
+-    background: #09ecf0;
+-    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
+-    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
+-    text-decoration: none;
+-    cursor: pointer;
+-}
+-
+-.user_info {
+-    width: 450px;
+-    min-height: 370px;
+-    height: auto;
+-    border-radius: 50px;
+-    margin: 2% auto;
+-    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+-    padding: 2%;
+-    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+-}
+-
+-.user_information {
+-    max-width: 250px;
+-    max-height: 130px;
+-    border-radius: 30px;
+-    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+-    padding: 2%;
+-    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+-    margin: 1% 1%;
+-    vertical-align: top;
+-    float: right;
+-}
+-
+-#add {
+-    text-align: center;
+-}
+-
+ .userinfo_icon {
+     width: 25px;
+     height: 25px;
+Index: src/main/resources/static/css/secondary/income.css
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>.user_information {\n    position: relative;\n    vertical-align: top;\n    float: right;\n    max-width: 250px;\n    max-height: 130px;\n    border-radius: 30px;\n    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);\n    padding: 2%;\n    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);\n    margin: 1% 1%;\n}\n\n.userinfo_icon {\n    width: 25px;\n    height: 25px;\n}\n\n.button_none_btn {\n    background: none;\n    border: none;\n}\n\n.icon_size {\n    width: 20px;\n    height: 20px;\n    margin: -3px 3px;\n    cursor: pointer;\n}
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/static/css/secondary/income.css b/src/main/resources/static/css/secondary/income.css
+--- a/src/main/resources/static/css/secondary/income.css	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/static/css/secondary/income.css	(date 1611567599130)
+@@ -26,4 +26,9 @@
+     height: 20px;
+     margin: -3px 3px;
+     cursor: pointer;
++}
++
++.add_icon {
++    width: 20px;
++    height: 20px;
+ }
+\ No newline at end of file
+Index: src/main/resources/languages/language_en.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Main\nmain.author=Popa C&#259t&#259lin\nmain.delete.label=Delete\nmain.edit.label=Edit\nmain.add.label=Add\nmain.userinfo.label=Informations\nmain.logout.label=Logout\ncreate.new.account.label=Create \naccout.label=New Account\nsignup.titlepage.label=SSI::SignUp\nlogin.title.label=SSI::Login\nssi=SSI Image.\nlang.ro=Romanian\nlang.en=English\nnav.a.home.label=Home\nnav.a.signUp.label=Sign Up\nnav.a.login.label=Login\n#Sign Up\nsignUp.title.label=Sign Up\nsignUp.paragraph.label=Please fill in this form to create an account.\nsignUp.email.label=Email\nsignUp.username.label=Username\nsignUp.password.label=Password\nsignUp.cancel.label=Cancel\nsignUp.submit.label=Sign Up\n#Login\nlogin.username.label=Username\nlogin.password.label=Password\nlogin.cancel.label=Cancel\nlogin.submit.label=Login\nlogin.remember.label=Remember me\nlogin.username_place_holder.lable=Enter Username\nlogin.password_place_holder.lable=Enter Password\n# Home page after login\nssi.homepage.user.hello.label=Hello,\nssi.homepage.label=SSI::Homepage\nssi.homepage.logout.label=Logout\nssi.homepage.nav.label=Home\nssi.homepage.info.label=Info\n# Income page\nssi.income.title.label=SSI::Income\nssi.income.nav.label=Income\n# Costs page\nssi.costs.title.label=SSI::Costs\nssi.costs.table.select.lable=Select\nssi.costs.table.option.label=Option\nssi.costs.table.delete.label=Delete\nssi.costs.table.edit.label=Edit\nssi.costs.nav.label=Costs\nssi.costs.table.id.label=Id\nssi.costs.table.value.label=Value\nssi.costs.table.data.label=Date\nssi.costs.table.currency.label=Currency\nssi.costs.table.add.lable=Add\nssi.costs.form.value.label=Value\nssi.costs.form.date.label=Date\nssi.costs.form.currency.label=Currency\nssi.costs.form.title.label=Edit costs\nssi.costs.option.currency.label=Currency\nssi.costs.option.currency.euro.label=Euro\nssi.costs.option.currency.leu.label=Lei\nssi.costs.btn.reset.label=Cancel\nssi.costs.btn.submit.label=Edit\n# Error page 403\nerror.go.label=Go to\nerror.home.label=Home\nerror.message.label=You are not allowed to enter here!\n# Error page 404\nerror.no.page=There's no page here!\nerror.sorry.go.back=We're sorry, the page you are looking for does not exist! Go back to\nerror.home.page=home page\n# Error page 500\nerror.sorry.it.me=Sorry,it's me, not you.\nerror.try.again=Try again!\n# User info page\nuser_info.title.label=SSi::User information\nuser_info.form.title.label=User information\nuser_info.name.label=Name:\nuser_info.last_name.label=Last Name:\nuser_info.email.label=Email:\nuser_info.phone_number.label=Phone Number:\nuser_info.country.label=Country:\nuser_info.edit.bt.label=Edit\nuser_info.country.romania.label=Romania\nuser_info.country.international.label=Other country
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/languages/language_en.properties b/src/main/resources/languages/language_en.properties
+--- a/src/main/resources/languages/language_en.properties	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/languages/language_en.properties	(date 1611567890408)
+@@ -12,8 +12,6 @@
+ ssi=SSI Image.
+ lang.ro=Romanian
+ lang.en=English
+-nav.a.home.label=Home
+-nav.a.signUp.label=Sign Up
+ nav.a.login.label=Login
+ #Sign Up
+ signUp.title.label=Sign Up
+@@ -34,29 +32,30 @@
+ # Home page after login
+ ssi.homepage.user.hello.label=Hello,
+ ssi.homepage.label=SSI::Homepage
+-ssi.homepage.logout.label=Logout
+ ssi.homepage.nav.label=Home
+-ssi.homepage.info.label=Info
++# Head of table
++ssi.table.nr.crt=Nr.Crt
++ssi.table.date=Date
++ssi.table.explication=Explication
++ssi.table.document.justification=Justification Document
++ssi.table.currency=Currency
++ssi.table.unitary.price=Unitary price
++ssi.table.value=Value
++ssi.table.tva=TVA
++ssi.table.tva.value=TVA Value
++ssi.table.total.value=Total Value
++ssi.table.total.value.tva=Total Value + TVA
++ssi.table.option=Options
+ # Income page
+ ssi.income.title.label=SSI::Income
+ ssi.income.nav.label=Income
+ # Costs page
+ ssi.costs.title.label=SSI::Costs
+-ssi.costs.table.select.lable=Select
+-ssi.costs.table.option.label=Option
+-ssi.costs.table.delete.label=Delete
+-ssi.costs.table.edit.label=Edit
+ ssi.costs.nav.label=Costs
+-ssi.costs.table.id.label=Id
+-ssi.costs.table.value.label=Value
+-ssi.costs.table.data.label=Date
+-ssi.costs.table.currency.label=Currency
+-ssi.costs.table.add.lable=Add
+ ssi.costs.form.value.label=Value
+ ssi.costs.form.date.label=Date
+ ssi.costs.form.currency.label=Currency
+ ssi.costs.form.title.label=Edit costs
+-ssi.costs.option.currency.label=Currency
+ ssi.costs.option.currency.euro.label=Euro
+ ssi.costs.option.currency.leu.label=Lei
+ ssi.costs.btn.reset.label=Cancel
+Index: src/main/resources/languages/language_ro.properties
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>#Main\nmain.author=Popa C&#259t&#259lin\nmain.delete.label=Sterge\nmain.edit.label=Editare\nmain.add.label=Adaugare\nmain.userinfo.label=Informatii\nmain.logout.label=Deconectare\ncreate.new.account.label=Creati \naccout.label=Cont Nou\nsignup.titlepage.label=SSI::Inregistrare\nlogin.title.label=SSI::Logare\nssi=Imagine SSI.\nlang.ro=Romana\nlang.en=Engleza\nnav.a.home.label=Acas&#259\nnav.a.signUp.label=Inregistrare\nnav.a.login.label=Logare\n# Sign Up\nsignUp.title.label=Inregistrare\nsignUp.paragraph.label=Completa&#539i acest formular pentru a v&#259 crea un cont.\nsignUp.email.label=Email\nsignUp.username.label=Utilizator\nsignUp.password.label=Parola\nsignUp.cancel.label=Anularea\nsignUp.submit.label=Inregistrare\n# Login\nlogin.username.label=Utilizator\nlogin.password.label=Parola\nlogin.cancel.label=Anulare\nlogin.submit.label=Logare\nlogin.remember.label=Memoreaza\nlogin.username_place_holder.lable=Nume utilizator\nlogin.password_place_holder.lable=Parola\n# Home page after login\nssi.homepage.user.hello.label=Salut,\nssi.homepage.label=SSI::Pagina principala\nssi.homepage.logout.label=Deconectare\nssi.homepage.nav.label=Acas&#259\nssi.homepage.info.label=Info\n# Income page\nssi.income.title.label=SSI::Venituri\nssi.income.nav.label=Venituri\n# Costs page\nssi.costs.title.label=SSI::Cheltuieli\nssi.costs.table.select.lable=Select\nssi.costs.table.option.label=Optiune\nssi.costs.table.delete.label=Stergeti\nssi.costs.table.edit.label=Editati\nssi.costs.nav.label=Cheltuieli\nssi.costs.table.id.label=Id\nssi.costs.table.value.label=Valoare\nssi.costs.table.data.label=Data\nssi.costs.table.currency.label=Valut&#259\nssi.costs.table.add.lable=Adaugare \nssi.costs.form.value.label=Valoare\nssi.costs.form.date.label=Data\nssi.costs.form.currency.label=Valut&#259\nssi.costs.form.title.label=Editeaza costurile \nssi.costs.option.currency.label=Moneda\nssi.costs.option.currency.euro.label=Euro\nssi.costs.option.currency.leu.label=Lei\nssi.costs.btn.reset.label=Anulare\nssi.costs.btn.submit.label=Editare\n# Error page 403\nerror.go.label=Mergi la\nerror.home.label=Acas&#1233\nerror.message.label=Nu ai voie s&#1233 intri aici!\n# Error page 404\nerror.no.page=Nu exist&#1233 nicio pagin&#1233 aici!\nerror.sorry.go.back=Ne pare r&#1233u, pagina pe care o c&#1233uta&#539i nu exist&#1233! Intoarce-te la\nerror.home.page=pagina princil&#1233\n# Error page 500\nerror.sorry.it.me=Imi pare rau,sunt eu, nu tu.\nerror.try.again=Incearca din nou!\n# User info page\nuser_info.title.label=SSi::Informatii utilizator \nuser_info.form.title.label=Informatii utilizator \nuser_info.name.label=Nume:\nuser_info.last_name.label=Prenume:\nuser_info.email.label=Email:\nuser_info.phone_number.label=Telefon:\nuser_info.country.label=&#538ara:\nuser_info.edit.bt.label=Editare\nuser_info.country.romania.label=Rom&#226nia\nuser_info.country.international.label=Alt&#259 &#539ar&#259
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/resources/languages/language_ro.properties b/src/main/resources/languages/language_ro.properties
+--- a/src/main/resources/languages/language_ro.properties	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/resources/languages/language_ro.properties	(date 1611566035358)
+@@ -12,8 +12,6 @@
+ ssi=Imagine SSI.
+ lang.ro=Romana
+ lang.en=Engleza
+-nav.a.home.label=Acas&#259
+-nav.a.signUp.label=Inregistrare
+ nav.a.login.label=Logare
+ # Sign Up
+ signUp.title.label=Inregistrare
+@@ -34,29 +32,30 @@
+ # Home page after login
+ ssi.homepage.user.hello.label=Salut,
+ ssi.homepage.label=SSI::Pagina principala
+-ssi.homepage.logout.label=Deconectare
+ ssi.homepage.nav.label=Acas&#259
+-ssi.homepage.info.label=Info
++# Head of table
++ssi.table.nr.crt=Nr.Crt
++ssi.table.date=Data
++ssi.table.explication=Explicatie
++ssi.table.document.justification=Ducument justificativ
++ssi.table.currency=Moneda
++ssi.table.unitary.price=Pret unitar
++ssi.table.value=Valoare
++ssi.table.tva=TVA
++ssi.table.tva.value=Valoare TVA
++ssi.table.total.value=Valoare Totala
++ssi.table.total.value.tva=Valoare Totola + TVA
++ssi.table.option=Optiuni
+ # Income page
+ ssi.income.title.label=SSI::Venituri
+ ssi.income.nav.label=Venituri
+ # Costs page
+ ssi.costs.title.label=SSI::Cheltuieli
+-ssi.costs.table.select.lable=Select
+-ssi.costs.table.option.label=Optiune
+-ssi.costs.table.delete.label=Stergeti
+-ssi.costs.table.edit.label=Editati
+ ssi.costs.nav.label=Cheltuieli
+-ssi.costs.table.id.label=Id
+-ssi.costs.table.value.label=Valoare
+-ssi.costs.table.data.label=Data
+-ssi.costs.table.currency.label=Valut&#259
+-ssi.costs.table.add.lable=Adaugare 
+ ssi.costs.form.value.label=Valoare
+ ssi.costs.form.date.label=Data
+ ssi.costs.form.currency.label=Valut&#259
+ ssi.costs.form.title.label=Editeaza costurile 
+-ssi.costs.option.currency.label=Moneda
+ ssi.costs.option.currency.euro.label=Euro
+ ssi.costs.option.currency.leu.label=Lei
+ ssi.costs.btn.reset.label=Anulare
+Index: src/main/java/ssi/webapplication/entities/CostsEntity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ssi.webapplication.entities;\n\nimport org.springframework.format.annotation.DateTimeFormat;\n\nimport javax.persistence.*;\nimport java.util.Date;\n\n@Entity\n@Table(name = \"costs\")\npublic class CostsEntity {\n\n    @Id\n    @GeneratedValue(strategy = GenerationType.IDENTITY)\n    private Integer costId;\n    @Column(length = 20)\n    private Double value;\n\n    @Column(length = 10)\n    private String currency;\n\n    @DateTimeFormat(pattern = \"DD/MM/YYYY\")\n    private Date date;\n\n    public Integer getCostId() {\n        return costId;\n    }\n\n    public void setCostId(Integer costId) {\n        this.costId = costId;\n    }\n\n    public Double getValue() {\n        return value;\n    }\n\n    public void setValue(Double value) {\n        this.value = value;\n    }\n\n    public String getCurrency() {\n        return currency;\n    }\n\n    public void setCurrency(String currency) {\n        this.currency = currency;\n    }\n\n    public Date getDate() {\n        return date;\n    }\n\n    public void setDate(Date date) {\n        this.date = date;\n    }\n\n    @Override\n    public String toString() {\n        return \"CostsEntity{\" +\n                \"costId=\" + costId +\n                \", value=\" + value +\n                \", currency='\" + currency + '\\'' +\n                \", date=\" + date +\n                '}';\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ssi/webapplication/entities/CostsEntity.java b/src/main/java/ssi/webapplication/entities/CostsEntity.java
+--- a/src/main/java/ssi/webapplication/entities/CostsEntity.java	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/java/ssi/webapplication/entities/CostsEntity.java	(date 1611565692957)
+@@ -12,15 +12,28 @@
+     @Id
+     @GeneratedValue(strategy = GenerationType.IDENTITY)
+     private Integer costId;
+-    @Column(length = 20)
+-    private Double value;
+-
+-    @Column(length = 10)
+-    private String currency;
+ 
+     @DateTimeFormat(pattern = "DD/MM/YYYY")
+     private Date date;
+ 
++    private String explication;
++
++    private String justificationDocument;
++
++    @Column(length = 10)
++    private String currency;
++
++    private Double unitaryPrice;
++
++    @Column(length = 20)
++    private Double value;
++
++    private Double tva;
++
++    private Double tvaValeu;
++
++    private Double totalValeuPlusTva;
++
+     public Integer getCostId() {
+         return costId;
+     }
+@@ -29,22 +42,6 @@
+         this.costId = costId;
+     }
+ 
+-    public Double getValue() {
+-        return value;
+-    }
+-
+-    public void setValue(Double value) {
+-        this.value = value;
+-    }
+-
+-    public String getCurrency() {
+-        return currency;
+-    }
+-
+-    public void setCurrency(String currency) {
+-        this.currency = currency;
+-    }
+-
+     public Date getDate() {
+         return date;
+     }
+@@ -53,13 +50,67 @@
+         this.date = date;
+     }
+ 
+-    @Override
+-    public String toString() {
+-        return "CostsEntity{" +
+-                "costId=" + costId +
+-                ", value=" + value +
+-                ", currency='" + currency + '\'' +
+-                ", date=" + date +
+-                '}';
++    public String getExplication() {
++        return explication;
++    }
++
++    public void setExplication(String explication) {
++        this.explication = explication;
++    }
++
++    public String getJustificationDocument() {
++        return justificationDocument;
++    }
++
++    public void setJustificationDocument(String justificationDocument) {
++        this.justificationDocument = justificationDocument;
++    }
++
++    public String getCurrency() {
++        return currency;
++    }
++
++    public void setCurrency(String currency) {
++        this.currency = currency;
++    }
++
++    public Double getUnitaryPrice() {
++        return unitaryPrice;
++    }
++
++    public void setUnitaryPrice(Double unitaryPrice) {
++        this.unitaryPrice = unitaryPrice;
++    }
++
++    public Double getValue() {
++        return value;
++    }
++
++    public void setValue(Double value) {
++        this.value = value;
++    }
++
++    public Double getTva() {
++        return tva;
++    }
++
++    public void setTva(Double tva) {
++        this.tva = tva;
++    }
++
++    public Double getTvaValeu() {
++        return tvaValeu;
++    }
++
++    public void setTvaValeu(Double tvaValeu) {
++        this.tvaValeu = tvaValeu;
++    }
++
++    public Double getTotalValeuPlusTva() {
++        return totalValeuPlusTva;
++    }
++
++    public void setTotalValeuPlusTva(Double totalValeuPlusTva) {
++        this.totalValeuPlusTva = totalValeuPlusTva;
+     }
+ }
+Index: src/main/java/ssi/webapplication/entities/IncomeEntity.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ssi.webapplication.entities;\n\nimport javax.persistence.Entity;\nimport javax.persistence.Id;\nimport javax.persistence.Table;\n\n@Entity\n@Table(name = \"income\")\npublic class IncomeEntity {\n\n    @Id\n    private Integer id;\n    private Double salary;\n    private Double otherIncome;\n\n    public Integer getId() {\n        return id;\n    }\n\n    public void setId(Integer id) {\n        this.id = id;\n    }\n\n    public Double getSalary() {\n        return salary;\n    }\n\n    public void setSalary(Double salary) {\n        this.salary = salary;\n    }\n\n    public Double getOtherIncome() {\n        return otherIncome;\n    }\n\n    public void setOtherIncome(Double otherIncome) {\n        this.otherIncome = otherIncome;\n    }\n\n    @Override\n    public String toString() {\n        return \"IncomeEntity{\" +\n                \"id=\" + id +\n                \", salary=\" + salary +\n                \", otherIncome=\" + otherIncome +\n                '}';\n    }\n\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ssi/webapplication/entities/IncomeEntity.java b/src/main/java/ssi/webapplication/entities/IncomeEntity.java
+--- a/src/main/java/ssi/webapplication/entities/IncomeEntity.java	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/java/ssi/webapplication/entities/IncomeEntity.java	(date 1611565692952)
+@@ -1,8 +1,12 @@
+ package ssi.webapplication.entities;
+ 
++import org.springframework.format.annotation.DateTimeFormat;
++
++import javax.persistence.Column;
+ import javax.persistence.Entity;
+ import javax.persistence.Id;
+ import javax.persistence.Table;
++import java.util.Date;
+ 
+ @Entity
+ @Table(name = "income")
+@@ -10,8 +14,27 @@
+ 
+     @Id
+     private Integer id;
+-    private Double salary;
+-    private Double otherIncome;
++
++    @DateTimeFormat(pattern = "DD/MM/YYYY")
++    private Date date;
++
++    private String explication;
++
++    private String justificationDocument;
++
++    @Column(length = 10)
++    private String currency;
++
++    private Double unitaryPrice;
++
++    @Column(length = 20)
++    private Double value;
++
++    private Double tva;
++
++    private Double tvaValeu;
++
++    private Double totalValeuPlusTva;
+ 
+     public Integer getId() {
+         return id;
+@@ -21,29 +44,75 @@
+         this.id = id;
+     }
+ 
+-    public Double getSalary() {
+-        return salary;
++    public Date getDate() {
++        return date;
++    }
++
++    public void setDate(Date date) {
++        this.date = date;
++    }
++
++    public String getExplication() {
++        return explication;
+     }
+ 
+-    public void setSalary(Double salary) {
+-        this.salary = salary;
++    public void setExplication(String explication) {
++        this.explication = explication;
+     }
+ 
+-    public Double getOtherIncome() {
+-        return otherIncome;
++    public String getJustificationDocument() {
++        return justificationDocument;
+     }
+ 
+-    public void setOtherIncome(Double otherIncome) {
+-        this.otherIncome = otherIncome;
++    public void setJustificationDocument(String justificationDocument) {
++        this.justificationDocument = justificationDocument;
+     }
+ 
+-    @Override
+-    public String toString() {
+-        return "IncomeEntity{" +
+-                "id=" + id +
+-                ", salary=" + salary +
+-                ", otherIncome=" + otherIncome +
+-                '}';
++    public String getCurrency() {
++        return currency;
+     }
+ 
++    public void setCurrency(String currency) {
++        this.currency = currency;
++    }
++
++    public Double getUnitaryPrice() {
++        return unitaryPrice;
++    }
++
++    public void setUnitaryPrice(Double unitaryPrice) {
++        this.unitaryPrice = unitaryPrice;
++    }
++
++    public Double getValue() {
++        return value;
++    }
++
++    public void setValue(Double value) {
++        this.value = value;
++    }
++
++    public Double getTva() {
++        return tva;
++    }
++
++    public void setTva(Double tva) {
++        this.tva = tva;
++    }
++
++    public Double getTvaValeu() {
++        return tvaValeu;
++    }
++
++    public void setTvaValeu(Double tvaValeu) {
++        this.tvaValeu = tvaValeu;
++    }
++
++    public Double getTotalValeuPlusTva() {
++        return totalValeuPlusTva;
++    }
++
++    public void setTotalValeuPlusTva(Double totalValeuPlusTva) {
++        this.totalValeuPlusTva = totalValeuPlusTva;
++    }
+ }
+Index: src/main/java/ssi/webapplication/controller/CostsController.java
+IDEA additional info:
+Subsystem: com.intellij.openapi.diff.impl.patch.BaseRevisionTextPatchEP
+<+>package ssi.webapplication.controller;\n\nimport org.springframework.beans.factory.annotation.Autowired;\nimport org.springframework.stereotype.Controller;\nimport org.springframework.web.bind.annotation.GetMapping;\nimport org.springframework.web.bind.annotation.ModelAttribute;\nimport org.springframework.web.bind.annotation.PathVariable;\nimport org.springframework.web.bind.annotation.PostMapping;\nimport org.springframework.web.servlet.ModelAndView;\nimport ssi.webapplication.Model.CostsModel;\nimport ssi.webapplication.entities.CostsEntity;\nimport ssi.webapplication.repositories.CostsRepository;\n\nimport java.util.logging.Logger;\n\n@Controller\npublic class CostsController {\n\n    public CostsController() {\n        System.out.println(getClass().getName() + \" created.\");\n    }\n\n    @Autowired\n    private CostsRepository costsRepository;\n\n    /**\n     * Costs page mapping\n     *\n     * @return\n     */\n\n    @GetMapping(\"/ssi/costs\")\n    public ModelAndView getCosts() {\n        ModelAndView modelAndView = new ModelAndView(\"secondary_pages/costs\");\n        modelAndView.addObject(\"costsList\", costsRepository.findAll());\n        return modelAndView;\n    }\n\n    /**\n     * Add costs mapping\n     */\n\n    @GetMapping(\"/ssi/costs/add\")\n    public ModelAndView addNewCost() {\n        ModelAndView modelAndView = new ModelAndView(\"secondary_pages/edit_costs\");\n        modelAndView.addObject(\"cost\", new CostsModel());\n        return modelAndView;\n    }\n\n    /**\n     * Edit costs mapping\n     */\n\n    @GetMapping(\"/ssi/costs/edit/{id}\")\n    public ModelAndView editCost(@PathVariable Integer id) {\n        ModelAndView modelAndView = new ModelAndView(\"secondary_pages/edit_costs\");\n        CostsEntity costsEntity = costsRepository.findById(id).get();\n        CostsModel costsModel = new CostsModel();\n        costsModel.setValue(costsEntity.getValue());\n        costsModel.setDate(costsEntity.getDate());\n        costsModel.setCurrency(costsEntity.getCurrency());\n        modelAndView.addObject(\"cost\", costsModel);\n        return modelAndView;\n    }\n\n    /**\n     * Delete costs mapping\n     */\n\n    @GetMapping(\"ssi/costs/delete/{id}\")\n    public ModelAndView deleteCost(@PathVariable Integer id) {\n        ModelAndView modelAndView = new ModelAndView(\"redirect:/ssi/costs\");\n        costsRepository.deleteById(id);\n        return modelAndView;\n    }\n\n    /**\n     * Save cost mapping\n     */\n\n    @PostMapping(\"/ssi/costs/save\")\n    public ModelAndView saveCosts(@ModelAttribute(\"cost\") CostsModel costsModel) {\n        ModelAndView modelAndView = new ModelAndView(\"redirect:/ssi/costs\");\n        CostsEntity costsEntity = null;\n        if (costsModel.getCostId() != null) {\n            costsEntity = costsRepository.findById(costsModel.getCostId()).get();\n        } else {\n            costsEntity = new CostsEntity();\n        }\n        costsEntity.setValue(costsModel.getValue());\n        costsEntity.setDate(costsModel.getDate());\n        costsEntity.setCurrency(costsModel.getCurrency());\n\n        // Save\n        costsRepository.save(costsEntity);\n        return modelAndView;\n    }\n}\n
+Subsystem: com.intellij.openapi.diff.impl.patch.CharsetEP
+<+>UTF-8
+===================================================================
+diff --git a/src/main/java/ssi/webapplication/controller/CostsController.java b/src/main/java/ssi/webapplication/controller/CostsController.java
+--- a/src/main/java/ssi/webapplication/controller/CostsController.java	(revision 090a638ea79cdd7180f261c864d1dafe5d6c4728)
++++ b/src/main/java/ssi/webapplication/controller/CostsController.java	(date 1611653015896)
+@@ -11,8 +11,6 @@
+ import ssi.webapplication.entities.CostsEntity;
+ import ssi.webapplication.repositories.CostsRepository;
+ 
+-import java.util.logging.Logger;
+-
+ @Controller
+ public class CostsController {
+ 
+@@ -81,7 +79,7 @@
+     @PostMapping("/ssi/costs/save")
+     public ModelAndView saveCosts(@ModelAttribute("cost") CostsModel costsModel) {
+         ModelAndView modelAndView = new ModelAndView("redirect:/ssi/costs");
+-        CostsEntity costsEntity = null;
++        CostsEntity costsEntity;
+         if (costsModel.getCostId() != null) {
+             costsEntity = costsRepository.findById(costsModel.getCostId()).get();
+         } else {

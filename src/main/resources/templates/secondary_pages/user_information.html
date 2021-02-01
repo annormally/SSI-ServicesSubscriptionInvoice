@@ -6,6 +6,7 @@
     <title th:text="#{user_info.title.label}"></title>
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
+    <link rel="stylesheet" href="/css/secondary/user_information.css">
     <link rel="stylesheet" href="/css/secondary/table.css">
 </head>
 
@@ -20,7 +21,9 @@
             <span th:text="#{ssi.homepage.user.hello.label}"></span>
 
             <!-- Display username -->
-            <span sec:authentication="name"></span>
+            <a class="user_display" th:href="@{'/ssi/user/information'}">
+                <span sec:authentication="name"></span>
+            </a>
         </div>
 
         <hr>
@@ -30,7 +33,7 @@
 
             <!-- Information about user -->
             <button class="button_none_btn" type="submit">
-                <a th:href="@{'/ssi/user/info'}">
+                <a th:href="@{'/ssi/user/info/edit/'}">
                     <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.userinfo.label}"
                          th:title="#{main.userinfo.label}">
                 </a>
@@ -52,13 +55,13 @@
         <div class="select_languages">
 
             <div class="btn_ro">
-                <a th:href="@{/ssi/user_info?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
-                                                                th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+                <a th:href="@{/ssi/user/information?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                                       th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
             </div>
 
             <div class="btn_en">
-                <a th:href="@{/ssi/user_info?language=en}"><img class="lang_en" src="/img/languages/en.png"
-                                                                th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+                <a th:href="@{/ssi/user/information?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                                       th:title="#{lang.en}" th:alt="#{lang.en}"></a>
             </div>
         </div>
     </div>
@@ -66,25 +69,83 @@
 </form>
 
 <!-- Logo on page -->
-<a class="logosecondpage" th:href="@{'/ssi/home'}">
+<a class="logo" th:href="@{'/ssi/home'}">
     <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
 </a>
 
+<!-- Navigator -->
+<nav>
+    <a class="btn_signup" th:href="@{'/ssi/home'}">
+        <img class="icon_size" src="/img/icons/home.png" th:alt="#{main.userinfo.label}"
+             th:title="#{main.userinfo.label}">
+        <span th:utext="#{ssi.homepage.nav.label}" th:title="#{main.userinfo.label}"></span>
+    </a>
+    <a class="btn_signup" th:href="@{'/ssi/costs'}">
+        <img class="icon_size" src="/img/icons/costs.png" th:alt="#{ssi.costs.nav.label}"
+             th:title="#{ssi.costs.nav.label}">
+        <span th:text="#{ssi.costs.nav.label}" th:title="#{ssi.costs.nav.label}"></span>
+    </a>
+    <a class="btn_signup " th:href="@{'/ssi/income'}">
+        <img class="icon_size" src="/img/icons/income.png" th:alt="#{ssi.income.nav.label}"
+             th:title="#{ssi.income.nav.label}">
+        <span th:text="#{ssi.income.nav.label}" th:title="#{ssi.income.nav.label}"></span>
+    </a>
+</nav>
+
+
 <!-- Table with information about user-->
 
-<table>
+<div class="user_info_table">
+    <div class="table_information_user">
+        <div class="table_position">
 
+            <!-- Display username -->
+            <span class="user_appearance" sec:authentication="name"></span>
 
-    <!--    -->
-    <tr>
-        Left
-    </tr>
+            <hr>
 
-    <!--    -->
-    <tr>
-        Right
-    </tr>
-</table>
+            <table class="table_information_user" th:each="userInfo:${userList}">
+                <!-- Display information -->
+
+                <!-- Name -->
+                <tr>
+                    <td class="colhead" th:text="#{user_information.name}"></td>
+                    <td class="right-text"
+                        th:text="${userInfo.userDetails != null} ?${userInfo.userDetails.name} : 'n/a'"></td>
+                </tr>
+
+                <!-- Last Name -->
+                <tr>
+                    <td class="colhead" th:text="#{user_information.last.name}"></td>
+                    <td class="right-text"
+                        th:text="${userInfo.userDetails != null} ?${userInfo.userDetails.lastName} : 'n/a'"></td>
+                </tr>
+
+                <!-- Email -->
+                <tr>
+                    <td class="colhead" th:text="#{user_information.email}"></td>
+                    <td class="right-text"
+                        th:text="${userInfo.userDetails != null} ?${userInfo.userDetails.email} : 'n/a'"></td>
+                </tr>
+
+                <!-- Phone Number -->
+                <tr>
+                    <td class="colhead" th:text="#{user_information.phone.number}"></td>
+                    <td class="right-text"
+                        th:text="${userInfo.userDetails != null} ?${userInfo.userDetails.phoneNumber} : 'n/a'"></td>
+                </tr>
+
+                <!-- Country -->
+                <tr>
+                    <td class="colhead" th:text="#{user_information.country}"></td>
+                    <td class="right-text"
+                        th:text="${userInfo.userDetails != null} ?${userInfo.userDetails.country} : 'n/a'"></td>
+                </tr>
+
+            </table>
+        </div>
+    </div>
+</div>
 
 
 </body>

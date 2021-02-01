@@ -26,18 +26,7 @@ nav {
     height: 100px;
     position: relative;
     top: 3%;
-    left: 42%;
-}
-
-.logosecondpage {
-    display: inline-flex;
-    position: relative;
-    left: 42%
-}
-
-.logo_size {
-    width: 300px;
-    height: 100px;
+    left: 43%;
 }
 
 .logo:after {
@@ -54,24 +43,6 @@ nav {
 }
 
 .logo:hover:after {
-    width: 80%;
-    left: 0;
-}
-
-.logosecondpage:after {
-    background: none repeat scroll 0 0 transparent;
-    bottom: 0;
-    content: "";
-    display: block;
-    height: 2px;
-    left: 50%;
-    position: absolute;
-    background: #f89c1c;
-    transition: width 0.3s ease 0s, left 0.3s ease 0s;
-    width: 0;
-}
-
-.logosecondpage:hover:after {
     width: 80%;
     left: 0;
 }
@@ -119,6 +90,11 @@ nav {
     text-decoration-color: #f89c1c;
 }
 
+.button_none_btn {
+    background: none;
+    border: none;
+}
+
 .user_information {
     max-width: 250px;
     max-height: 110px;
@@ -139,9 +115,26 @@ nav {
     height: 25px;
 }
 
+.user_display {
+    color: #0c7578;
+    text-decoration: none;
+}
+
+.user_display:hover {
+    color: #f89c1c;
+    text-decoration: underline;
+}
+
 .logout_icon {
     width: 25px;
     height: 25px;
+    cursor: pointer;
+}
+
+.icon_size {
+    width: 20px;
+    height: 20px;
+    margin: -3px 3px;
     cursor: pointer;
 }
 

@@ -27,7 +27,7 @@ public class UserEntity {
     private List<AuthoritiesEntity> authoritiesEntities;
 
     @OneToOne(mappedBy = "user")
-    private UserInfoEntity userInfoEntity;
+    private UserInfoEntity userDetails;
 
     public Integer getUserId() {
         return userId;
@@ -77,11 +77,11 @@ public class UserEntity {
         this.authoritiesEntities = authoritiesEntities;
     }
 
-    public UserInfoEntity getUserInfoEntity() {
-        return userInfoEntity;
+    public UserInfoEntity getUserDetails() {
+        return userDetails;
     }
 
-    public void setUserInfoEntity(UserInfoEntity userInfoEntity) {
-        this.userInfoEntity = userInfoEntity;
+    public void setUserDetails(UserInfoEntity userDetails) {
+        this.userDetails = userDetails;
     }
 }
