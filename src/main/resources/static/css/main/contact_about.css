@@ -1,0 +1,101 @@
+h1 {
+    color: gray;
+    text-align: center;
+}
+
+/* Banner */
+.banner_about_detail {
+    width: 400px;
+    min-height: 170px;
+    height: auto;
+    border-radius: 50px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+}
+
+.banner_details {
+    text-align: center;
+    background-color: #000000;
+    border-radius: 10px;
+    opacity: 45%;
+    width: 90%;
+    margin: 0 auto;
+}
+
+.banner_about_theme {
+    font-weight: bold;
+    color: #f89c1c;
+}
+
+/* Text format for banner */
+li {
+    padding: 5px;
+}
+
+.text_format {
+    font-weight: bold;
+    text-align: center;
+    color: #f89c1c;
+}
+
+.text_appearance {
+    text-align: center;
+    color: #0c7578;
+}
+
+.text_color_none_underline {
+    color: #1c65f8;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.text_color_none_underline:hover {
+    color: #0c7578;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Contact input */
+input[type = "text"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 16pt;
+    border: 2px solid #0c7578;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: gray;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+input[type = "text"]:focus {
+    width: 280px;
+    border-color: #f89c1c;
+}
+
+textarea {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 16pt;
+    border: 2px solid #0c7578;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: gray;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+textarea:focus {
+    width: 280px;
+    border-color: #f89c1c;
+}

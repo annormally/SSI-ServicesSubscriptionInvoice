@@ -20,6 +20,7 @@ nav {
     text-align: center;
 }
 
+/* Logo */
 .logo {
     display: inline-flex;
     width: 300px;
@@ -47,6 +48,7 @@ nav {
     left: 0;
 }
 
+/* Language */
 .select_languages {
     position: relative;
     text-align: center;
@@ -65,6 +67,7 @@ nav {
     border-radius: 10px;
 }
 
+/* Buttons */
 .btn_signup {
     background-repeat: no-repeat;
     background-color: transparent;
@@ -95,6 +98,7 @@ nav {
     border: none;
 }
 
+/* User menu information */
 .user_information {
     max-width: 250px;
     max-height: 110px;
@@ -110,11 +114,6 @@ nav {
     float: right;
 }
 
-.userinfo_icon {
-    width: 25px;
-    height: 25px;
-}
-
 .user_display {
     color: #0c7578;
     text-decoration: none;
@@ -123,6 +122,12 @@ nav {
 .user_display:hover {
     color: #f89c1c;
     text-decoration: underline;
+}
+
+/* Icons */
+.userinfo_icon {
+    width: 25px;
+    height: 25px;
 }
 
 .logout_icon {
@@ -138,13 +143,35 @@ nav {
     cursor: pointer;
 }
 
+.icon_size_footer {
+    width: 25px;
+    height: 25px;
+    cursor: pointer;
+}
+
+/* Footer */
 .footer {
     position: fixed;
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: #000000;
-    opacity: 45%;
     color: #ffffff;
     text-align: center;
+
+}
+
+.copyright_text {
+    opacity: 45%;
+}
+
+/* Contact & About */
+.banner {
+    width: 450px;
+    min-height: 370px;
+    height: auto;
+    border-radius: 50px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
 }

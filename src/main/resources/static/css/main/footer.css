@@ -1,0 +1,15 @@
+.footer_contact_about {
+    position: relative;
+}
+
+.contact {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
+
+.about {
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+}

@@ -3,11 +3,12 @@
       xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>SSI::Add Costs</title>
+    <title th:text="#{add.costs.title}"></title>
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
     <link rel="stylesheet" href="/css/secondary/edit_costs.css">
     <link rel="stylesheet" href="/css/secondary/table.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
 </head>
 
 <body>
@@ -74,7 +75,7 @@
     <div class="costs_edit">
 
         <!-- Add costs -->
-        <h1 th:text="#{ssi.costs.form.title.label}"></h1>
+        <h1 th:text="#{ssi.costs.add.title.label}"></h1>
         <hr>
 
         <div class="table_position">
@@ -118,10 +119,6 @@
             <label for="value_tva" th:text="#{ssi.table.tva.value}"></label>
             <input type="text" name="value_tva" id="value_tva" placeholder="Value TVA" th:field="*{value}">
 
-            <!-- Total TVA -->
-            <label for="total_tva" th:text="#{ssi.table.total.value}"></label>
-            <input type="text" name="total_tva" id="total_tva" placeholder="Total TVA" th:field="*{value}">
-
             <!-- Total Value + TVA -->
             <label for="total_plus_tva" th:text="#{ssi.table.total.value.tva}"></label>
             <input type="text" name="total_plus_tva" id="total_plus_tva" placeholder="Total plus TVA"
@@ -132,7 +129,7 @@
 
         <div class="bt_sub">
             <button class="btn_ed_cost" type="reset" th:text="#{ssi.costs.btn.reset.label}"></button>
-            <button class="btn_ed_cost" type="submit" th:text="#{ssi.costs.btn.submit.label}"></button>
+            <button class="btn_ed_cost" type="submit" th:utext="#{ssi.costs.btn.add.label}"></button>
         </div>
 
     </div>

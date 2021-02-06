@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{about.title}"></title>
+    <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
+    <link rel="stylesheet" href="/css/main/general.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/main/contact_about.css">
+</head>
+<body>
+
+<!-- User Menu -->
+<div class="user_information">
+
+    <!-- Language select -->
+    <div class="select_languages">
+
+        <div class="btn_ro">
+            <a th:href="@{/ssi/about?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                        th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+        </div>
+
+        <div class="btn_en">
+            <a th:href="@{/ssi/about?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                        th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+        </div>
+    </div>
+</div>
+
+<!-- Logo on page -->
+<a class="logo" th:href="@{'/'}">
+    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
+</a>
+
+<!-- Page content -->
+<div class="banner">
+    <h1 th:text="#{about.banner.title}"></h1>
+
+    <hr>
+
+    <!-- Information about application -->
+    <div class="banner_about_detail">
+
+        <!-- Title  in banner -->
+        <div class="banner_details">
+            <span class="text_format" th:text="#{about.application.details}"></span>
+        </div>
+
+        <br>
+
+        <!-- About application -->
+        <p class="text_appearance" th:text="#{about.application.paragraph.information}"></p>
+
+        <br>
+        <!-- Theme -->
+        <div class="banner_details">
+            <div class="banner_about_theme">
+                <span th:text="#{about.application.theme}"></span>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="text_appearance">
+            <span th:text="#{about.application.theme.information}"></span>
+        </div>
+        <br>
+
+        <!-- Developer tools -->
+
+        <div class="banner_details">
+            <div class="banner_about_theme">
+                <span th:text="#{about.application.developer.tools}"></span>
+            </div>
+        </div>
+
+        <br>
+
+        <!-- IntelliJ source -->
+        <div class="text_appearance">
+            <span th:text="#{about.application.developer.tools.information}"></span>
+            <a class="text_color_none_underline" href="https://www.jetbrains.com/idea/">
+                <img class="icon_size" src="/img/icons/intellij.png" alt="IntelliJ" title="IntelliJ">
+                <span th:text="#{about.application.developer.tools.intellij}" title="IntelliJ"></span>
+            </a>
+        </div>
+        <br>
+
+        <!-- Frameworks used -->
+        <div class="banner_details">
+            <div class="banner_about_theme">
+                <span th:text="#{about.application.frameworks}"></span>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="text_appearance">
+            <span th:text="#{about.application.frameworks.information}"></span>
+            <ul class="frameworks_list">
+                <li>
+                    <!-- Spring source -->
+                    <a class="text_color_none_underline" href="https://spring.io/projects/spring-framework"
+                       title="Spring Boot">
+                        <img class="icon_size" src="/img/icons/spring.png" alt="Spring Boot" title="Spring Boot">Spring
+                        Boot</a>
+                </li>
+                <li>
+                    <!-- Thymeleaf source -->
+                    <a class="text_color_none_underline" href="https://www.thymeleaf.org/" title="Thymeleaf">
+                        <img class="icon_size" src="/img/icons/thymeleaf.png" alt="Thymeleaf" title="Thymeleaf">Thymeleaf</a>
+                </li>
+            </ul>
+        </div>
+        <br>
+
+        <!-- Database -->
+        <div class="banner_details">
+            <div class="banner_about_theme">
+                <span th:text="#{about.application.database}"></span>
+            </div>
+        </div>
+
+        <br>
+
+        <div class="text_appearance">
+            <span th:text="#{about.application.database.information}"></span>
+            <a class="text_color_none_underline" href="https://www.mysql.com/products/workbench/" title="SQL Workbench">SQL
+                Workbench</a>
+        </div>
+
+        <br>
+    </div>
+
+</div>
+
+<!-- Footer for site -->
+<div class="footer">
+
+    <!-- Copyright -->
+    <p class="copyright_text">Copyright &copy; 2021 All Rights Reserved by
+        <span th:utext="#{main.author}"></span>.
+    </p>
+
+    <div class="footer_contact_about">
+
+        <!-- Contact -->
+        <div class="contact">
+            <a th:href="@{'/ssi/contact'}">
+                <img class="icon_size_footer" src="/img/icons/contact.png" th:alt="#{contact.icon}"
+                     th:title="#{contact.icon}">
+            </a>
+        </div>
+
+        <!-- About -->
+        <div class="about">
+            <a th:href="@{'/ssi/about'}">
+                <img class="icon_size_footer" src="/img/icons/about.png" th:alt="#{about.name.icon}"
+                     th:title="#{about.name.icon}">
+            </a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>

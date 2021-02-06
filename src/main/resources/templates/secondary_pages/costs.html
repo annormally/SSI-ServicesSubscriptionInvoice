@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/main/general.css">
     <link rel="stylesheet" href="/css/secondary/costs.css">
     <link rel="stylesheet" href="/css/secondary/table.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
 </head>
 
 <body>
@@ -177,9 +178,31 @@
 
 <!-- Footer for site -->
 <div class="footer">
-    <p>Copyright &copy; 2021 All Rights Reserved by
+
+    <!-- Copyright -->
+    <p class="copyright_text">Copyright &copy; 2021 All Rights Reserved by
         <span th:utext="#{main.author}"></span>.
     </p>
+
+    <div class="footer_contact_about">
+
+        <!-- Contact -->
+        <div class="contact">
+            <a th:href="@{'/ssi/contact'}">
+                <img class="icon_size_footer" src="/img/icons/contact.png" th:alt="#{contact.icon}"
+                     th:title="#{contact.icon}">
+            </a>
+        </div>
+
+        <!-- About -->
+        <div class="about">
+            <a th:href="@{'/ssi/about'}">
+                <img class="icon_size_footer" src="/img/icons/about.png" th:alt="#{about.name.icon}"
+                     th:title="#{about.name.icon}">
+            </a>
+        </div>
+    </div>
+
 </div>
 
 </body>

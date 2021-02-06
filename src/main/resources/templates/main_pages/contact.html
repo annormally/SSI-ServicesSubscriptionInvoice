@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html"
+      xmlns="http://www.w3.org/1999/html">
+<head>
+    <meta charset="UTF-8">
+    <title th:text="#{contact.title}"></title>
+    <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
+    <link rel="stylesheet" href="/css/main/general.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/main/contact_about.css">
+</head>
+<body>
+
+<!-- User Menu -->
+<div class="user_information">
+
+    <!-- Language select -->
+    <div class="select_languages">
+
+        <div class="btn_ro">
+            <a th:href="@{/ssi/contact?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                          th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+        </div>
+
+        <div class="btn_en">
+            <a th:href="@{/ssi/contact?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                          th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+        </div>
+    </div>
+</div>
+
+<!-- Logo on page -->
+<a class="logo" th:href="@{'/'}">
+    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
+</a>
+
+<!-- Page content -->
+<div class="banner">
+    <!-- Title -->
+    <h1 th:text="#{contact.banner.title}"></h1>
+
+    <hr>
+
+    <form>
+
+        <div style="text-align: center">
+            <!-- Name -->
+            <label for="name">Your Name</label>
+            <input type="text" id="name" name="name" placeholder="Your name..">
+
+            <!-- Email -->
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" placeholder="Your email..">
+
+            <!-- Message -->
+            <label for="message">Message</label>
+            <div class="text_area">
+                <textarea id="message" name="subject" placeholder="Write message.."></textarea>
+            </div>
+            <hr>
+
+            <!-- Submit -->
+            <div class="bt_sub">
+                <button type="submit" th:text="#{contact.submit.send}"></button>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<!-- Footer for site -->
+<div class="footer">
+
+    <!-- Copyright -->
+    <p class="copyright_text">Copyright &copy; 2021 All Rights Reserved by
+        <span th:utext="#{main.author}"></span>.
+    </p>
+
+    <div class="footer_contact_about">
+
+        <!-- Contact -->
+        <div class="contact">
+            <a th:href="@{'/ssi/contact'}">
+                <img class="icon_size_footer" src="/img/icons/contact.png" th:alt="#{contact.icon}"
+                     th:title="#{contact.icon}">
+            </a>
+        </div>
+
+        <!-- About -->
+        <div class="about">
+            <a th:href="@{'/ssi/about'}">
+                <img class="icon_size_footer" src="/img/icons/about.png" th:alt="#{about.name.icon}"
+                     th:title="#{about.name.icon}">
+            </a>
+        </div>
+    </div>
+
+</div>
+
+</body>
+</html>
