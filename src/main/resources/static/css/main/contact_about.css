@@ -80,7 +80,6 @@ input[type = "text"]:focus {
 }
 
 textarea {
-    border: 0;
     background: none;
     display: block;
     margin: 20px auto;
@@ -88,7 +87,8 @@ textarea {
     font-size: 16pt;
     border: 2px solid #0c7578;
     padding: 14px 10px;
-    width: 200px;
+    max-width: 394px;
+    max-height: 259px;
     outline: none;
     color: gray;
     border-radius: 24px;
