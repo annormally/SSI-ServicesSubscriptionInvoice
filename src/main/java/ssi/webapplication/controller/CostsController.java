@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
-import ssi.webapplication.Model.CostsModel;
+import ssi.webapplication.model.CostsModel;
 import ssi.webapplication.entities.CostsEntity;
 import ssi.webapplication.repositories.CostsRepository;
 

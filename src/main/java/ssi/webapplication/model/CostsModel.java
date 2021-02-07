@@ -1,4 +1,4 @@
-package ssi.webapplication.Model;
+package ssi.webapplication.model;
 
 import java.util.Date;
 

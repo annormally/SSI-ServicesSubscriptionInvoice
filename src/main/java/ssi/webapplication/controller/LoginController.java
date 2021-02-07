@@ -1,11 +1,8 @@
 package ssi.webapplication.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
-import ssi.webapplication.Model.UserModel;
-import ssi.webapplication.repositories.UserRepository;
 
 import javax.servlet.http.HttpServletRequest;
 import java.security.Principal;

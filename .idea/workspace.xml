@@ -4,16 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a05ce14-445e-4496-a418-5f5136989fbc" name="Default Changelist" comment="navigator pictures">
-      <change beforePath="$PROJECT_DIR$/.idea/SSI-ServicesSubscriptionInvoice.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/SSI-ServicesSubscriptionInvoice.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Reset_at_01_02_2021__13_51__Default_Changelist_.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Reset_at_01_02_2021__13_51__Default_Changelist_.xml" afterDir="false" />
+    <list default="true" id="9a05ce14-445e-4496-a418-5f5136989fbc" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/contact_about.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/contact_about.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/footer.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/footer.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/about.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/GeneralController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/GeneralController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,10 +17,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="JavaScript File" />
         <option value="HTML File" />
         <option value="CSS File" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -109,6 +102,17 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.AppConfiguration">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="AppTest.shouldAnswerWithTrue" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="SSI-ServicesSubscriptionInvoice" />
       <extension name="coverage">
@@ -305,7 +309,8 @@
       <workItem from="1612187263695" duration="382000" />
       <workItem from="1612187655803" duration="7446000" />
       <workItem from="1612692243827" duration="1316000" />
-      <workItem from="1612704732891" duration="2077000" />
+      <workItem from="1612704732891" duration="2462000" />
+      <workItem from="1612707240704" duration="49000" />
     </task>
     <task id="LOCAL-00001" summary="new version for interface">
       <created>1609773881737</created>
@@ -356,7 +361,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612195646542</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="new look for home page and modified about and user information editor">
+      <created>1612706911145</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1612706911145</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -398,7 +410,8 @@
     <MESSAGE value="errors corection + 500 internal server error" />
     <MESSAGE value="navigator pictures" />
     <MESSAGE value="separated user information from user information edit" />
-    <option name="LAST_COMMIT_MESSAGE" value="separated user information from user information edit" />
+    <MESSAGE value="new look for home page and modified about and user information editor" />
+    <option name="LAST_COMMIT_MESSAGE" value="new look for home page and modified about and user information editor" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

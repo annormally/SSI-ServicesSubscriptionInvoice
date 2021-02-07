@@ -19,6 +19,8 @@ public class GeneralController {
         return modelAndView;
     }
 
+    // TODO: 2/7/2021 create a new methods for introduce into database the next fields: name, email and message
+
     /**
      * About page mapping
      *
