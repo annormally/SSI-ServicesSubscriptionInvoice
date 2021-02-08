@@ -3,6 +3,36 @@ h1 {
     text-align: center;
 }
 
+/* Buttons */
+button {
+    background: #0c7578;
+    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
+    border-radius: 28px;
+    font-family: Courier New;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+button:hover {
+    background: #09ecf0;
+    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
+    text-decoration: none;
+    cursor: pointer;
+}
+
 /* Banner */
 .banner_about_detail {
     width: 400px;

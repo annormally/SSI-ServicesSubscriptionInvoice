@@ -25,6 +25,7 @@ public class SignUpController {
 
     @Autowired
     private UserAuthoritiesRepository userAuthoritiesRepository;
+
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -82,6 +83,7 @@ public class SignUpController {
 
         // Save authority
         userAuthoritiesRepository.save(authoritiesEntity);
+
         return modelAndView;
     }
 

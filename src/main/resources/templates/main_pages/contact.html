@@ -42,21 +42,24 @@
 
     <hr>
 
-    <form>
+    <form method="post" action="/ssi/contact" th:object="${message}">
 
         <div style="text-align: center">
             <!-- Name -->
-            <label for="name">Your Name</label>
-            <input type="text" id="name" name="name" placeholder="Your name..">
+            <label for="name" th:text="#{contact.submit.name}"></label>
+            <input type="text" id="name" name="name" th:placeholder="#{contact.submit.placeholder.name}"
+                   th:field="*{name}">
 
             <!-- Email -->
-            <label for="email">Email</label>
-            <input type="text" id="email" name="email" placeholder="Your email..">
+            <label for="email" th:text="#{contact.submit.email}"></label>
+            <input type="text" id="email" name="email" th:placeholder="#{contact.submit.placeholder.email}"
+                   th:field="*{email}">
 
             <!-- Message -->
-            <label for="message">Message</label>
+            <label for="message" th:text="#{contact.submit.message}"></label>
             <div class="text_area">
-                <textarea id="message" name="subject" placeholder="Write message.."></textarea>
+                <textarea id="message" name="subject" th:placeholder="#{contact.submit.placeholder.message}"
+                          th:field="*{message}"></textarea>
             </div>
             <hr>
 
