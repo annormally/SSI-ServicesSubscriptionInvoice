@@ -101,27 +101,38 @@
         </div>
     </div>
 
-    <br>
-
     <!-- Moto text -->
     <div class="text_appearance">
-        <span th:text="#{ssi.homepage.moto.text}"></span>
+        <div class="contains_news">
+            <span th:text="#{ssi.homepage.moto.text}"></span>
+        </div>
     </div>
 
     <br>
 
     <!-- News -->
     <div class="banner_home">
-        <div class="text_appearance">
+        <div class="banner_news_theme">
             <span th:text="#{ssi.homepage.news}"></span>
         </div>
+    </div>
 
-        <br>
+    <!-- News text -->
+    <div class="contains_news">
+        <ul>
+            <li>Add, Edit and Delete costs</li>
+            <li>Add, Edit and Delete income</li>
+            <li>Edit user profile(details)</li>
+        </ul>
 
-        <!-- News text -->
-        <div class="">
-            <span></span>
+        <!-- At every post like news the developer need to introduce the date of posting after next format -->
+        <!-- Icon DD/MM/YYYY-->
+        <!-- Posting date -->
+        <div>
+            <img class="icon_size_calendar" src="/img/icons/calendar.png">
+            <span>9/02/2021</span>
         </div>
+
     </div>
 
 </div>

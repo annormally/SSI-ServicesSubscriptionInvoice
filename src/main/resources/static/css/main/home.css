@@ -40,16 +40,34 @@
     background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
 }
 
+.contains_news {
+    width: 90%;
+    max-height: 800px;
+    height: auto;
+    border-radius: 10px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2%;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+    color: #0c7578;
+}
+
 .banner_home {
     text-align: center;
     background-color: #000000;
+    border: 10px solid;
     border-radius: 10px;
     opacity: 45%;
-    width: 90%;
+    width: 100%;
     margin: 0 auto;
 }
 
 .banner_home_theme {
+    font-weight: bold;
+    color: #f89c1c;
+}
+
+.banner_news_theme {
     font-weight: bold;
     color: #f89c1c;
 }
@@ -69,4 +87,11 @@
     height: 20px;
     margin: -3px 3px;
     cursor: pointer;
+}
+
+.icon_size_calendar {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: -4px;
 }

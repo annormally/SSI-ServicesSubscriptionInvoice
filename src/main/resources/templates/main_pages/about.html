@@ -42,46 +42,48 @@
     <hr>
 
     <!-- Information about application -->
+
+    <!-- Title  in banner -->
+    <div class="banner_details">
+        <span class="text_format" th:text="#{about.application.details}"></span>
+    </div>
+
     <div class="banner_about_detail">
-
-        <br>
-
-        <!-- Title  in banner -->
-        <div class="banner_details">
-            <span class="text_format" th:text="#{about.application.details}"></span>
-        </div>
-
-        <br>
-
         <!-- About application -->
         <p class="text_appearance" th:text="#{about.application.paragraph.information}"></p>
 
-        <br>
-        <!-- Theme -->
-        <div class="banner_details">
-            <div class="banner_about_theme">
-                <span th:text="#{about.application.theme}"></span>
-            </div>
+    </div>
+
+    <br>
+
+    <!-- Theme -->
+    <!-- Title -->
+    <div class="banner_details">
+        <div class="banner_about_theme">
+            <span th:text="#{about.application.theme}"></span>
         </div>
+    </div>
 
-        <br>
-
+    <!-- Message -->
+    <div class="banner_about_detail">
         <div class="text_appearance">
             <span th:text="#{about.application.theme.information}"></span>
         </div>
-        <br>
+    </div>
 
-        <!-- Developer tools -->
+    <br>
 
-        <div class="banner_details">
-            <div class="banner_about_theme">
-                <span th:text="#{about.application.developer.tools}"></span>
-            </div>
+    <!-- Developer tools -->
+
+    <!-- Title -->
+    <div class="banner_details">
+        <div class="banner_about_theme">
+            <span th:text="#{about.application.developer.tools}"></span>
         </div>
+    </div>
 
-        <br>
-
-        <!-- IntelliJ source -->
+    <!-- IntelliJ source -->
+    <div class="banner_about_detail">
         <div class="text_appearance">
             <span th:text="#{about.application.developer.tools.information}"></span>
             <a class="text_color_none_underline" href="https://www.jetbrains.com/idea/">
@@ -89,17 +91,22 @@
                 <span th:text="#{about.application.developer.tools.intellij}" title="IntelliJ"></span>
             </a>
         </div>
-        <br>
+    </div>
 
-        <!-- Frameworks used -->
-        <div class="banner_details">
-            <div class="banner_about_theme">
-                <span th:text="#{about.application.frameworks}"></span>
-            </div>
+    <br>
+
+    <!-- Frameworks used -->
+    <!-- Title -->
+    <div class="banner_details">
+        <div class="banner_about_theme">
+            <span th:text="#{about.application.frameworks}"></span>
         </div>
+    </div>
 
-        <br>
+    <br>
 
+    <!-- Message -->
+    <div class="banner_about_detail">
         <div class="text_appearance">
             <span th:text="#{about.application.frameworks.information}"></span>
             <ul class="frameworks_list">
@@ -113,29 +120,35 @@
                 <li>
                     <!-- Thymeleaf source -->
                     <a class="text_color_none_underline" href="https://www.thymeleaf.org/" title="Thymeleaf">
-                        <img class="icon_size" src="/img/icons/thymeleaf.png" alt="Thymeleaf" title="Thymeleaf">Thymeleaf</a>
+                        <img class="icon_size" src="/img/icons/thymeleaf.png" alt="Thymeleaf"
+                             title="Thymeleaf">Thymeleaf</a>
                 </li>
             </ul>
         </div>
-        <br>
+    </div>
 
-        <!-- Database -->
-        <div class="banner_details">
-            <div class="banner_about_theme">
-                <span th:text="#{about.application.database}"></span>
-            </div>
+    <br>
+
+    <!-- Database -->
+    <!--    -->
+    <div class="banner_details">
+        <div class="banner_about_theme">
+            <span th:text="#{about.application.database}"></span>
         </div>
+    </div>
 
-        <br>
+    <br>
 
+    <!-- Message -->
+    <div class="banner_about_detail">
         <div class="text_appearance">
             <span th:text="#{about.application.database.information}"></span>
             <a class="text_color_none_underline" href="https://www.mysql.com/products/workbench/" title="SQL Workbench">SQL
                 Workbench</a>
         </div>
-
-        <br>
     </div>
+    <br>
+</div>
 
 </div>
 
