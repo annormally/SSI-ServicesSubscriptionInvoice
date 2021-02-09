@@ -4,13 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="9a05ce14-445e-4496-a418-5f5136989fbc" name="Default Changelist" comment="message from contact send to database plus internationalization">
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Reset_at_01_02_2021,_13_51_[Default_Changelist]/shelved.patch" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/shelf/Uncommitted_changes_before_Reset_at_01_02_2021__13_51__Default_Changelist_.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/contact_about.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/contact_about.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/about.html" afterDir="false" />
+    <list default="true" id="9a05ce14-445e-4496-a418-5f5136989fbc" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/language_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/language_ro.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/language_ro.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -305,7 +301,7 @@
       <workItem from="1612692243827" duration="1316000" />
       <workItem from="1612704732891" duration="2462000" />
       <workItem from="1612707240704" duration="49000" />
-      <workItem from="1612856608611" duration="6783000" />
+      <workItem from="1612856608611" duration="7710000" />
     </task>
     <task id="LOCAL-00001" summary="new version for interface">
       <created>1609773881737</created>
@@ -363,7 +359,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612706911145</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="new design for home and about">
+      <created>1612863889390</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1612863889390</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -407,7 +410,8 @@
     <MESSAGE value="separated user information from user information edit" />
     <MESSAGE value="new look for home page and modified about and user information editor" />
     <MESSAGE value="message from contact send to database plus internationalization" />
-    <option name="LAST_COMMIT_MESSAGE" value="message from contact send to database plus internationalization" />
+    <MESSAGE value="new design for home and about" />
+    <option name="LAST_COMMIT_MESSAGE" value="new design for home and about" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
