@@ -9,6 +9,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ssi.webapplication.model.IncomeModel;
 import ssi.webapplication.entities.IncomeEntity;
 import ssi.webapplication.repositories.IncomeRepository;
+import ssi.webapplication.repositories.UserRepository;
 
 // TODO: 25/01/2021 implement all method add, edit, delete and save
 
@@ -22,6 +23,9 @@ public class IncomeController {
     @Autowired
     private IncomeRepository incomeRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     /**
      * Income page mapping
      */
@@ -29,6 +33,10 @@ public class IncomeController {
     @GetMapping("/ssi/income")
     public ModelAndView getIncome() {
         ModelAndView modelAndView = new ModelAndView("secondary_pages/income");
+
+        // To find user used a list
+        modelAndView.addObject("userList", userRepository.findAll());
+
         return modelAndView;
     }
 

@@ -22,9 +22,11 @@
             <span th:text="#{ssi.homepage.user.hello.label}"></span>
 
             <!-- Display username -->
-            <a class="user_display" th:href="@{'/ssi/user/information'}">
-                <span sec:authentication="name"></span>
-            </a>
+            <form th:each="user:${userList}">
+                <a class="user_display" th:href="@{'/ssi/user/information/' + ${user.getUserId()}}">
+                    <span sec:authentication="name"></span>
+                </a>
+            </form>
         </div>
         <hr>
 

@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import ssi.webapplication.model.CostsModel;
 import ssi.webapplication.entities.CostsEntity;
 import ssi.webapplication.repositories.CostsRepository;
+import ssi.webapplication.repositories.UserRepository;
 
 @Controller
 public class CostsController {
@@ -21,6 +22,9 @@ public class CostsController {
     @Autowired
     private CostsRepository costsRepository;
 
+    @Autowired
+    private UserRepository userRepository;
+
     /**
      * Costs page mapping
      *
@@ -31,6 +35,10 @@ public class CostsController {
     public ModelAndView getCosts() {
         ModelAndView modelAndView = new ModelAndView("secondary_pages/costs");
         modelAndView.addObject("costsList", costsRepository.findAll());
+
+        // To find user used a list
+        modelAndView.addObject("userList", userRepository.findAll());
+
         return modelAndView;
     }
 

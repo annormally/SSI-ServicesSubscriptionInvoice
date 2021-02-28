@@ -23,11 +23,20 @@ public class UserEntity {
     @Column(name = "enabled")
     private Boolean locked;
 
+    @Column(length = 50)
+    private String name;
+
+    @Column(length = 50)
+    private String lastName;
+
+    @Column(length = 50)
+    private String phoneNumber;
+
+    @Column(length = 50)
+    private String country;
+
     @OneToMany(mappedBy = "user")
     private List<AuthoritiesEntity> authoritiesEntities;
-
-    @OneToOne(mappedBy = "user")
-    private UserInfoEntity userDetails;
 
     public Integer getUserId() {
         return userId;
@@ -69,19 +78,43 @@ public class UserEntity {
         this.locked = locked;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
+    }
+
+    public String getCountry() {
+        return country;
+    }
+
+    public void setCountry(String country) {
+        this.country = country;
+    }
+
     public List<AuthoritiesEntity> getAuthoritiesEntities() {
         return authoritiesEntities;
     }
 
     public void setAuthoritiesEntities(List<AuthoritiesEntity> authoritiesEntities) {
         this.authoritiesEntities = authoritiesEntities;
-    }
-
-    public UserInfoEntity getUserDetails() {
-        return userDetails;
-    }
-
-    public void setUserDetails(UserInfoEntity userDetails) {
-        this.userDetails = userDetails;
     }
 }

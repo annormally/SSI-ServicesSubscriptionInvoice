@@ -21,9 +21,11 @@
             <span th:text="#{ssi.homepage.user.hello.label}"></span>
 
             <!-- Display username -->
-            <a class="user_display" th:href="@{'/ssi/user/information'}">
-                <span sec:authentication="name"></span>
-            </a>
+            <form th:each="user:${userList}">
+                <a class="user_display" th:href="@{'/ssi/user/information/' + ${user.getUserId()}}">
+                    <span sec:authentication="name"></span>
+                </a>
+            </form>
         </div>
 
         <hr>
@@ -93,12 +95,12 @@
 </nav>
 
 <!-- Form for editing costs -->
-<form method="post" action="/ssi/user/info/save" th:object="${user_info}">
+<form method="post" action="/ssi/user/info/save" th:object="${userInfo}">
     <div class="user_info">
 
         <!-- User info -->
         <h1 th:text="#{user_info.form.title.label}"></h1>
-        <input type="hidden" name="userId" th:filed="*{userId}">
+
         <hr>
 
         <!-- Name -->
