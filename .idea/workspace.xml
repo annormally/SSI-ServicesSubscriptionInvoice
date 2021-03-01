@@ -7,22 +7,11 @@
     <list default="true" id="de7e7d95-2e4f-43ce-9187-16e18f6fa554" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/CostsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/CostsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/HomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/HomeController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/IncomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/IncomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/UserInfoController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/UsersController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/UserEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/UserEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/UserInfoEntity.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/model/UserInfoModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/repositories/UserInfoRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/add_costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/add_costs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_income.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_income.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_info.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_information.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/user_information.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ssi/webapplication/controller/main_pages_controllers/UserInfoControllerTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ssi/webapplication/controller/main_pages_controllers/UserInfoControllerTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/model/CostsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/model/CostsModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/model/IncomeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/model/IncomeModel.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -33,16 +22,16 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="HTML File" />
         <option value="CSS File" />
         <option value="Class" />
         <option value="Interface" />
+        <option value="HTML File" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-    <option name="RESET_MODE" value="KEEP" />
+    <option name="RESET_MODE" value="HARD" />
   </component>
   <component name="GitSEFilterConfiguration">
     <file-type-list>
@@ -69,6 +58,9 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/AuthoritiesEntity.java" root0="FORCE_HIGHLIGHTING" />
+  </component>
+  <component name="ProblemsViewState">
+    <option name="selectedIndex" value="1" />
   </component>
   <component name="ProjectId" id="1kQS8Eyv9KBW3ONBiEeJ1u4yLjR" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -118,13 +110,15 @@
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.AppConfiguration">
-    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+    <configuration default="true" type="ArquillianTestNG" factoryName="" nameIsGenerated="true">
       <option name="arquillianRunConfiguration">
         <value>
           <option name="containerStateName" value="" />
         </value>
       </option>
-      <option name="TEST_OBJECT" value="class" />
+      <option name="TEST_OBJECT" value="CLASS" />
+      <properties />
+      <listeners />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>

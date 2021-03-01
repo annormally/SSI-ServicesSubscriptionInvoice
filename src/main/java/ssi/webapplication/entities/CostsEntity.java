@@ -3,7 +3,7 @@ package ssi.webapplication.entities;
 import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.sql.Date;
 
 @Entity
 @Table(name = "costs")
@@ -16,14 +16,10 @@ public class CostsEntity {
     @DateTimeFormat(pattern = "DD/MM/YYYY")
     private Date date;
 
-    private String explication;
-
-    private String justificationDocument;
+    private String supportDocument;
 
     @Column(length = 10)
     private String currency;
-
-    private Double unitaryPrice;
 
     @Column(length = 20)
     private Double value;
@@ -33,6 +29,10 @@ public class CostsEntity {
     private Double tvaValeu;
 
     private Double totalValeuPlusTva;
+
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private UserEntity userEntity;
 
     public Integer getCostId() {
         return costId;
@@ -50,20 +50,12 @@ public class CostsEntity {
         this.date = date;
     }
 
-    public String getExplication() {
-        return explication;
+    public String getSupportDocument() {
+        return supportDocument;
     }
 
-    public void setExplication(String explication) {
-        this.explication = explication;
-    }
-
-    public String getJustificationDocument() {
-        return justificationDocument;
-    }
-
-    public void setJustificationDocument(String justificationDocument) {
-        this.justificationDocument = justificationDocument;
+    public void setSupportDocument(String supportDocument) {
+        this.supportDocument = supportDocument;
     }
 
     public String getCurrency() {
@@ -72,14 +64,6 @@ public class CostsEntity {
 
     public void setCurrency(String currency) {
         this.currency = currency;
-    }
-
-    public Double getUnitaryPrice() {
-        return unitaryPrice;
-    }
-
-    public void setUnitaryPrice(Double unitaryPrice) {
-        this.unitaryPrice = unitaryPrice;
     }
 
     public Double getValue() {
@@ -112,5 +96,13 @@ public class CostsEntity {
 
     public void setTotalValeuPlusTva(Double totalValeuPlusTva) {
         this.totalValeuPlusTva = totalValeuPlusTva;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 }

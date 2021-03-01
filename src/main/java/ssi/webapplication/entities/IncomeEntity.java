@@ -2,30 +2,24 @@ package ssi.webapplication.entities;
 
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
-import java.util.Date;
+import javax.persistence.*;
+import java.sql.Date;
 
 @Entity
 @Table(name = "income")
 public class IncomeEntity {
 
     @Id
-    private Integer id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer incomeId;
 
     @DateTimeFormat(pattern = "DD/MM/YYYY")
     private Date date;
 
-    private String explication;
-
-    private String justificationDocument;
+    private String supportDocument;
 
     @Column(length = 10)
     private String currency;
-
-    private Double unitaryPrice;
 
     @Column(length = 20)
     private Double value;
@@ -36,12 +30,16 @@ public class IncomeEntity {
 
     private Double totalValeuPlusTva;
 
-    public Integer getId() {
-        return id;
+    @ManyToOne
+    @JoinColumn(name = "userId")
+    private UserEntity userEntity;
+
+    public Integer getIncomeId() {
+        return incomeId;
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public void setIncomeId(Integer incomeId) {
+        this.incomeId = incomeId;
     }
 
     public Date getDate() {
@@ -52,20 +50,12 @@ public class IncomeEntity {
         this.date = date;
     }
 
-    public String getExplication() {
-        return explication;
+    public String getSupportDocument() {
+        return supportDocument;
     }
 
-    public void setExplication(String explication) {
-        this.explication = explication;
-    }
-
-    public String getJustificationDocument() {
-        return justificationDocument;
-    }
-
-    public void setJustificationDocument(String justificationDocument) {
-        this.justificationDocument = justificationDocument;
+    public void setSupportDocument(String supportDocument) {
+        this.supportDocument = supportDocument;
     }
 
     public String getCurrency() {
@@ -74,14 +64,6 @@ public class IncomeEntity {
 
     public void setCurrency(String currency) {
         this.currency = currency;
-    }
-
-    public Double getUnitaryPrice() {
-        return unitaryPrice;
-    }
-
-    public void setUnitaryPrice(Double unitaryPrice) {
-        this.unitaryPrice = unitaryPrice;
     }
 
     public Double getValue() {
@@ -114,5 +96,13 @@ public class IncomeEntity {
 
     public void setTotalValeuPlusTva(Double totalValeuPlusTva) {
         this.totalValeuPlusTva = totalValeuPlusTva;
+    }
+
+    public UserEntity getUserEntity() {
+        return userEntity;
+    }
+
+    public void setUserEntity(UserEntity userEntity) {
+        this.userEntity = userEntity;
     }
 }

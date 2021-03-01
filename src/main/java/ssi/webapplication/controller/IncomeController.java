@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 import ssi.webapplication.model.IncomeModel;
 import ssi.webapplication.entities.IncomeEntity;
@@ -28,10 +29,12 @@ public class IncomeController {
 
     /**
      * Income page mapping
+     *
+     * @return
      */
 
     @GetMapping("/ssi/income")
-    public ModelAndView getIncome() {
+    public ModelAndView getIncomes() {
         ModelAndView modelAndView = new ModelAndView("secondary_pages/income");
 
         // To find user used a list
@@ -42,51 +45,77 @@ public class IncomeController {
 
     /**
      * Add income mapping
+     *
+     * @return
      */
 
     @GetMapping("/ssi/income/add")
-    public ModelAndView getNewIncome() {
-        ModelAndView modelAndView = new ModelAndView();
+    public ModelAndView addNewIncome() {
+        // TODO: 3/1/2021 add page "add_income"
+        ModelAndView modelAndView = new ModelAndView("");
         modelAndView.addObject("income", new IncomeModel());
         return modelAndView;
     }
 
     /**
      * Edit income mapping
+     *
+     * @param incomeId
+     * @return
      */
 
-    @GetMapping("/ssi/income/edit/{id}")
-    public ModelAndView editIncome(@PathVariable Integer id) {
-        ModelAndView modelAndView = new ModelAndView(""); // complete edit page for income
-        IncomeEntity incomeEntity = incomeRepository.findById(id).get();
+    @GetMapping("/ssi/income/edit/{incomeId}")
+    public ModelAndView editIncome(@PathVariable Integer incomeId) {
+        // TODO: 3/1/2021 add page "edit_income"
+        ModelAndView modelAndView = new ModelAndView("");
+        IncomeEntity incomeEntity = incomeRepository.findById(incomeId).get();
         IncomeModel incomeModel = new IncomeModel();
 
-        // set all fields
+        // Field
+        incomeModel.setDate(incomeEntity.getDate());
+        incomeModel.setSupportDocument(incomeEntity.getSupportDocument());
+        incomeModel.setCurrency(incomeEntity.getCurrency());
+        incomeModel.setValue(incomeEntity.getValue());
+        incomeModel.setTva(incomeEntity.getTva());
+        incomeModel.setTvaValue(incomeEntity.getTvaValeu());
+        incomeModel.setTotalValuePlusTva(incomeEntity.getTotalValeuPlusTva());
 
         return modelAndView;
     }
 
-    /**
-     * Delete income mapping
-     */
-
-    @GetMapping("/ssi/income/delete")
-    public ModelAndView deleteIncome(@PathVariable Integer id) {
+    @GetMapping("/ssi/income/delete/{incomeId}")
+    public ModelAndView deleteIncome(@PathVariable Integer incomeId) {
+        // TODO: 3/1/2021 introduce the redirect page
         ModelAndView modelAndView = new ModelAndView("redirect:/");
-        incomeRepository.deleteById(id);
+        incomeRepository.deleteById(incomeId);
         return modelAndView;
     }
 
-    /**
-     * Save income mapping
-     */
-
-    @GetMapping("/ssi/income/save")
-    public ModelAndView saveIncome(@ModelAttribute IncomeModel income) {
-        ModelAndView modelAndView = new ModelAndView();
+    @PostMapping("/ssi/income/save")
+    public ModelAndView saveIncome(@ModelAttribute("income") IncomeModel incomeModel) {
+        // TODO: 3/1/2021 introduce the redirect page
+        ModelAndView modelAndView = new ModelAndView("redirect:/");
         IncomeEntity incomeEntity;
+        if (incomeModel.getIncomeId() != null) {
+            incomeEntity = incomeRepository.findById(incomeModel.getIncomeId()).get();
+        } else {
+            incomeEntity = new IncomeEntity();
+        }
 
-        // method if
+        // Fields
+        incomeEntity.setDate(incomeModel.getDate());
+        incomeEntity.setSupportDocument(incomeEntity.getSupportDocument());
+        incomeEntity.setCurrency(incomeModel.getCurrency());
+        incomeEntity.setValue(incomeModel.getValue());
+        incomeEntity.setTva(incomeModel.getTva());
+        incomeEntity.setTvaValeu(incomeModel.getTvaValue());
+        incomeEntity.setTotalValeuPlusTva(incomeModel.getTotalValuePlusTva());
+
+        // Save
+        incomeRepository.save(incomeEntity);
+
         return modelAndView;
     }
+
+
 }

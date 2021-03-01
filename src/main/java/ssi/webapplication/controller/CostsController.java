@@ -58,14 +58,22 @@ public class CostsController {
      */
 
     @GetMapping("/ssi/costs/edit/{id}")
-    public ModelAndView editCost(@PathVariable Integer id) {
+    public ModelAndView editCost(@PathVariable Integer costId) {
         ModelAndView modelAndView = new ModelAndView("secondary_pages/edit_costs");
-        CostsEntity costsEntity = costsRepository.findById(id).get();
+        CostsEntity costsEntity = costsRepository.findById(costId).get();
         CostsModel costsModel = new CostsModel();
-        costsModel.setValue(costsEntity.getValue());
+
+        // Fields
         costsModel.setDate(costsEntity.getDate());
+        costsModel.setSupportDocument(costsEntity.getSupportDocument());
         costsModel.setCurrency(costsEntity.getCurrency());
+        costsModel.setValue(costsEntity.getValue());
+        costsModel.setTva(costsEntity.getTva());
+        costsModel.setTvaValue(costsEntity.getTvaValeu());
+        costsModel.setTotalValuePlusTva(costsEntity.getTotalValeuPlusTva());
+
         modelAndView.addObject("cost", costsModel);
+
         return modelAndView;
     }
 
@@ -74,9 +82,9 @@ public class CostsController {
      */
 
     @GetMapping("ssi/costs/delete/{id}")
-    public ModelAndView deleteCost(@PathVariable Integer id) {
+    public ModelAndView deleteCost(@PathVariable Integer costId) {
         ModelAndView modelAndView = new ModelAndView("redirect:/ssi/costs");
-        costsRepository.deleteById(id);
+        costsRepository.deleteById(costId);
         return modelAndView;
     }
 
@@ -93,12 +101,19 @@ public class CostsController {
         } else {
             costsEntity = new CostsEntity();
         }
-        costsEntity.setValue(costsModel.getValue());
+
+        // Fields
         costsEntity.setDate(costsModel.getDate());
+        costsEntity.setSupportDocument(costsModel.getSupportDocument());
         costsEntity.setCurrency(costsModel.getCurrency());
+        costsEntity.setValue(costsModel.getValue());
+        costsEntity.setTva(costsModel.getTva());
+        costsEntity.setTvaValeu(costsModel.getTvaValue());
+        costsEntity.setTotalValeuPlusTva(costsModel.getTotalValuePlusTva());
 
         // Save
         costsRepository.save(costsEntity);
+
         return modelAndView;
     }
 }
