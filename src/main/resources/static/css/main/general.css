@@ -1,3 +1,4 @@
+/*  Background for all pages. */
 html, body {
     font-family: Verdana, Tahoma, Arial, Sans-Serif, Georgia, Courier;
     background-image: linear-gradient(-225deg, #f89c1c 0%, #e3fdf5 100%);
@@ -8,6 +9,11 @@ html, body {
     width: 100%;
 }
 
+hr {
+    width: 105%;
+}
+
+/*  Navigator menu */
 nav {
     width: 450px;
     min-height: 10px;
@@ -20,7 +26,112 @@ nav {
     text-align: center;
 }
 
-/* Logo */
+/*  Navigator buttons*/
+.nav_btn {
+    background-repeat: no-repeat;
+    background-color: transparent;
+    text-decoration: none;
+    width: 50px;
+    height: 200px;
+    cursor: pointer;
+    color: #0c7578;
+    font-size: 14pt;
+    padding: 10px;
+}
+
+.nav_btn:hover {
+    background-repeat: repeat;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    width: 50px;
+    height: 200px;
+    cursor: pointer;
+    font-size: 14pt;
+    color: #f89c1c;
+    text-decoration: underline;
+    text-decoration-color: #f89c1c;
+}
+
+/*  All paragraph style. */
+p {
+    color: gray;
+    text-align: center;
+}
+
+/* All message with h1 color and align. */
+h1 {
+    color: gray;
+    text-align: center;
+}
+
+/* All message from label. */
+b {
+    text-align: center;
+    padding: 0px 10px 0px 40%;
+}
+
+/*  All input style. */
+input[type = "text"], input[type = "password"], .select_currency {
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    font-size: 16pt;
+    border: 2px solid #0c7578;
+    padding: 14px 10px;
+    width: 200px;
+    outline: none;
+    color: gray;
+    border-radius: 24px;
+    transition: 0.25s;
+}
+
+input[type = "text"]:focus, input[type = "password"]:focus, .select_currency:focus {
+    width: 280px;
+    border-color: #f89c1c;
+}
+
+/*  All buttons style.*/
+.main_btn {
+    background: #0c7578;
+    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
+    -webkit-border-radius: 28px;
+    -moz-border-radius: 28px;
+    border-radius: 28px;
+    font-family: Courier New;
+    color: #ffffff;
+    font-size: 20px;
+    padding: 10px 20px 10px 20px;
+    text-decoration: none;
+    text-align: center;
+}
+
+.main_btn:hover {
+    background: #09ecf0;
+    background-image: -webkit-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -moz-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -ms-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: -o-linear-gradient(top, #09ecf0, #0c7578);
+    background-image: linear-gradient(to bottom, #09ecf0, #0c7578);
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.button_none_btn {
+    background: none;
+    border: none;
+}
+
+.bt_sub {
+    margin: auto;
+    text-align: center
+}
+
+/*  Logo */
 .logo {
     display: inline-flex;
     width: 300px;
@@ -36,7 +147,7 @@ nav {
     content: "";
     display: block;
     height: 2px;
-    left: 50%;
+    left: 43%;
     position: absolute;
     background: #f89c1c;
     transition: width 0.3s ease 0s, left 0.3s ease 0s;
@@ -48,63 +159,26 @@ nav {
     left: 0;
 }
 
-/* Language */
-.select_languages {
-    position: relative;
-    text-align: center;
-    cursor: pointer;
+/*  Panels */
+/*  Main panel */
+.main_panel {
+    width: 450px;
+    min-height: 370px;
+    height: auto;
+    border-radius: 50px;
+    margin: 2% auto;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    padding: 2% 60px 40px 40px;
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
 }
 
-.lang_ro {
-    width: 40px;
-    height: 20px;
-    border-radius: 10px;
-}
-
-.lang_en {
-    width: 40px;
-    height: 20px;
-    border-radius: 10px;
-}
-
-/* Buttons */
-.btn_signup {
-    background-repeat: no-repeat;
-    background-color: transparent;
-    text-decoration: none;
-    width: 50px;
-    height: 200px;
-    cursor: pointer;
-    color: #0c7578;
-    font-size: 14pt;
-    padding: 10px;
-}
-
-.btn_signup:hover {
-    background-repeat: repeat;
-    background-repeat: no-repeat;
-    background-color: transparent;
-    width: 50px;
-    height: 200px;
-    cursor: pointer;
-    font-size: 14pt;
-    color: #f89c1c;
-    text-decoration: underline;
-    text-decoration-color: #f89c1c;
-}
-
-.button_none_btn {
-    background: none;
-    border: none;
-}
-
-/* User menu information */
+/*  Information user panel */
 .user_information {
     max-width: 250px;
     max-height: 110px;
     border-radius: 30px;
     box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
-    padding: 2%;
+    padding: 20px 20px 50px 20px;
     background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
     margin: 1% 1%;
 }
@@ -122,6 +196,48 @@ nav {
 .user_display:hover {
     color: #f89c1c;
     text-decoration: underline;
+}
+
+.message_panel {
+    padding: 2%;
+    margin: 2% 10px 0px;
+    margin-right: -8px;
+    min-width: 50px;
+    max-width: 600px;
+    min-height: 30px;
+    border-radius: 10px;
+    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
+    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+    text-align: center;
+}
+
+.message_banner_appearance {
+    font-weight: bold;
+    color: #f89c1c;
+}
+
+.message_panel_appearance {
+    text-align: center;
+    color: #0c7578;
+}
+
+/*  Language panel */
+.select_languages {
+    position: relative;
+    text-align: center;
+    cursor: pointer;
+}
+
+.lang_ro {
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
+}
+
+.lang_en {
+    width: 40px;
+    height: 20px;
+    border-radius: 10px;
 }
 
 /* Icons */
@@ -149,29 +265,35 @@ nav {
     cursor: pointer;
 }
 
-/* Footer */
-.footer {
-    position: fixed;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    color: #ffffff;
+.icon_size_calendar {
+    width: 20px;
+    height: 20px;
+    cursor: pointer;
+    margin: -4px;
+}
+
+.delete_icon {
+    width: 18px;
+    height: 20px;
+}
+
+.edit_icon {
+    width: 20px;
+    height: 20px;
+}
+
+.add_icon {
+    width: 20px;
+    height: 20px;
+}
+
+/* Banners */
+.main_banner {
     text-align: center;
-
-}
-
-.copyright_text {
+    background-color: #000000;
+    border: 10px solid;
+    border-radius: 10px;
     opacity: 45%;
-}
-
-/* Contact & About */
-.banner {
-    width: 450px;
-    min-height: 370px;
-    height: auto;
-    border-radius: 50px;
-    margin: 2% auto;
-    box-shadow: 0 9px 50px hsla(20, 67%, 75%, 0.31);
-    padding: 2%;
-    background-image: linear-gradient(-225deg, #e3fdf5 35%, #f89c1c 100%);
+    width: 100%;
+    margin: 0 auto;
 }

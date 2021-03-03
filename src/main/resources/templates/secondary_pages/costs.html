@@ -6,9 +6,9 @@
     <title th:text="#{ssi.costs.title.label}"></title>
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
-    <link rel="stylesheet" href="/css/secondary/costs.css">
-    <link rel="stylesheet" href="/css/secondary/table.css">
+    <link rel="stylesheet" href="/css/main/table.css">
     <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/secondary/costs.css">
 </head>
 
 <body>
@@ -77,17 +77,17 @@
 
 <!-- Navigator -->
 <nav>
-    <a class="btn_signup" th:href="@{'/ssi/home'}">
+    <a class="nav_btn" th:href="@{'/ssi/home'}">
         <img class="icon_size" src="/img/icons/home.png" th:alt="#{main.userinfo.label}"
              th:title="#{main.userinfo.label}">
         <span th:utext="#{ssi.homepage.nav.label}" th:title="#{main.userinfo.label}"></span>
     </a>
-    <a class="btn_signup" th:href="@{'/ssi/costs'}">
+    <a class="nav_btn" th:href="@{'/ssi/costs'}">
         <img class="icon_size" src="/img/icons/costs.png" th:alt="#{ssi.costs.nav.label}"
              th:title="#{ssi.costs.nav.label}">
         <span th:text="#{ssi.costs.nav.label}" th:title="#{ssi.costs.nav.label}"></span>
     </a>
-    <a class="btn_signup " th:href="@{'/ssi/income'}">
+    <a class="nav_btn " th:href="@{'/ssi/income'}">
         <img class="icon_size" src="/img/icons/income.png" th:alt="#{ssi.income.nav.label}"
              th:title="#{ssi.income.nav.label}">
         <span th:text="#{ssi.income.nav.label}" th:title="#{ssi.income.nav.label}"></span>

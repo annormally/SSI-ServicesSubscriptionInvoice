@@ -6,8 +6,8 @@
     <title th:text="#{login.title.label}"></title>
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
-    <link rel="stylesheet" href="/css/main/login.css">
     <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/secondary/login.css">
 </head>
 
 <body>
@@ -37,7 +37,7 @@
 
 <!-- Create Login template-->
 <form method="post" action="/login">
-    <div class="login">
+    <div class="main_panel">
         <h1 th:text="#{nav.a.login.label}"></h1>
 
         <hr>
@@ -69,8 +69,8 @@
         <hr>
 
         <div class="bt_sub">
-            <button type="reset" th:text="#{login.cancel.label}"></button>
-            <button type="submit" th:text="#{login.submit.label}"></button>
+            <button class="main_btn" type="reset" th:text="#{login.cancel.label}"></button>
+            <button class="main_btn" type="submit" th:text="#{login.submit.label}"></button>
         </div>
     </div>
 

@@ -6,6 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="de7e7d95-2e4f-43ce-9187-16e18f6fa554" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/IncomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/IncomeController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/language_en.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/language_en.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/languages/language_ro.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/languages/language_ro.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/contact_about.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/footer.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/general.css" beforeDir="false" />
@@ -23,6 +26,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/login.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/add_costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/add_costs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/add_income.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/add_income.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" afterDir="false" />
@@ -341,7 +345,7 @@
       <workItem from="1614597050393" duration="1392000" />
       <workItem from="1614608869328" duration="637000" />
       <workItem from="1614670428217" duration="3300000" />
-      <workItem from="1614758724054" duration="13766000" />
+      <workItem from="1614758724054" duration="14786000" />
     </task>
     <task id="LOCAL-00001" summary="new version for interface">
       <created>1609773881737</created>
@@ -413,7 +417,14 @@
       <option name="project" value="LOCAL" />
       <updated>1614596766086</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Add income page">
+      <created>1614784125057</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1614784125057</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -459,7 +470,8 @@
     <MESSAGE value="message from contact send to database plus internationalization" />
     <MESSAGE value="new design for home and about" />
     <MESSAGE value="rebuild controller, entity, model for cost and income &#10;delete unnecessary files" />
-    <option name="LAST_COMMIT_MESSAGE" value="rebuild controller, entity, model for cost and income &#10;delete unnecessary files" />
+    <MESSAGE value="Add income page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Add income page" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

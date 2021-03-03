@@ -1,0 +1,22 @@
+input#username, input#psw {
+    padding-left: 20px;
+}
+
+input#username {
+    background: white url('../../img/login/username.png') 4px center no-repeat;
+}
+
+input#password {
+    background: white url("../../img/login/password.png") 4px center no-repeat;
+}
+
+.remember {
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0px 0px 0px;
+    text-align: center;
+}
+
+.new_account {
+    font-size: 16pt;
+    text-align: center;
+}

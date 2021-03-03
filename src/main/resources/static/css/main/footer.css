@@ -1,3 +1,18 @@
+/* Footer */
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    color: #ffffff;
+    text-align: center;
+
+}
+
+.copyright_text {
+    opacity: 45%;
+}
+
 .footer_contact_about {
     position: relative;
 }
@@ -13,3 +28,4 @@
     bottom: 0;
     right: 40px;
 }
+

@@ -1,10 +1,162 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>SSI::Edit Income</title>
+    <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
+    <link rel="stylesheet" href="/css/main/general.css">
+    <link rel="stylesheet" href="/css/secondary/edit_costs.css">
+    <link rel="stylesheet" href="/css/secondary/table.css">
+    <link rel="stylesheet" href="/css/main/footer.css">
 </head>
+
 <body>
+
+<!-- User Information Form -->
+<div class="user_information">
+
+    <div>
+        <!-- Message Hello -->
+        <span th:text="#{ssi.homepage.user.hello.label}"></span>
+
+        <!-- Display username -->
+        <form th:each="user:${userList}">
+            <a class="user_display" th:href="@{'/ssi/user/information/' + ${user.getUserId()}}">
+                <span sec:authentication="name"></span>
+            </a>
+        </form>
+    </div>
+    <hr>
+
+    <!--  Icons for information and logout -->
+    <div style="display: block ruby">
+
+        <!-- Information about user -->
+        <button class="button_none_btn" type="submit">
+            <a th:href="@{'/ssi/user/info/edit/'}">
+                <img class="userinfo_icon" src="/img/icons/userinfo.png" th:alt="#{main.userinfo.label}"
+                     th:title="#{main.userinfo.label}">
+            </a>
+        </button>
+
+        <!-- Logout -->
+        <form method="post" action="/logout">
+            <button class="button_none_btn" type="submit">
+                <a>
+                    <img class="logout_icon" src="/img/icons/logout.png" th:alt="#{main.logout.label}"
+                         th:title="#{main.logout.label}"> </a>
+            </button>
+        </form>
+    </div>
+
+    <hr>
+
+    <!-- Language select -->
+    <div class="select_languages">
+
+        <div class="btn_ro">
+            <a th:href="@{/ssi/home?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                       th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+        </div>
+
+        <div class="btn_en">
+            <a th:href="@{/ssi/home?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                       th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+        </div>
+    </div>
+</div>
+
+<!-- Logo on page -->
+<a class="logo" th:href="@{'/ssi/home'}">
+    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
+</a>
+
+<!-- Form for editing costs -->
+<form method="post" action="/ssi/costs/save" th:object="${cost}">
+    <div class="costs_edit">
+
+        <!-- Edit costs -->
+        <h1 th:text="#{ssi.costs.form.title.label}"></h1>
+        <hr>
+
+        <div class="table_position">
+
+            <!-- Cost Id -->
+            <input type="hidden" name="userId" th:field="*{costId}">
+
+            <!-- Data -->
+            <label for="date" th:text="#{ssi.costs.form.date.label}"></label>
+            <input class="calendar_date" type="text" name="date" id="date" placeholder="DD/MM/YYYY" th:field="*{date}">
+
+            <!-- Support Document -->
+            <label for="support-document" th:text="#{ssi.table.document.justification}"></label>
+            <input type="text" name="support-document" id="support-document" placeholder="Justification document"
+                   th:field="*{value}">
+
+            <!-- Currency -->
+            <label for="currency" th:utext="#{ssi.costs.form.currency.label}"></label>
+            <select class="select_currency" id="currency" th:field="*{currency}">
+                <option th:text="#{ssi.costs.option.currency.euro.label}" value="Euro"></option>
+                <option th:text="#{ssi.costs.option.currency.leu.label}" value="Lei"></option>
+            </select>
+
+            <!-- Value -->
+            <label for="value" th:text="#{ssi.costs.form.value.label}"></label>
+            <input type="text" name="name" id="value" placeholder="Value" th:field="*{value}">
+
+            <!-- TVA -->
+            <label for="tva" th:text="#{ssi.table.tva}"></label>
+            <input type="text" name="tva" id="tva" placeholder="TVA" th:field="*{value}">
+
+            <!-- Value TVA -->
+            <label for="value_tva" th:text="#{ssi.table.tva.value}"></label>
+            <input type="text" name="value_tva" id="value_tva" placeholder="Value TVA" th:field="*{value}">
+
+            <!-- Total Value + TVA -->
+            <label for="total_plus_tva" th:text="#{ssi.table.total.value.tva}"></label>
+            <input type="text" name="total_plus_tva" id="total_plus_tva" placeholder="Total plus TVA"
+                   th:field="*{value}">
+            <br>
+            <hr>
+        </div>
+
+        <div class="bt_sub">
+            <button class="btn_ed_cost" type="reset" th:text="#{ssi.costs.btn.reset.label}"></button>
+            <button class="btn_ed_cost" type="submit" th:text="#{ssi.costs.btn.submit.label}"></button>
+        </div>
+
+    </div>
+</form>
+
+<!-- Footer for site -->
+<div class="footer">
+
+    <!-- Copyright -->
+    <p class="copyright_text">Copyright &copy; 2021 All Rights Reserved by
+        <span th:utext="#{main.author}"></span>.
+    </p>
+
+    <div class="footer_contact_about">
+
+        <!-- Contact -->
+        <div class="contact">
+            <a th:href="@{'/ssi/contact'}">
+                <img class="icon_size_footer" src="/img/icons/contact.png" th:alt="#{contact.icon}"
+                     th:title="#{contact.icon}">
+            </a>
+        </div>
+
+        <!-- About -->
+        <div class="about">
+            <a th:href="@{'/ssi/about'}">
+                <img class="icon_size_footer" src="/img/icons/about.png" th:alt="#{about.name.icon}"
+                     th:title="#{about.name.icon}">
+            </a>
+        </div>
+    </div>
+
+</div>
 
 </body>
 </html>

@@ -6,9 +6,8 @@
     <title th:text="#{add.costs.title}"></title>
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
-    <link rel="stylesheet" href="/css/secondary/edit_costs.css">
-    <link rel="stylesheet" href="/css/secondary/table.css">
     <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/secondary/costs-income.css">
 </head>
 
 <body>
@@ -74,7 +73,7 @@
 
 <!-- Form for editing costs -->
 <form method="post" action="/ssi/costs/save" th:object="${cost}">
-    <div class="costs_edit">
+    <div class="main_panel">
 
         <!-- Add costs -->
         <h1 th:text="#{ssi.costs.add.title.label}"></h1>
@@ -86,43 +85,49 @@
             <input type="hidden" name="userId" th:field="*{costId}">
 
             <!-- Data -->
-            <label for="date" th:text="#{ssi.costs.form.date.label}"></label>
-            <input class="calendar_date" type="text" name="date" id="date" placeholder="DD/MM/YYYY" th:field="*{date}">
+            <div class="add-display-message">
+                <label for="date" th:text="#{ssi.costs.form.date.label}"></label>
+            </div>
+            <input type="text" name="date" id="date" placeholder="DD/MM/YYYY" th:field="*{date}">
 
-            <!-- Explication -->
-            <label for="explication" th:text="#{ssi.table.explication}"></label>
-            <input type="text" name="explication" id="explication" placeholder="Explication" th:field="*{value}">
-
-            <!-- Justification Document -->
-            <label for="justification" th:text="#{ssi.table.document.justification}"></label>
-            <input type="text" name="justrification" id="justification" placeholder="Justification document"
+            <!-- Support Document -->
+            <div class="add-display-message">
+                <label for="support-document" th:text="#{ssi.table.document.justification}"></label>
+            </div>
+            <input type="text" name="support-document" id="support-document" placeholder="Support document"
                    th:field="*{value}">
 
             <!-- Currency -->
-            <label for="currency" th:utext="#{ssi.costs.form.currency.label}"></label>
+            <div class="add-display-message">
+                <label for="currency" th:utext="#{ssi.costs.form.currency.label}"></label>
+            </div>
             <select class="select_currency" id="currency" th:field="*{currency}">
                 <option th:text="#{ssi.costs.option.currency.euro.label}" value="Euro"></option>
                 <option th:text="#{ssi.costs.option.currency.leu.label}" value="Lei"></option>
             </select>
 
-            <!-- Unitary price -->
-            <label for="unitary" th:text="#{ssi.table.unitary.price}"></label>
-            <input type="text" name="unitary" id="unitary" placeholder="Unitary price" th:field="*{value}">
-
             <!-- Value -->
-            <label for="value" th:text="#{ssi.costs.form.value.label}"></label>
+            <div class="add-display-message">
+                <label for="value" th:text="#{ssi.costs.form.value.label}"></label>
+            </div>
             <input type="text" name="name" id="value" placeholder="Value" th:field="*{value}">
 
             <!-- TVA -->
-            <label for="tva" th:text="#{ssi.table.tva}"></label>
+            <div class="add-display-message">
+                <label for="tva" th:text="#{ssi.table.tva}"></label>
+            </div>
             <input type="text" name="tva" id="tva" placeholder="TVA" th:field="*{value}">
 
             <!-- Value TVA -->
-            <label for="value_tva" th:text="#{ssi.table.tva.value}"></label>
+            <div class="add-display-message">
+                <label for="value_tva" th:text="#{ssi.table.tva.value}"></label>
+            </div>
             <input type="text" name="value_tva" id="value_tva" placeholder="Value TVA" th:field="*{value}">
 
             <!-- Total Value + TVA -->
-            <label for="total_plus_tva" th:text="#{ssi.table.total.value.tva}"></label>
+            <div class="add-display-message">
+                <label for="total_plus_tva" th:text="#{ssi.table.total.value.tva}"></label>
+            </div>
             <input type="text" name="total_plus_tva" id="total_plus_tva" placeholder="Total plus TVA"
                    th:field="*{value}">
             <br>
@@ -130,8 +135,8 @@
         </div>
 
         <div class="bt_sub">
-            <button class="btn_ed_cost" type="reset" th:text="#{ssi.costs.btn.reset.label}"></button>
-            <button class="btn_ed_cost" type="submit" th:utext="#{ssi.costs.btn.add.label}"></button>
+            <button class="main_btn" type="reset" th:text="#{ssi.costs.btn.reset.label}"></button>
+            <button class="main_btn" type="submit" th:utext="#{ssi.costs.btn.add.label}"></button>
         </div>
 
     </div>

@@ -6,8 +6,8 @@
     <title th:text="#{signup.titlepage.label}"></title>
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
-    <link rel="stylesheet" href="/css/main/singup.css">
     <link rel="stylesheet" href="/css/main/footer.css">
+    <link rel="stylesheet" href="/css/secondary/signup.css">
 </head>
 <body>
 
@@ -39,7 +39,7 @@
 
 <!-- Create Sign Up template-->
 <form method="post" action="/signup" th:object="${user}">
-    <div class="signUp">
+    <div class="main_panel">
 
         <h1 th:text="#{signUp.title.label}"></h1>
         <p th:utext="#{signUp.paragraph.label}"></p>
@@ -75,8 +75,8 @@
         <hr>
 
         <div class="bt_sub">
-            <button type="reset" th:text="#{signUp.cancel.label}"></button>
-            <button type="submit" th:text="#{signUp.submit.label}"></button>
+            <button class="main_btn" type="reset" th:text="#{signUp.cancel.label}"></button>
+            <button class="main_btn" type="submit" th:text="#{signUp.submit.label}"></button>
         </div>
 
     </div>
