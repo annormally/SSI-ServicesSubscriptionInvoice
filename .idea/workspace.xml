@@ -6,12 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="de7e7d95-2e4f-43ce-9187-16e18f6fa554" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/CostsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/CostsController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/IncomeController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/controller/IncomeController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/model/CostsModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/model/CostsModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ssi/webapplication/model/IncomeModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ssi/webapplication/model/IncomeModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/contact_about.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/footer.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/general.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/home.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/login.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/main/singup.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/edit_costs.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/income.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/table.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/user_info.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/static/css/secondary/user_information.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/about.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/about.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/login.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/login.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/add_costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/add_costs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/costs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/edit_costs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/templates/secondary_pages/income.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -22,10 +36,10 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JavaScript File" />
-        <option value="CSS File" />
         <option value="Class" />
         <option value="Interface" />
         <option value="HTML File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -53,7 +67,6 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/src/main/resources/templates/main_pages/signup.html" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/src/main/resources/static/css/secondary/costs.css" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/CostsEntity.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/java/ssi/webapplication/entities/IncomeEntity.java" root0="SKIP_INSPECTION" />
     <setting file="file://$PROJECT_DIR$/src/main/resources/templates/main_pages/home.html" root0="FORCE_HIGHLIGHTING" />
@@ -325,6 +338,10 @@
       <workItem from="1614519508404" duration="986000" />
       <workItem from="1614520514761" duration="1625000" />
       <workItem from="1614522596118" duration="2233000" />
+      <workItem from="1614597050393" duration="1392000" />
+      <workItem from="1614608869328" duration="637000" />
+      <workItem from="1614670428217" duration="3300000" />
+      <workItem from="1614758724054" duration="13766000" />
     </task>
     <task id="LOCAL-00001" summary="new version for interface">
       <created>1609773881737</created>
@@ -389,7 +406,14 @@
       <option name="project" value="LOCAL" />
       <updated>1612863889390</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="rebuild controller, entity, model for cost and income &#10;delete unnecessary files">
+      <created>1614596766085</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1614596766086</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -434,7 +458,8 @@
     <MESSAGE value="new look for home page and modified about and user information editor" />
     <MESSAGE value="message from contact send to database plus internationalization" />
     <MESSAGE value="new design for home and about" />
-    <option name="LAST_COMMIT_MESSAGE" value="new design for home and about" />
+    <MESSAGE value="rebuild controller, entity, model for cost and income &#10;delete unnecessary files" />
+    <option name="LAST_COMMIT_MESSAGE" value="rebuild controller, entity, model for cost and income &#10;delete unnecessary files" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
