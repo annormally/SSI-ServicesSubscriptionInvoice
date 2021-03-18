@@ -8,7 +8,6 @@
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
     <link rel="stylesheet" href="/css/main/footer.css">
-    <link rel="stylesheet" href="/css/main/contact_about.css">
 </head>
 <body>
 
@@ -36,9 +35,13 @@
 </a>
 
 <!-- Page content -->
-<div class="banner">
+<div class="main_panel">
+
     <!-- Title -->
     <h1 th:text="#{contact.banner.title}"></h1>
+
+    <!-- Message for user from developer -->
+    <p th:text="#{contact.message.for.developer}"></p>
 
     <hr>
 
@@ -65,7 +68,7 @@
 
             <!-- Submit -->
             <div class="bt_sub">
-                <button type="submit" th:text="#{contact.submit.send}"></button>
+                <button class="main_btn" type="submit" th:text="#{contact.submit.send}"></button>
             </div>
 
         </div>

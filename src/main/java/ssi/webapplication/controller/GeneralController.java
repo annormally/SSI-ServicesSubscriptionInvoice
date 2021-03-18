@@ -9,12 +9,32 @@ import org.springframework.web.servlet.ModelAndView;
 import ssi.webapplication.entities.ContactEntity;
 import ssi.webapplication.model.ContactModel;
 import ssi.webapplication.repositories.ContactRepository;
+import ssi.webapplication.repositories.UserRepository;
 
 @Controller
 public class GeneralController {
 
     @Autowired
+    private UserRepository userRepository;
+
+    @Autowired
     private ContactRepository contactRepository;
+
+    /**
+     * Mapping for "home" page.
+     *
+     * @return
+     */
+
+    @GetMapping("/ssi/home")
+    public ModelAndView getHomepage() {
+        ModelAndView modelAndView = new ModelAndView("main_pages/home");
+
+        // To find user used a list
+        modelAndView.addObject("userList", userRepository.findAll());
+
+        return modelAndView;
+    }
 
     /**
      * Contact page mapping

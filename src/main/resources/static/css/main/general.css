@@ -64,6 +64,11 @@ h1 {
     text-align: center;
 }
 
+h3 {
+    color: #f89c1c;
+    text-align: center;
+}
+
 /* All message from label. */
 b {
     text-align: center;
@@ -71,7 +76,7 @@ b {
 }
 
 /*  All input style. */
-input[type = "text"], input[type = "password"], .select_currency {
+input[type = "text"], input[type = "password"], .select_currency, textarea {
     background: none;
     display: block;
     margin: 20px auto;
@@ -86,7 +91,7 @@ input[type = "text"], input[type = "password"], .select_currency {
     transition: 0.25s;
 }
 
-input[type = "text"]:focus, input[type = "password"]:focus, .select_currency:focus {
+input[type = "text"]:focus, input[type = "password"]:focus, .select_currency:focus, textarea:focus {
     width: 280px;
     border-color: #f89c1c;
 }
