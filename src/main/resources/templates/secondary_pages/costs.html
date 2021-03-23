@@ -103,14 +103,8 @@
         <!-- Table field -->
         <th th:text="#{ssi.table.nr.crt}"></th>
         <th th:text="#{ssi.table.date}"></th>
-        <th th:text="#{ssi.table.explication}"></th>
-        <th th:text="#{ssi.table.document.justification}"></th>
         <th th:utext="#{ssi.table.currency}"></th>
-        <th th:text="#{ssi.table.unitary.price}"></th>
         <th th:text="#{ssi.table.value}"></th>
-        <th th:text="#{ssi.table.tva}"></th>
-        <th th:text="#{ssi.table.tva.value}"></th>
-        <th th:text="#{ssi.table.total.value.tva}"></th>
         <th th:text="#{ssi.table.option}"></th>
     </tr>
 
@@ -123,29 +117,11 @@
         <!-- Date -->
         <td th:text="${cost.date != null} ? ${#dates.format(cost.date,'dd/MM/yyyy')}: 'n/a' "></td>
 
-        <!-- Explication -->
-        <td th:text="${cost.date != null} ?${cost.explication}: 'n/a'"></td>
-
-        <!-- Justification Document -->
-        <td th:text="${cost.justificationDocument != null} ?${cost.justificationDocument}: 'n/a'"></td>
-
         <!-- Currency -->
         <td th:utext="${cost.currency != null} ?${cost.currency}: 'n/a'"></td>
 
-        <!-- Unitary price -->
-        <td th:text="${cost.unitaryPrice != null} ?${cost.unitaryPrice}: 'n/a'"></td>
-
         <!-- Value -->
         <td th:text="${cost.value != null} ?${cost.value}: 'n/a'"></td>
-
-        <!-- TVA -->
-        <td th:text="${cost.tva != null} ?${cost.tva}: 'n/a'"></td>
-
-        <!-- Value TVA -->
-        <td th:text="${cost.tvaValeu != null} ?${cost.tvaValeu}: 'n/a'"></td>
-
-        <!-- Total Value + TVA -->
-        <td th:text="${cost.totalValeuPlusTva != null} ?${cost.totalValeuPlusTva}: 'n/a'"></td>
 
         <!-- Option -->
         <td>

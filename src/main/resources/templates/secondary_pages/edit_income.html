@@ -72,18 +72,37 @@
     <img src="/img/logo/ssi.png" th:alt="#{ssi}">
 </a>
 
+<!-- Navigator -->
+<nav>
+    <a class="nav_btn" th:href="@{'/ssi/home'}">
+        <img class="icon_size" src="/img/icons/home.png" th:alt="#{main.userinfo.label}"
+             th:title="#{main.userinfo.label}">
+        <span th:utext="#{ssi.homepage.nav.label}" th:title="#{main.userinfo.label}"></span>
+    </a>
+    <a class="nav_btn" th:href="@{'/ssi/costs'}">
+        <img class="icon_size" src="/img/icons/costs.png" th:alt="#{ssi.costs.nav.label}"
+             th:title="#{ssi.costs.nav.label}">
+        <span th:text="#{ssi.costs.nav.label}" th:title="#{ssi.costs.nav.label}"></span>
+    </a>
+    <a class="nav_btn" th:href="@{'/ssi/income'}">
+        <img class="icon_size" src="/img/icons/income.png" th:alt="#{ssi.income.nav.label}"
+             th:title="#{ssi.income.nav.label}">
+        <span th:text="#{ssi.income.nav.label}" th:title="#{ssi.income.nav.label}"></span>
+    </a>
+</nav>
+
 <!-- Form for editing costs -->
-<form method="post" action="/ssi/costs/save" th:object="${cost}">
+<form method="post" action="/ssi/income/save" th:object="${incomeId}">
     <div class="costs_edit">
 
-        <!-- Edit costs -->
-        <h1 th:text="#{ssi.costs.form.title.label}"></h1>
+        <!-- Edit income -->
+        <h1 th:text="#{ssi.income.form.title.label}"></h1>
         <hr>
 
         <div class="table_position">
 
             <!-- Cost Id -->
-            <input type="hidden" name="userId" th:field="*{costId}">
+            <input type="hidden" name="userId" th:field="*{}">
 
             <!-- Data -->
             <label for="date" th:text="#{ssi.costs.form.date.label}"></label>

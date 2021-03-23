@@ -76,7 +76,7 @@ b {
 }
 
 /*  All input style. */
-input[type = "text"], input[type = "password"], .select_currency, textarea {
+input[type = "text"], input[type = "password"], input[type = "date"], .select_currency, textarea {
     background: none;
     display: block;
     margin: 20px auto;
@@ -91,7 +91,7 @@ input[type = "text"], input[type = "password"], .select_currency, textarea {
     transition: 0.25s;
 }
 
-input[type = "text"]:focus, input[type = "password"]:focus, .select_currency:focus, textarea:focus {
+input[type = "text"]:focus, input[type = "password"]:focus, input[type = "date"]:focus, .select_currency:focus, textarea:focus {
     width: 280px;
     border-color: #f89c1c;
 }

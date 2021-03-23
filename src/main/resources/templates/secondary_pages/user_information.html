@@ -78,17 +78,17 @@
 
 <!-- Navigator -->
 <nav>
-    <a class="btn_signup" th:href="@{'/ssi/home'}">
+    <a class="nav_btn" th:href="@{'/ssi/home'}">
         <img class="icon_size" src="/img/icons/home.png" th:alt="#{main.userinfo.label}"
              th:title="#{main.userinfo.label}">
         <span th:utext="#{ssi.homepage.nav.label}" th:title="#{main.userinfo.label}"></span>
     </a>
-    <a class="btn_signup" th:href="@{'/ssi/costs'}">
+    <a class="nav_btn" th:href="@{'/ssi/costs'}">
         <img class="icon_size" src="/img/icons/costs.png" th:alt="#{ssi.costs.nav.label}"
              th:title="#{ssi.costs.nav.label}">
         <span th:text="#{ssi.costs.nav.label}" th:title="#{ssi.costs.nav.label}"></span>
     </a>
-    <a class="btn_signup " th:href="@{'/ssi/income'}">
+    <a class="nav_btn " th:href="@{'/ssi/income'}">
         <img class="icon_size" src="/img/icons/income.png" th:alt="#{ssi.income.nav.label}"
              th:title="#{ssi.income.nav.label}">
         <span th:text="#{ssi.income.nav.label}" th:title="#{ssi.income.nav.label}"></span>
@@ -98,7 +98,7 @@
 
 <!-- Table with information about user-->
 
-<div class="user_info_table">
+<div class="main_panel">
     <div class="table_information_user">
         <div class="table_position">
 

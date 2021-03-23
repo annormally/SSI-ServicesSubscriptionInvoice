@@ -48,7 +48,7 @@ public class CostsController {
 
     @GetMapping("/ssi/costs/add")
     public ModelAndView addNewCost() {
-        ModelAndView modelAndView = new ModelAndView("secondary_pages/edit_costs");
+        ModelAndView modelAndView = new ModelAndView("secondary_pages/add_costs");
         modelAndView.addObject("cost", new CostsModel());
         return modelAndView;
     }
@@ -57,20 +57,16 @@ public class CostsController {
      * Edit costs mapping
      */
 
-    @GetMapping("/ssi/costs/edit/{id}")
-    public ModelAndView editCost(@PathVariable Integer costId) {
+    @GetMapping("/ssi/costs/edit/{costsId}")
+    public ModelAndView editCost(@PathVariable Integer costsId) {
         ModelAndView modelAndView = new ModelAndView("secondary_pages/edit_costs");
-        CostsEntity costsEntity = costsRepository.findById(costId).get();
+        CostsEntity costsEntity = costsRepository.findById(costsId).get();
         CostsModel costsModel = new CostsModel();
 
         // Fields
         costsModel.setDate(costsEntity.getDate());
-        costsModel.setSupportDocument(costsEntity.getSupportDocument());
         costsModel.setCurrency(costsEntity.getCurrency());
         costsModel.setValue(costsEntity.getValue());
-        costsModel.setTva(costsEntity.getTva());
-        costsModel.setTvaValue(costsEntity.getTvaValeu());
-        costsModel.setTotalValuePlusTva(costsEntity.getTotalValeuPlusTva());
 
         modelAndView.addObject("cost", costsModel);
 
@@ -81,10 +77,10 @@ public class CostsController {
      * Delete costs mapping
      */
 
-    @GetMapping("ssi/costs/delete/{id}")
-    public ModelAndView deleteCost(@PathVariable Integer costId) {
+    @GetMapping("ssi/costs/delete/{costsId}")
+    public ModelAndView deleteCost(@PathVariable Integer costsId) {
         ModelAndView modelAndView = new ModelAndView("redirect:/ssi/costs");
-        costsRepository.deleteById(costId);
+        costsRepository.deleteById(costsId);
         return modelAndView;
     }
 
@@ -104,12 +100,8 @@ public class CostsController {
 
         // Fields
         costsEntity.setDate(costsModel.getDate());
-        costsEntity.setSupportDocument(costsModel.getSupportDocument());
         costsEntity.setCurrency(costsModel.getCurrency());
         costsEntity.setValue(costsModel.getValue());
-        costsEntity.setTva(costsModel.getTva());
-        costsEntity.setTvaValeu(costsModel.getTvaValue());
-        costsEntity.setTotalValeuPlusTva(costsModel.getTotalValuePlusTva());
 
         // Save
         costsRepository.save(costsEntity);

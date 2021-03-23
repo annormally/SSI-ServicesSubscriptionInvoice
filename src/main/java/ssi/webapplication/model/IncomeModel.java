@@ -6,12 +6,8 @@ public class IncomeModel {
 
     private Integer incomeId;
     private Date date;
-    private String supportDocument;
     private String currency;
     private Double value;
-    private Double tva;
-    private Double tvaValue;
-    private Double totalValuePlusTva;
 
     public Integer getIncomeId() {
         return incomeId;
@@ -29,14 +25,6 @@ public class IncomeModel {
         this.date = date;
     }
 
-    public String getSupportDocument() {
-        return supportDocument;
-    }
-
-    public void setSupportDocument(String supportDocument) {
-        this.supportDocument = supportDocument;
-    }
-
     public String getCurrency() {
         return currency;
     }
@@ -51,29 +39,5 @@ public class IncomeModel {
 
     public void setValue(Double value) {
         this.value = value;
-    }
-
-    public Double getTva() {
-        return tva;
-    }
-
-    public void setTva(Double tva) {
-        this.tva = tva;
-    }
-
-    public Double getTvaValue() {
-        return tvaValue;
-    }
-
-    public void setTvaValue(Double tvaValue) {
-        this.tvaValue = tvaValue;
-    }
-
-    public Double getTotalValuePlusTva() {
-        return totalValuePlusTva;
-    }
-
-    public void setTotalValuePlusTva(Double totalValuePlusTva) {
-        this.totalValuePlusTva = totalValuePlusTva;
     }
 }

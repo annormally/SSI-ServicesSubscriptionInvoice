@@ -12,7 +12,6 @@ import ssi.webapplication.entities.IncomeEntity;
 import ssi.webapplication.repositories.IncomeRepository;
 import ssi.webapplication.repositories.UserRepository;
 
-// TODO: 25/01/2021 implement all method add, edit, delete and save
 
 @Controller
 public class IncomeController {
@@ -36,6 +35,7 @@ public class IncomeController {
     @GetMapping("/ssi/income")
     public ModelAndView getIncomes() {
         ModelAndView modelAndView = new ModelAndView("secondary_pages/income");
+        modelAndView.addObject("incomeList", incomeRepository.findAll());
 
         // To find user used a list
         modelAndView.addObject("userList", userRepository.findAll());
@@ -51,8 +51,7 @@ public class IncomeController {
 
     @GetMapping("/ssi/income/add")
     public ModelAndView addNewIncome() {
-        // TODO: 3/1/2021 add page "add_income"
-        ModelAndView modelAndView = new ModelAndView("");
+        ModelAndView modelAndView = new ModelAndView("secondary_pages/add_income");
         modelAndView.addObject("income", new IncomeModel());
         return modelAndView;
     }
@@ -66,35 +65,29 @@ public class IncomeController {
 
     @GetMapping("/ssi/income/edit/{incomeId}")
     public ModelAndView editIncome(@PathVariable Integer incomeId) {
-        // TODO: 3/1/2021 add page "edit_income"
-        ModelAndView modelAndView = new ModelAndView("");
+        ModelAndView modelAndView = new ModelAndView("secondary_pages/edit_income");
         IncomeEntity incomeEntity = incomeRepository.findById(incomeId).get();
         IncomeModel incomeModel = new IncomeModel();
 
         // Field
         incomeModel.setDate(incomeEntity.getDate());
-        incomeModel.setSupportDocument(incomeEntity.getSupportDocument());
         incomeModel.setCurrency(incomeEntity.getCurrency());
         incomeModel.setValue(incomeEntity.getValue());
-        incomeModel.setTva(incomeEntity.getTva());
-        incomeModel.setTvaValue(incomeEntity.getTvaValeu());
-        incomeModel.setTotalValuePlusTva(incomeEntity.getTotalValeuPlusTva());
 
         return modelAndView;
     }
 
     @GetMapping("/ssi/income/delete/{incomeId}")
     public ModelAndView deleteIncome(@PathVariable Integer incomeId) {
-        // TODO: 3/1/2021 introduce the redirect page
-        ModelAndView modelAndView = new ModelAndView("redirect:/");
+
+        ModelAndView modelAndView = new ModelAndView("redirect:/ssi/income");
         incomeRepository.deleteById(incomeId);
         return modelAndView;
     }
 
     @PostMapping("/ssi/income/save")
     public ModelAndView saveIncome(@ModelAttribute("income") IncomeModel incomeModel) {
-        // TODO: 3/1/2021 introduce the redirect page
-        ModelAndView modelAndView = new ModelAndView("redirect:/");
+        ModelAndView modelAndView = new ModelAndView("redirect:/ssi/income");
         IncomeEntity incomeEntity;
         if (incomeModel.getIncomeId() != null) {
             incomeEntity = incomeRepository.findById(incomeModel.getIncomeId()).get();
@@ -104,12 +97,8 @@ public class IncomeController {
 
         // Fields
         incomeEntity.setDate(incomeModel.getDate());
-        incomeEntity.setSupportDocument(incomeEntity.getSupportDocument());
         incomeEntity.setCurrency(incomeModel.getCurrency());
         incomeEntity.setValue(incomeModel.getValue());
-        incomeEntity.setTva(incomeModel.getTva());
-        incomeEntity.setTvaValeu(incomeModel.getTvaValue());
-        incomeEntity.setTotalValeuPlusTva(incomeModel.getTotalValuePlusTva());
 
         // Save
         incomeRepository.save(incomeEntity);

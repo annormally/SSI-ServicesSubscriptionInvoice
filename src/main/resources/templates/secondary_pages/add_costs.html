@@ -71,6 +71,25 @@
     <img src="/img/logo/ssi.png" th:alt="#{ssi}">
 </a>
 
+<!-- Navigator -->
+<nav>
+    <a class="nav_btn" th:href="@{'/ssi/home'}">
+        <img class="icon_size" src="/img/icons/home.png" th:alt="#{main.userinfo.label}"
+             th:title="#{main.userinfo.label}">
+        <span th:utext="#{ssi.homepage.nav.label}" th:title="#{main.userinfo.label}"></span>
+    </a>
+    <a class="nav_btn" th:href="@{'/ssi/costs'}">
+        <img class="icon_size" src="/img/icons/costs.png" th:alt="#{ssi.costs.nav.label}"
+             th:title="#{ssi.costs.nav.label}">
+        <span th:text="#{ssi.costs.nav.label}" th:title="#{ssi.costs.nav.label}"></span>
+    </a>
+    <a class="nav_btn" th:href="@{'/ssi/income'}">
+        <img class="icon_size" src="/img/icons/income.png" th:alt="#{ssi.income.nav.label}"
+             th:title="#{ssi.income.nav.label}">
+        <span th:text="#{ssi.income.nav.label}" th:title="#{ssi.income.nav.label}"></span>
+    </a>
+</nav>
+
 <!-- Form for editing costs -->
 <form method="post" action="/ssi/costs/save" th:object="${cost}">
     <div class="main_panel">
@@ -88,14 +107,7 @@
             <div class="add-display-message">
                 <label for="date" th:text="#{ssi.costs.form.date.label}"></label>
             </div>
-            <input type="text" name="date" id="date" placeholder="DD/MM/YYYY" th:field="*{date}">
-
-            <!-- Support Document -->
-            <div class="add-display-message">
-                <label for="support-document" th:text="#{ssi.table.document.justification}"></label>
-            </div>
-            <input type="text" name="support-document" id="support-document" placeholder="Support document"
-                   th:field="*{value}">
+            <input type="date" name="date" id="date" placeholder="DD/MM/YYYY" th:field="*{date}">
 
             <!-- Currency -->
             <div class="add-display-message">
@@ -111,32 +123,13 @@
                 <label for="value" th:text="#{ssi.costs.form.value.label}"></label>
             </div>
             <input type="text" name="name" id="value" placeholder="Value" th:field="*{value}">
-
-            <!-- TVA -->
-            <div class="add-display-message">
-                <label for="tva" th:text="#{ssi.table.tva}"></label>
-            </div>
-            <input type="text" name="tva" id="tva" placeholder="TVA" th:field="*{value}">
-
-            <!-- Value TVA -->
-            <div class="add-display-message">
-                <label for="value_tva" th:text="#{ssi.table.tva.value}"></label>
-            </div>
-            <input type="text" name="value_tva" id="value_tva" placeholder="Value TVA" th:field="*{value}">
-
-            <!-- Total Value + TVA -->
-            <div class="add-display-message">
-                <label for="total_plus_tva" th:text="#{ssi.table.total.value.tva}"></label>
-            </div>
-            <input type="text" name="total_plus_tva" id="total_plus_tva" placeholder="Total plus TVA"
-                   th:field="*{value}">
             <br>
             <hr>
         </div>
 
         <div class="bt_sub">
             <button class="main_btn" type="reset" th:text="#{ssi.costs.btn.reset.label}"></button>
-            <button class="main_btn" type="submit" th:utext="#{ssi.costs.btn.add.label}"></button>
+            <button class="main_btn" type="submit" th:utext="#{ssi.costs.add.title.label}"></button>
         </div>
 
     </div>

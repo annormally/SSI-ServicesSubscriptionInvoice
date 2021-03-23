@@ -78,17 +78,17 @@
 
 <!-- Navigator -->
 <nav>
-    <a class="menu" th:href="@{'/ssi/home'}">
+    <a class="nav_btn" th:href="@{'/ssi/home'}">
         <img class="icon_size" src="/img/icons/home.png" th:alt="#{main.userinfo.label}"
              th:title="#{main.userinfo.label}">
         <span th:utext="#{ssi.homepage.nav.label}" th:title="#{main.userinfo.label}"></span>
     </a>
-    <a class="btn_signup" th:href="@{'/ssi/costs'}">
+    <a class="nav_btn" th:href="@{'/ssi/costs'}">
         <img class="icon_size" src="/img/icons/costs.png" th:alt="#{ssi.costs.nav.label}"
              th:title="#{ssi.costs.nav.label}">
         <span th:text="#{ssi.costs.nav.label}" th:title="#{ssi.costs.nav.label}"></span>
     </a>
-    <a class="btn_signup " th:href="@{'/ssi/income'}">
+    <a class="nav_btn " th:href="@{'/ssi/income'}">
         <img class="icon_size" src="/img/icons/income.png" th:alt="#{ssi.income.nav.label}"
              th:title="#{ssi.income.nav.label}">
         <span th:text="#{ssi.income.nav.label}" th:title="#{ssi.income.nav.label}"></span>
@@ -103,15 +103,8 @@
         <!-- Table field -->
         <th th:text="#{ssi.table.nr.crt}"></th>
         <th th:text="#{ssi.table.date}"></th>
-        <th th:text="#{ssi.table.explication}"></th>
-        <th th:text="#{ssi.table.document.justification}"></th>
         <th th:utext="#{ssi.table.currency}"></th>
-        <th th:text="#{ssi.table.unitary.price}"></th>
         <th th:text="#{ssi.table.value}"></th>
-        <th th:text="#{ssi.table.tva}"></th>
-        <th th:text="#{ssi.table.tva.value}"></th>
-        <th th:text="#{ssi.table.total.value}"></th>
-        <th th:text="#{ssi.table.total.value.tva}"></th>
         <th th:text="#{ssi.table.option}"></th>
     </tr>
 
@@ -119,46 +112,23 @@
     <tr th:each="income:${incomeList}">
 
         <!-- Number current -->
+        <th th:text="${income.incomeId}"></th>
 
         <!-- Date -->
         <td th:text="${#dates.format(income.date,'dd/MM/yyyy')}"></td>
 
-        <!-- Explication -->
-        <td></td>
-
-        <!-- Justification Document -->
-        <td></td>
-
         <!-- Currency -->
-        <td th:utext="${cost.currency}"></td>
-
-        <!-- Unitary price -->
-        <td></td>
+        <td th:utext="${income.currency}"></td>
 
         <!-- Value -->
-        <td th:text="${cost.value}"></td>
-
-        <!-- TVA -->
-        <td></td>
-
-        <!-- TVA -->
-        <td></td>
-
-        <!-- Value TVA -->
-        <td></td>
-
-        <!-- Total TVA -->
-        <td></td>
-
-        <!-- Total Value + TVA -->
-        <td></td>
+        <td th:text="${income.value}"></td>
 
         <!-- Option -->
         <td>
 
             <!-- Delete -->
             <button class="button_none_btn">
-                <a name="delete" id="delete" th:href="@{'/ssi/income/delete/'}">
+                <a name="delete" id="delete" th:href="@{'/ssi/income/delete/'+ ${income.incomeId}}">
                     <img class="delete_icon" src="/img/icons/trash.png" th:alt="#{main.delete.label}"
                          th:title="#{main.delete.label}">
                 </a>
@@ -166,7 +136,7 @@
 
             <!-- Edit -->
             <button class="button_none_btn">
-                <a name="edit" id="edit" th:href="@{'/ssi/income/edit/'}">
+                <a name="edit" id="edit" th:href="@{'/ssi/income/edit/'+ ${income.incomeId}}">
                     <img class="edit_icon" src="/img/icons/edit.png" th:alt="#{main.edit.label}"
                          th:title="#{main.edit.label}">
                 </a>
