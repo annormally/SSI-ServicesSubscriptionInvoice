@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Table(name = "contact")
 public class ContactEntity {
 
+    /**
+     * Fields.
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer contactId;
@@ -17,6 +21,10 @@ public class ContactEntity {
     private String email;
 
     private String message;
+
+    /**
+     * Getter and Setter
+     */
 
     public Integer getContactId() {
         return contactId;

@@ -2,10 +2,18 @@ package ssi.webapplication.model;
 
 public class ContactModel {
 
+    /**
+     * Fields.
+     */
+
     private Integer contactId;
     private String name;
     private String email;
     private String message;
+
+    /**
+     * Getter and Setter
+     */
 
     public Integer getContactId() {
         return contactId;

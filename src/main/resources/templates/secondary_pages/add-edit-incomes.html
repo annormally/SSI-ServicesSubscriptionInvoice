@@ -1,13 +1,14 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
-    <title>SSI::Edit Costs</title>
+    <title>SSI::Edit Income</title>
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
+    <link rel="stylesheet" href="/css/secondary/edit_costs.css">
+    <link rel="stylesheet" href="/css/secondary/table.css">
     <link rel="stylesheet" href="/css/main/footer.css">
-    <link rel="stylesheet" href="/css/secondary/costs-income.css">
 </head>
 
 <body>
@@ -55,13 +56,13 @@
     <div class="select_languages">
 
         <div class="btn_ro">
-            <a th:href="@{/ssi/costs/edit?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
-                                                             th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+            <a th:href="@{/ssi/home?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                       th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
         </div>
 
         <div class="btn_en">
-            <a th:href="@{/ssi/costs/edit?language=en}"><img class="lang_en" src="/img/languages/en.png"
-                                                             th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+            <a th:href="@{/ssi/home?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                       th:title="#{lang.en}" th:alt="#{lang.en}"></a>
         </div>
     </div>
 </div>
@@ -91,47 +92,39 @@
 </nav>
 
 <!-- Form for editing costs -->
-<form method="post" action="/ssi/costs/save" th:object="${cost}">
+<form method="post" action="/ssi/income/save" th:object="${income}">
     <div class="main_panel">
 
-        <!-- Edit costs -->
-        <h1 th:text="#{ssi.costs.form.title.label}"></h1>
+        <!-- Edit income -->
+        <h1 th:text="#{ssi.income.form.title.label}"></h1>
         <hr>
 
-        <div class="table_position">
+        <div style="text-align: center">
 
-            <!-- Cost Id -->
-            <input type="hidden" name="userId" th:field="*{costId}">
+            <!-- Income Id -->
+            <input type="hidden" name="userId" th:field="*{incomeId}">
 
             <!-- Data -->
-            <div class="edit-display-message">
-                <label for="date" th:text="#{ssi.costs.form.date.label}"></label>
-            </div>
-            <input class="calendar_date" type="date" name="date" id="date" placeholder="DD/MM/YYYY"
-                   th:field="*{date}">
+            <label for="date" th:text="#{ssi.costs.form.date.label}"></label>
+            <input class="calendar_date" type="date" name="date" id="date" placeholder="DD/MM/YYYY" th:field="*{date}">
 
             <!-- Currency -->
-            <div class="edit-display-message">
-                <label for="currency" th:utext="#{ssi.costs.form.currency.label}"></label>
-            </div>
+            <label for="currency" th:utext="#{ssi.costs.form.currency.label}"></label>
             <select class="select_currency" id="currency" th:field="*{currency}">
                 <option th:text="#{ssi.costs.option.currency.euro.label}" value="Euro"></option>
                 <option th:text="#{ssi.costs.option.currency.leu.label}" value="Lei"></option>
             </select>
 
             <!-- Value -->
-            <div class="edit-display-message">
-                <label for="value" th:text="#{ssi.costs.form.value.label}"></label>
-            </div>
+            <label for="value" th:text="#{ssi.costs.form.value.label}"></label>
             <input type="text" name="name" id="value" placeholder="Value" th:field="*{value}">
-
             <br>
             <hr>
         </div>
 
         <div class="bt_sub">
             <button class="main_btn" type="reset" th:text="#{ssi.costs.btn.reset.label}"></button>
-            <button class="main_btn" type="submit" th:text="#{ssi.costs.btn.submit.label}"></button>
+            <button class="main_btn" type="submit" th:text="#{ssi.send.button}"></button>
         </div>
 
     </div>
@@ -165,5 +158,6 @@
     </div>
 
 </div>
+
 </body>
 </html>

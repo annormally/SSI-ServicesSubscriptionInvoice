@@ -4,10 +4,19 @@ import java.sql.Date;
 
 public class IncomeModel {
 
+    /**
+     * Fields.
+     */
+
     private Integer incomeId;
+    private String username;
     private Date date;
     private String currency;
     private Double value;
+
+    /**
+     * Getter and Setter
+     */
 
     public Integer getIncomeId() {
         return incomeId;
@@ -15,6 +24,14 @@ public class IncomeModel {
 
     public void setIncomeId(Integer incomeId) {
         this.incomeId = incomeId;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public Date getDate() {

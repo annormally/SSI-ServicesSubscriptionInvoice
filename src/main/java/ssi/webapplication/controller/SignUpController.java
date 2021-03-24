@@ -16,9 +16,18 @@ import ssi.webapplication.repositories.UserRepository;
 @Controller
 public class SignUpController {
 
+    /**
+     * Printing at console a message to see if the class work.
+     */
+
     public SignUpController() {
         System.out.println(getClass().getName() + " created.");
     }
+
+
+    /**
+     * Injecting collaborating beans.
+     */
 
     @Autowired
     private UserRepository userRepository;
@@ -30,9 +39,9 @@ public class SignUpController {
     private PasswordEncoder passwordEncoder;
 
     /**
-     * Sign Up mapping
+     * Mapping for "Signup" page.
      *
-     * @return
+     * @return modelAndView;
      */
 
     @GetMapping("/signup")
@@ -43,15 +52,17 @@ public class SignUpController {
     }
 
     /**
-     * Sign Up save mapping
+     * "Save" method for signup a user.
      *
      * @param userModel
-     * @return
+     * @return modelAndView;
      */
 
     @PostMapping("/signup")
     public ModelAndView saveUser(@ModelAttribute("user") UserModel userModel) {
         ModelAndView modelAndView = new ModelAndView("redirect:/login");
+
+        // Verifying that userId doesn't exists and creating a new user.
         UserEntity userEntity;
         if (userModel.getUserId() != null) {
             userEntity = userRepository.findById(userModel.getUserId()).get();

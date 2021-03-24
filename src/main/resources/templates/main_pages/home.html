@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5"
       xmlns="http://www.w3.org/1999/html">
 <head>
     <meta charset="UTF-8">
@@ -123,13 +123,36 @@
 
     <!-- News text -->
     <div class="message_panel">
+
+        <div class="message_panel_appearance">
+
+            <div>
+                <span th:text="#{ssi.error.pages}"></span>
+            </div>
+
+            <ul>
+                <a th:href="@{'/error/404'}">404</a>
+            </ul>
+        </div>
+
+        <!-- At every post like news the developer need to introduce the date of posting after next format -->
+        <!-- Icon DD/MM/YYYY-->
+        <!-- Posting date -->
+        <div style="text-align: left">
+            <img class="icon_size_calendar" src="/img/icons/calendar.png">
+            <span>23/03/2021</span>
+        </div>
+
+    </div>
+
+    <div class="message_panel">
         <div class="message_panel_appearance">
             <ul>
-                <span th:text="#{ssi.homepage.add.edit.delete.costs}"></span>
+                <a th:text="#{ssi.homepage.add.edit.delete.costs}"></a>
                 <br>
-                <span th:text="#{ssi.homepage.add.edit.delete.income}"></span>
+                <a th:text="#{ssi.homepage.add.edit.delete.income}"></a>
                 <br>
-                <span th:text="#{ssi.homepage.edit.user.profile}"></span>
+                <a th:text="#{ssi.homepage.edit.user.profile}"></a>
             </ul>
         </div>
 

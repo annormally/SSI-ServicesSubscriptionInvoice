@@ -1,6 +1,6 @@
 # SSI-ServicesSubscriptionInvoice
 
-## Tehnologies:
+## Technologies:
 
 * Hibernate for Database.
 * Spring Boot.

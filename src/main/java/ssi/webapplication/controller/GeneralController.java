@@ -14,6 +14,18 @@ import ssi.webapplication.repositories.UserRepository;
 @Controller
 public class GeneralController {
 
+    /**
+     * Printing at console a message to see if the class work.
+     */
+
+    public GeneralController() {
+        System.out.println(getClass().getName() + " created.");
+    }
+
+    /**
+     * Injecting collaborating beans.
+     */
+
     @Autowired
     private UserRepository userRepository;
 
@@ -23,7 +35,7 @@ public class GeneralController {
     /**
      * Mapping for "home" page.
      *
-     * @return
+     * @return modelAndView;
      */
 
     @GetMapping("/ssi/home")
@@ -37,9 +49,9 @@ public class GeneralController {
     }
 
     /**
-     * Contact page mapping
+     * Mapping for "Contact" page.
      *
-     * @return
+     * @return modelAndView;
      */
 
     @GetMapping("/ssi/contact")
@@ -48,6 +60,13 @@ public class GeneralController {
         modelAndView.addObject("message", new ContactModel());
         return modelAndView;
     }
+
+    /**
+     * "Save message" method from user.
+     *
+     * @param contactModel
+     * @return
+     */
 
     @PostMapping("/ssi/contact")
     public ModelAndView saveContactMessage(@ModelAttribute("message") ContactModel contactModel) {
@@ -71,9 +90,9 @@ public class GeneralController {
     }
 
     /**
-     * About page mapping
+     * Mapping for "About" page.
      *
-     * @return
+     * @return modelAndView;
      */
 
     @GetMapping("/ssi/about")

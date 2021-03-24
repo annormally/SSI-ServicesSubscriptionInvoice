@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title th:text="#{add.costs.title}"></title>
@@ -104,12 +104,15 @@
             <input type="hidden" name="userId" th:field="*{costId}">
 
             <!-- Data -->
+            <span th:if="${#fields.hasErrors('date')}" th:each="err:${#fields.errors('date')}" th:text="${err}"></span>
             <div class="add-display-message">
                 <label for="date" th:text="#{ssi.costs.form.date.label}"></label>
             </div>
             <input type="date" name="date" id="date" placeholder="DD/MM/YYYY" th:field="*{date}">
 
             <!-- Currency -->
+            <span th:if="${#fields.hasErrors('currency')}" th:each="err:${#fields.errors('currency')}"
+                  th:text="${err}"></span>
             <div class="add-display-message">
                 <label for="currency" th:utext="#{ssi.costs.form.currency.label}"></label>
             </div>
@@ -119,6 +122,8 @@
             </select>
 
             <!-- Value -->
+            <span th:if="${#fields.hasErrors('value')}" th:each="err:${#fields.errors('value')}"
+                  th:text="${err}"></span>
             <div class="add-display-message">
                 <label for="value" th:text="#{ssi.costs.form.value.label}"></label>
             </div>
@@ -129,7 +134,7 @@
 
         <div class="bt_sub">
             <button class="main_btn" type="reset" th:text="#{ssi.costs.btn.reset.label}"></button>
-            <button class="main_btn" type="submit" th:utext="#{ssi.costs.add.title.label}"></button>
+            <button class="main_btn" type="submit" th:utext="#{ssi.send.button}"></button>
         </div>
 
     </div>

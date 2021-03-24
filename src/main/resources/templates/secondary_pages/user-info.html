@@ -1,13 +1,12 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title th:text="#{user_info.title.label}"></title>
     <link rel="shortcut icon" th:href="@{/img/icons/faviconcircle.ico}"/>
     <link rel="stylesheet" href="/css/main/general.css">
-    <link rel="stylesheet" href="/css/secondary/user_information.css">
-    <link rel="stylesheet" href="/css/secondary/table.css">
+    <link rel="stylesheet" href="/css/secondary/user_info.css">
     <link rel="stylesheet" href="/css/main/footer.css">
 </head>
 
@@ -58,13 +57,13 @@
         <div class="select_languages">
 
             <div class="btn_ro">
-                <a th:href="@{/ssi/user/information?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
-                                                                       th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
+                <a th:href="@{/ssi/user/info/edit?language=ro}"><img class="lang_ro" src="/img/languages/ro.png"
+                                                                     th:title="#{lang.ro}" th:alt="#{lang.ro}"></a>
             </div>
 
             <div class="btn_en">
-                <a th:href="@{/ssi/user/information?language=en}"><img class="lang_en" src="/img/languages/en.png"
-                                                                       th:title="#{lang.en}" th:alt="#{lang.en}"></a>
+                <a th:href="@{/ssi/user/info/edit?language=en}"><img class="lang_en" src="/img/languages/en.png"
+                                                                     th:title="#{lang.en}" th:alt="#{lang.en}"></a>
             </div>
         </div>
     </div>
@@ -73,81 +72,74 @@
 
 <!-- Logo on page -->
 <a class="logo" th:href="@{'/ssi/home'}">
-    <img class="logo_size" src="/img/logo/ssi.png" th:alt="#{ssi}">
+    <img src="/img/logo/ssi.png" th:alt="#{ssi}">
 </a>
 
 <!-- Navigator -->
 <nav>
-    <a class="nav_btn" th:href="@{'/ssi/home'}">
+    <a class="btn_signup" th:href="@{'/ssi/home'}">
         <img class="icon_size" src="/img/icons/home.png" th:alt="#{main.userinfo.label}"
              th:title="#{main.userinfo.label}">
         <span th:utext="#{ssi.homepage.nav.label}" th:title="#{main.userinfo.label}"></span>
     </a>
-    <a class="nav_btn" th:href="@{'/ssi/costs'}">
+    <a class="btn_signup" th:href="@{'/ssi/costs'}">
         <img class="icon_size" src="/img/icons/costs.png" th:alt="#{ssi.costs.nav.label}"
              th:title="#{ssi.costs.nav.label}">
         <span th:text="#{ssi.costs.nav.label}" th:title="#{ssi.costs.nav.label}"></span>
     </a>
-    <a class="nav_btn " th:href="@{'/ssi/income'}">
+    <a class="btn_signup " th:href="@{'/ssi/income'}">
         <img class="icon_size" src="/img/icons/income.png" th:alt="#{ssi.income.nav.label}"
              th:title="#{ssi.income.nav.label}">
         <span th:text="#{ssi.income.nav.label}" th:title="#{ssi.income.nav.label}"></span>
     </a>
 </nav>
 
+<!-- Form for editing costs -->
+<form method="post" action="/ssi/user/info/save" th:object="${userInfo}">
+    <div class="user_info">
 
-<!-- Table with information about user-->
+        <!-- User info -->
+        <h1 th:text="#{user_info.form.title.label}"></h1>
 
-<div class="main_panel">
-    <div class="table_information_user">
-        <div class="table_position">
+        <hr>
 
-            <!-- Display username -->
-            <span class="user_appearance" sec:authentication="name"></span>
+        <!-- Name -->
+        <label for="name" th:text="#{user_info.name.label}"></label>
+        <input type="text" name="name" id="name" placeholder="Name" th:field="*{name}">
+        <br>
 
-            <hr>
+        <!-- Last Name  -->
+        <label for="last_name" th:text="#{user_info.last_name.label}"></label>
+        <input type="text" name="last_name" id="last_name" placeholder="Last Name" th:field="*{lastName}">
+        <br>
 
-            <table class="table_information_user">
-                <!-- Display information -->
-                <!-- Name -->
-                <tr>
-                    <td class="colhead" th:text="#{user_information.name}"></td>
-                    <td class="right-text"
-                        th:text="${userInformation.name}"></td>
-                </tr>
+        <!-- Email -->
+        <label for="email" th:text="#{user_info.email.label}"></label>
+        <input type="text" name="email" id="email" placeholder="Email" th:field="*{email}">
+        <br>
 
-                <!-- Last Name -->
-                <tr>
-                    <td class="colhead" th:text="#{user_information.last.name}"></td>
-                    <td class="right-text"
-                        th:text="${userInformation.lastName}"></td>
-                </tr>
+        <!-- Phone Number  -->
+        <label for="phone_number" th:utext="#{user_info.phone_number.label}"></label>
+        <input type="text" name="phone_number" id="phone_number" placeholder="Phone Number"
+               th:field="*{phoneNumber}">
+        <br>
 
-                <!-- Email -->
-                <tr>
-                    <td class="colhead" th:text="#{user_information.email}"></td>
-                    <td class="right-text"
-                        th:text="${userInformation.email}"></td>
-                </tr>
+        <!-- Country -->
+        <label for="country" th:utext="#{user_info.country.label}"></label>
+        <select class="select_country" id="country" th:field="*{country}">
+            <option th:utext="#{user_info.country.romania.label}" value="romania"></option>
+            <option th:utext="#{user_info.country.international.label}" value="international"></option>
+        </select>
 
-                <!-- Phone Number -->
-                <tr>
-                    <td class="colhead" th:text="#{user_information.phone.number}"></td>
-                    <td class="right-text"
-                        th:text="${userInformation.phoneNumber}"></td>
-                </tr>
+        <hr>
 
-                <!-- Country -->
-                <tr>
-                    <td class="colhead" th:text="#{user_information.country}"></td>
-                    <td class="right-text"
-                        th:text="${userInformation.country}"></td>
-                </tr>
-
-            </table>
+        <div class="bt_sub">
+            <button class="btn_edit" type="submit" th:text="#{user_info.edit.bt.label}"></button>
         </div>
+
     </div>
-</div>
+
+</form>
 
 <!-- Footer for site -->
 <div class="footer">
@@ -178,5 +170,4 @@
 
 </div>
 </body>
-
 </html>

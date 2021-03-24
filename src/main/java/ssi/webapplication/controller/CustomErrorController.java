@@ -11,6 +11,21 @@ import javax.servlet.http.HttpServletRequest;
 @Controller
 public class CustomErrorController implements ErrorController {
 
+    /**
+     * Printing at console a message to see if the class work.
+     */
+
+    public CustomErrorController() {
+        System.out.println(getClass().getName() + " created.");
+    }
+
+    /**
+     * Get mapping for 404, 403 and 500 page error.
+     *
+     * @param request
+     * @return (String)errorPage;
+     */
+
     @GetMapping("/error")
     public String handleError(HttpServletRequest request) {
         String errorPage = "error"; // default

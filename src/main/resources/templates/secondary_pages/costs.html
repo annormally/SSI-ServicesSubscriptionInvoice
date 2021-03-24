@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title th:text="#{ssi.costs.title.label}"></title>
@@ -94,14 +94,13 @@
     </a>
 </nav>
 
-
 <!-- Table with information -->
 <table class="custom_table">
 
     <!-- Head of table -->
     <tr>
         <!-- Table field -->
-        <th th:text="#{ssi.table.nr.crt}"></th>
+        <th style="width: 15%" th:text="#{ssi.table.nr.cost}"></th>
         <th th:text="#{ssi.table.date}"></th>
         <th th:utext="#{ssi.table.currency}"></th>
         <th th:text="#{ssi.table.value}"></th>
@@ -112,7 +111,7 @@
     <tr th:each="cost:${costsList}">
 
         <!-- Number current -->
-        <th th:text="${cost.costId}"></th>
+        <th style="width: 15%" th:text="${cost.costId}"></th>
 
         <!-- Date -->
         <td th:text="${cost.date != null} ? ${#dates.format(cost.date,'dd/MM/yyyy')}: 'n/a' "></td>

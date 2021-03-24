@@ -14,25 +14,30 @@ import ssi.webapplication.repositories.UserRepository;
 @Controller
 public class UsersController {
 
+    /**
+     * Printing at console a message to see if the class work.
+     */
+
     public UsersController() {
         System.out.println(getClass().getName() + " created.");
     }
+
+    /**
+     * Injecting collaborating beans.
+     */
 
     @Autowired
     private UserRepository userRepository;
 
     /**
-     * Page "user_info" is for editing user.
-     * Page "user_information" is for display user information into a table.
-     */
-
-    /**
-     * Mapping for display "user_info" page.
+     * Mapping for "user-info".
+     *
+     * @return modelAndView;
      */
 
     @GetMapping("ssi/user/info")
     public ModelAndView getUserInfo() {
-        ModelAndView modelAndView = new ModelAndView("secondary_pages/user_info");
+        ModelAndView modelAndView = new ModelAndView("secondary_pages/user-info");
         modelAndView.addObject("userInfo", new UserEntity());
 
         // To find user used a list
@@ -45,12 +50,12 @@ public class UsersController {
      * Mapping for editing an user.
      *
      * @param userId
-     * @return
+     * @return modelAndView;
      */
 
     @GetMapping("/ssi/user/info/edit/{userId}")
     public ModelAndView getEditUserInfo(@PathVariable("userId") Integer userId) {
-        ModelAndView modelAndView = new ModelAndView("secondary_pages/user_info");
+        ModelAndView modelAndView = new ModelAndView("secondary_pages/user-info");
         UserEntity userEntity = userRepository.findById(userId).get();
         UserModel userModel = new UserModel();
 
@@ -63,6 +68,14 @@ public class UsersController {
 
         return modelAndView;
     }
+
+
+    /**
+     * "Save" method for editing a user.
+     *
+     * @param userModel
+     * @return
+     */
 
     @PostMapping("ssi/user/info/save")
     public ModelAndView getSaveUserInfo(@ModelAttribute("userInfo") UserModel userModel) {
@@ -88,10 +101,12 @@ public class UsersController {
         return modelAndView;
     }
 
-    /**
-     * Mapping for display "user_information" page.
-     */
 
+    /**
+     * Mapping for display "user-information" page.
+     *
+     * @return modelAndView;
+     */
 
     @GetMapping("ssi/user/information")
     public ModelAndView getUserInformationPage() {
@@ -102,7 +117,7 @@ public class UsersController {
 
     @GetMapping("ssi/user/information/{userId}")
     public ModelAndView getUserInformation(@PathVariable("userId") Integer userId) {
-        ModelAndView modelAndView = new ModelAndView("secondary_pages/user_information");
+        ModelAndView modelAndView = new ModelAndView("secondary_pages/user-information");
         modelAndView.addObject("userInformation", userRepository.findById(userId).get());
         return modelAndView;
     }

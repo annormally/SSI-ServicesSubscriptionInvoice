@@ -1,7 +1,11 @@
 package ssi.webapplication.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Controller;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,9 +19,17 @@ import ssi.webapplication.repositories.UserRepository;
 @Controller
 public class CostsController {
 
+    /**
+     * Printing at console a message to see if the class work.
+     */
+
     public CostsController() {
         System.out.println(getClass().getName() + " created.");
     }
+
+    /**
+     * Injecting collaborating beans.
+     */
 
     @Autowired
     private CostsRepository costsRepository;
@@ -26,9 +38,9 @@ public class CostsController {
     private UserRepository userRepository;
 
     /**
-     * Costs page mapping
+     * Get mapping for "Costs" page.
      *
-     * @return
+     * @return modelAndView;
      */
 
     @GetMapping("/ssi/costs")
@@ -43,30 +55,37 @@ public class CostsController {
     }
 
     /**
-     * Add costs mapping
+     * "Add-Costs" method for "Costs" page.
+     *
+     * @return modelAndView;
      */
 
     @GetMapping("/ssi/costs/add")
     public ModelAndView addNewCost() {
-        ModelAndView modelAndView = new ModelAndView("secondary_pages/add_costs");
+        ModelAndView modelAndView = new ModelAndView("secondary_pages/add-edit-costs");
         modelAndView.addObject("cost", new CostsModel());
         return modelAndView;
     }
 
     /**
-     * Edit costs mapping
+     * "Edit-Costs" method for "Costs" page.
+     *
+     * @param costsId
+     * @return modelAndView;
      */
 
     @GetMapping("/ssi/costs/edit/{costsId}")
     public ModelAndView editCost(@PathVariable Integer costsId) {
-        ModelAndView modelAndView = new ModelAndView("secondary_pages/edit_costs");
+        ModelAndView modelAndView = new ModelAndView("secondary_pages/add-edit-costs");
+
         CostsEntity costsEntity = costsRepository.findById(costsId).get();
-        CostsModel costsModel = new CostsModel();
 
         // Fields
+        CostsModel costsModel = new CostsModel();
+        costsModel.setCostId(costsEntity.getCostId());
         costsModel.setDate(costsEntity.getDate());
-        costsModel.setCurrency(costsEntity.getCurrency());
         costsModel.setValue(costsEntity.getValue());
+        costsModel.setCurrency(costsEntity.getCurrency());
 
         modelAndView.addObject("cost", costsModel);
 
@@ -74,7 +93,10 @@ public class CostsController {
     }
 
     /**
-     * Delete costs mapping
+     * "Delete" method for costs.
+     *
+     * @param costsId
+     * @return modelAndView;
      */
 
     @GetMapping("ssi/costs/delete/{costsId}")
@@ -85,12 +107,25 @@ public class CostsController {
     }
 
     /**
-     * Save cost mapping
+     * "Save" method for Add and Edit costs.
+     *
+     * @param costsModel
+     * @param bindingResult
+     * @return modelAndView;
      */
 
     @PostMapping("/ssi/costs/save")
-    public ModelAndView saveCosts(@ModelAttribute("cost") CostsModel costsModel) {
+    public ModelAndView saveCosts(@ModelAttribute("cost") CostsModel costsModel, BindingResult bindingResult) {
         ModelAndView modelAndView = new ModelAndView("redirect:/ssi/costs");
+
+        // Requiring a specific field(sending a message for user that what he introduce is not what is required).
+        if (bindingResult.hasErrors()) {
+            modelAndView.addObject("costs", costsModel);
+            modelAndView.setViewName("secondary_pages/add-edit-costs");
+            return modelAndView;
+        }
+
+        // Verifying that costsId doesn't exists and creating a new cost.
         CostsEntity costsEntity;
         if (costsModel.getCostId() != null) {
             costsEntity = costsRepository.findById(costsModel.getCostId()).get();
@@ -103,7 +138,14 @@ public class CostsController {
         costsEntity.setCurrency(costsModel.getCurrency());
         costsEntity.setValue(costsModel.getValue());
 
-        // Save
+        // Get authenticated user
+        Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+        if (null != auth && auth.getPrincipal() instanceof User) {
+            User user = (User) auth.getPrincipal();
+            costsEntity.setUsername(user.getUsername());
+        }
+
+        // Save cost
         costsRepository.save(costsEntity);
 
         return modelAndView;

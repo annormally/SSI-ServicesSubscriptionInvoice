@@ -19,9 +19,9 @@ import java.util.Locale;
 public class WebConfiguration implements WebMvcConfigurer {
 
     /**
-     * Languages
+     * Setting the default language for the application.
      *
-     * @return
+     * @return resolver;
      */
 
     @Bean
@@ -31,6 +31,16 @@ public class WebConfiguration implements WebMvcConfigurer {
         return resolver;
     }
 
+    /**
+     * Setting the extension form the application who change the language.
+     * For example:
+     * <p>
+     * url => "/login" -> to change at "english" = "/login?language=en"
+     * url => "/login" -> to change at "romanian" = "/login?language=ro"
+     *
+     * @return interceptor;
+     */
+
     @Bean
     public LocaleChangeInterceptor localeChangeInterceptor() {
         LocaleChangeInterceptor interceptor = new LocaleChangeInterceptor();
@@ -38,6 +48,12 @@ public class WebConfiguration implements WebMvcConfigurer {
         return interceptor;
     }
 
+    /**
+     * Location from the application.
+     * From here take the message(text from the page).
+     *
+     * @return (messageSource)message;
+     */
     @Bean
     public MessageSource messageSource() {
         ReloadableResourceBundleMessageSource message = new ReloadableResourceBundleMessageSource();
@@ -51,7 +67,7 @@ public class WebConfiguration implements WebMvcConfigurer {
     }
 
     /**
-     * Source for design and images
+     * Source for design and images.
      *
      * @param registry
      */

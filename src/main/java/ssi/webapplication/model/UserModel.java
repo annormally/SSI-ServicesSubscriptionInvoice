@@ -4,6 +4,10 @@ import javax.validation.constraints.Email;
 
 public class UserModel {
 
+    /**
+     * Fields.
+     */
+
     private Integer userId;
     private String name;
     private String lastName;
@@ -13,6 +17,10 @@ public class UserModel {
     private String email;
     private String phoneNumber;
     private String country;
+
+    /**
+     * Getter and Setter
+     */
 
     public Integer getUserId() {
         return userId;

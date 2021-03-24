@@ -27,7 +27,8 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable();
 
         /**
-         *  Configuration for all user
+         *  Configuration for all user.
+         *  In this authorize requests is all mapping that have access without to be authenticated.
          */
 
         http.authorizeRequests()
@@ -35,15 +36,15 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .permitAll();
 
         /**
-         *  Configuration for any request
-         *  Other request need to be authenticate
+         *  Configuration for any request.
+         *  Other request need to be authenticate.
          */
 
         http.authorizeRequests()
                 .anyRequest().authenticated();
 
         /**
-         * Configuration for login
+         * Configuration for login.
          */
 
         http.formLogin()
@@ -55,7 +56,7 @@ public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .failureUrl("/403");
 
         /**
-         * Configuration for logout
+         * Configuration for logout.
          */
 
         http.logout()

@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org"
-      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5" xmlns:form="http://www.w3.org/1999/html">
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
 <head>
     <meta charset="UTF-8">
     <title th:text="#{ssi.income.title.label}"></title>
@@ -101,7 +101,7 @@
     <!-- Head of table -->
     <tr>
         <!-- Table field -->
-        <th th:text="#{ssi.table.nr.crt}"></th>
+        <th style="width: 15%" th:text="#{ssi.table.nr.income}"></th>
         <th th:text="#{ssi.table.date}"></th>
         <th th:utext="#{ssi.table.currency}"></th>
         <th th:text="#{ssi.table.value}"></th>
@@ -112,7 +112,7 @@
     <tr th:each="income:${incomeList}">
 
         <!-- Number current -->
-        <th th:text="${income.incomeId}"></th>
+        <th style="width: 15%" th:text="${income.incomeId}"></th>
 
         <!-- Date -->
         <td th:text="${#dates.format(income.date,'dd/MM/yyyy')}"></td>

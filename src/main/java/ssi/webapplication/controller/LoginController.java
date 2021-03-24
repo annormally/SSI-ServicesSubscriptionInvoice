@@ -10,14 +10,18 @@ import java.security.Principal;
 @Controller
 public class LoginController {
 
+    /**
+     * Printing at console a message to see if the class work.
+     */
+
     public LoginController() {
         System.out.println(getClass().getName() + " created.");
     }
 
     /**
-     * Login mapping
+     * Mapping at "/" and "/login" the main page of application.
      *
-     * @return
+     * @return modelAndView;
      */
 
     @GetMapping("/")
@@ -33,7 +37,7 @@ public class LoginController {
     }
 
     /**
-     * Display username
+     * Display username.
      *
      * @param request
      * @return

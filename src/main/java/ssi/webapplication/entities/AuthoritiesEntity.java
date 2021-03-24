@@ -6,6 +6,10 @@ import javax.persistence.*;
 @Table(name = "authorities")
 public class AuthoritiesEntity {
 
+    /**
+     * Fields.
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer authorityId;
@@ -17,6 +21,10 @@ public class AuthoritiesEntity {
     @ManyToOne
     @JoinColumn(name = "userId")
     private UserEntity user;
+
+    /**
+     * Getter and Setter
+     */
 
     public String getUsername() {
         return username;

@@ -7,6 +7,10 @@ import java.util.List;
 @Table(name = "users")
 public class UserEntity {
 
+    /**
+     * Fields.
+     */
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer userId;
@@ -41,6 +45,10 @@ public class UserEntity {
     public Integer getUserId() {
         return userId;
     }
+
+    /**
+     * Getter and Setter
+     */
 
     public void setUserId(Integer userId) {
         this.userId = userId;
